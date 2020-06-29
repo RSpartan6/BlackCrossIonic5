@@ -1,0 +1,8 @@
+{
+  "name": "Crossfit",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

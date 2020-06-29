@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      BIENVENIDO
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{usuario.respuesta.nombre}} </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button *ngIf="usuario.respuesta.idRol==1">
+    <ion-icon slot="start" name="star"></ion-icon>
+    Entrenador
+  </ion-button>
+
+  <ion-button *ngIf="usuario.respuesta.idRol==2">
+    <ion-icon slot="start" name="star"></ion-icon>
+    Cliente
+  </ion-button>
+
+</ion-content>

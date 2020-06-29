@@ -1,0 +1,34 @@
+<!-- <ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bienvenido</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" class="ion-no-border">
+    <ion-toolbar>
+      <ion-title size="large">{{usuario.respuesta.nombre}} </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Observaciones -->
+  <ion-list inset="true" class="animated fast fadeInLeft">
+    <!-- <ion-item href="/tabs/clases" no-border> -->
+    <ion-item no-border href="/clases">
+      <!-- <ion-avatar slot="start"> -->
+      <ion-icon name="barbell-outline" slot="start" style="zoom: 2;"></ion-icon>
+      <!-- </ion-avatar> -->
+      <ion-label>
+        <h1>Clases</h1>
+      </ion-label>
+    </ion-item>
+    <!-- <ion-item href="/tabs/perfil" *ngIf="usuario.respuesta.idRol == 1"> -->
+    <ion-item href="/perfil" *ngIf="usuario.respuesta.idRol == 1" >
+      <!-- <ion-avatar slot="start"> -->
+      <ion-icon name="people-circle-outline" slot="start" style="zoom: 2;"></ion-icon>
+      <!-- </ion-avatar> -->
+      <ion-label>
+        <h1>Perfiles</h1>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
