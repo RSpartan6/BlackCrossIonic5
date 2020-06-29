@@ -8,7 +8,7 @@ import { NavParams } from "@ionic/angular";
   styleUrls: ["./menu.page.scss"],
 })
 export class MenuPage implements OnInit {
-  usuario;
+  usuario : any;
 
   constructor(private storage: Storage, private navParams: NavParams) {
     this.usuario = this.navParams.get(this.usuario);

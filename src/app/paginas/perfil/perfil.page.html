@@ -1,6 +1,6 @@
-<ion-header no-border>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Clientes</ion-title>
+    <ion-title>Perfiles</ion-title>
     <ion-buttons slot="end">
       <ion-button href="registro">
         <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -14,13 +14,15 @@
 <ion-content>
   <!-- <ion-card
     *ngFor="let Usuarios of listado?.respuesta; let indice=index;"
-    href="/tabs/editarperfil/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}"
+    href="./editarperfil/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}"
     class="animated fast fadeInDown"
   > -->
   <ion-card
     *ngFor="let Usuarios of listado?.respuesta; let indice=index;"
+    href="editarperfil/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}"
     class="animated fast fadeInDown"
   >
+  
     <ion-card-header>
       <!-- <ion-card-subtitle>{{Usuarios.idRol}}</ion-card-subtitle> -->
       <!-- <ion-avatar class="image-center">
