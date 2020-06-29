@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Asistencia</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="clases" text="Atras"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list inset="true" lines="none">
+
+    <ion-label>
+      <h2>
+          Clase {{listado?.respuesta.clase.nombre}}
+      </h2>
+      <h3>
+          Profesor: {{listado?.respuesta.clase.profesor}}
+      </h3>
+      <p>
+        {{listado?.respuesta.lugares}} 
+      </p>
+    </ion-label>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <ion-item >
+      <!-- <ion-avatar slot="start"> -->
+      <!-- <ion-icon name="fitness" slot="start" style="zoom:2.0;"></ion-icon> -->
+      <!-- </ion-avatar> -->
+      <ion-label>
+
+        Miguel Vazquez
+        <!-- {{listado?.respuesta.usuarios.nombre}} -->
+      </ion-label>
+
+      <ion-label>
+
+        Manuel Adame
+        <!-- {{listado?.respuesta.usuarios.nombre}} -->
+      </ion-label>
+      
+      
+    </ion-item>
+    
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <ion-button color="success" expand="block">Editar Clase</ion-button>
+      <p></p>
+      <p></p>
+      <ion-button color="danger" expand="block">Eliminar Clase</ion-button>
+
+  </ion-list>
+</ion-content>

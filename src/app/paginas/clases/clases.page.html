@@ -16,7 +16,7 @@
       </ion-list-header>
       
   <!-- <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index; let AsistenciaClase of listado2?.respuesta" href="/tabs/asistentes/{{Clases.idClase}}/{{Clases.nombre}}"> -->
-    <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index; let AsistenciaClase of listado2?.respuesta">
+    <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index; let AsistenciaClase of listado2?.respuesta" href="/asistentes/{{Clases.idClase}}/{{Clases.nombre}}">
 
     <ion-label >
       <h2>Clase: {{Clases.nombre}} </h2>

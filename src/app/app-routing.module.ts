@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'editarclase',
     loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
   },
+  {
+    path: 'asistentes/:idClase/:nombre',
+    loadChildren: () => import('./paginas/asistentes/asistentes.module').then( m => m.AsistentesPageModule)
+  },
 ];
 
 @NgModule({
