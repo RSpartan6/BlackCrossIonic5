@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./paginas/registro/registro.module').then( m => m.RegistroPageModule)
   },
+  {
+    path: 'editarclase',
+    loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
+  },
 ];
 
 @NgModule({
