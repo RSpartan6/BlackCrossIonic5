@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'editarperfil/:usuario/:sexo/:correoElectronico/:nombre/:telefono/:contrasenia',
     loadChildren: () => import('./paginas/editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./paginas/registro/registro.module').then( m => m.RegistroPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,82 @@
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/servicios/login.service';
+import { Router } from '@angular/router';
+import { ToastController, LoadingController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-registro',
+  templateUrl: './registro.page.html',
+  styleUrls: ['./registro.page.scss'],
+})
+export class RegistroPage implements OnInit {
+
+  nu={
+    "idRol": "",
+    "usuario":"",
+    "contrasenia":"",
+    "nombre":"",
+    "sexo":"",
+    "correo_electronico":"",
+    "peso":"",
+    "altura":"--",
+    "imc":"--",
+    "telefono":"",
+    "nivel": "",
+    "estatus":"",
+    "intentos":"",
+  }
+
+  constructor
+  (
+    private router: Router, 
+    public toastController: ToastController, 
+    private servicio: LoginService,
+    public loadingController: LoadingController,
+    public http: HttpClient,
+  ) { }
+
+  // Agregar nuevo usuario
+  nuevoUsuario(){
+    let obj = {
+      // "idUsuario":null,
+      "idRol": 2,
+      "usuario":this.nu.usuario,
+      "contrasenia":this.nu.contrasenia,
+      "nombre":this.nu.nombre,
+      "sexo":this.nu.sexo,
+      "correoElectronico":this.nu.correo_electronico,
+      "peso":0,
+      "altura":0,
+      "imc":"--",
+      "telefono":this.nu.telefono,
+      "nivel": "10" ,
+      "estatus":"1",
+      "intentos":0,
+    }
+
+    this.presentLoading();
+    this.servicio.setCrear(obj).subscribe((response: any) => {
+          console.log(response);
+      });
+    console.log(this.nu);
+    // this.navCtrl.push(ClasesPage)
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Agregando usuario',
+      duration: 1200,
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    this.router.navigate(['/perfil']);
+  }
+
+  ngOnInit() {
+  }
+
+}

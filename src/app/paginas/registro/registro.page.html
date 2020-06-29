@@ -1,0 +1,92 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="perfil"
+        color="dark"
+        text="Atras"
+      ></ion-back-button>
+      <!-- <ion-back-button color="dark" text="Atras" (click)="menuPerfil()"></ion-back-button> -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" class="background">
+  <form #guardarPerfil="ngForm">
+    <!-- <ion-img src=".././assets/img/BlackC-SF2.png"></ion-img> -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" size-lg="5" size-xs="12">
+          <!-- <div text-center>
+          <h3>Agregar cuenta</h3>
+        </div> -->
+          <div padding>
+            <ion-item>
+              <ion-label position="floating"> Usuario</ion-label>
+              <ion-input
+                [(ngModel)]="nu.usuario"
+                name="usuario"
+                type="text"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating"> Contraseña</ion-label>
+              <ion-input
+                [(ngModel)]="nu.contrasenia"
+                name="contrasenia"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating"> Nombre</ion-label>
+              <ion-input
+                [(ngModel)]="nu.nombre"
+                name="nombre"
+                type="text"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating"> Sexo</ion-label>
+              <ion-input
+                [(ngModel)]="nu.sexo"
+                name="sexo"
+                type="text"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating"> Correo Electronico</ion-label>
+              <ion-input
+                [(ngModel)]="nu.correo_electronico"
+                name="correo_electronico"
+                type="email"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating"> Telefono</ion-label>
+              <ion-input
+                [(ngModel)]="nu.telefono"
+                name="telefono"
+                type="text"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <div padding>
+            <!-- <ion-button (click)="registroExitoso()"  size="large" type="submit" [disabled]="form.invalid" expand="block">Registrar</ion-button> -->
+            <ion-button
+              (click)="nuevoUsuario()"
+              size="large"
+              type="submit"
+              expand="block"
+              >Registrar</ion-button
+            >
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
