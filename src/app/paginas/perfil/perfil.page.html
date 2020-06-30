@@ -24,10 +24,11 @@
   >
   
     <ion-card-header>
-      <!-- <ion-card-subtitle>{{Usuarios.idRol}}</ion-card-subtitle> -->
       <!-- <ion-avatar class="image-center">
               <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
             </ion-avatar> -->
+            <!-- <p slot="end" *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
+        <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p> -->
       <ion-card-title>{{Usuarios.nombre}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
@@ -36,6 +37,9 @@
       <p>Altura: {{Usuarios.altura}} m</p>
       <p>Telefono: {{Usuarios.telefono}}</p>
       <p>Correo Electronico: {{Usuarios.correoElectronico}}</p>
+      <p *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
+      <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p>
+
     </ion-card-content>
   </ion-card>
 </ion-content>
