@@ -38,10 +38,10 @@ export class RegistroPage implements OnInit {
       public loadingController: LoadingController,
       public http: HttpClient,
       public alertController: AlertController
-  ) { }
+    ) { }
 
   // Agregar nuevo usuario
-  nuevoUsuario(form : NgForm) {
+  nuevoUsuario(form: NgForm) {
     let obj = {
       // "idUsuario":null,
       "idRol": 2,
@@ -61,22 +61,22 @@ export class RegistroPage implements OnInit {
 
     this.submitted = true;
 
-    if(form.valid){
+    if (form.valid) {
 
       this.servicio.setCrear(obj).subscribe((response: any) => {
         console.log(response, "SetCrear Method");
-  
+
         if (response.codigo == 500) {
-  
+
           this.usuarioExistente()
-        }else {
+        } else {
           this.presentLoading();
         }
       });
       console.log(this.nu);
       // this.navCtrl.push(ClasesPage)
 
-    }else{
+    } else {
       this.todoslosCampos()
     }
   }

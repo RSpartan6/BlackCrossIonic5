@@ -32,9 +32,8 @@
       <ion-card-title>{{Usuarios.nombre}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <p>Usuario: {{Usuarios.usuario}}</p>
       <p>Sexo: {{Usuarios.sexo}}</p>
-      <p>Peso: {{Usuarios.peso}} Kg</p>
-      <p>Altura: {{Usuarios.altura}} m</p>
       <p>Telefono: {{Usuarios.telefono}}</p>
       <p>Correo Electronico: {{Usuarios.correoElectronico}}</p>
       <p *ngIf="Usuarios.estatus == 1" class="green">Activo</p>

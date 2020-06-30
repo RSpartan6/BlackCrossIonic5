@@ -35,6 +35,7 @@ export class EditarperfilPage implements OnInit {
   telefono: string;
   contrasenia: string;
   idUsuario : string;
+  estatus: string;
 
   listado:any;
 
@@ -56,6 +57,7 @@ export class EditarperfilPage implements OnInit {
     this.telefono =this.activatedRoute.snapshot.paramMap.get('telefono');
     this.contrasenia =this.activatedRoute.snapshot.paramMap.get('contrasenia');
     this.idUsuario = this.activatedRoute.snapshot.paramMap.get('idUsuario');
+    this.estatus = this.activatedRoute.snapshot.paramMap.get('estatus');
    
     this.servicio.getData(this.urlapi+'Usuarios/usuario/'+this.usuario+'/').subscribe(data => {
     
@@ -80,9 +82,9 @@ export class EditarperfilPage implements OnInit {
       "imc":"--",
       "telefono":this.telefono,
       "nivel": "10" ,
-      "estatus":"1",
+      "estatus":this.estatus,
       "intentos":0,
-    }
+    }   
 
     this.presentLoading();
     this.servicio.editarUsuario(obj).subscribe((response: any) => {
