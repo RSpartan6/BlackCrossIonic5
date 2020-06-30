@@ -19,20 +19,29 @@
             </div> -->
           <div padding>
             <ion-item>
+              <ion-label position="stacked">ID</ion-label>
+              <ion-input name="idusuario" type="text" placeholder="{{idUsuario}}" [(ngModel)]="ep.idUsuario" readonly>
+              </ion-input>
+            </ion-item>
+            <ion-item>
               <ion-label position="stacked">Nombre</ion-label>
-              <ion-input name="nombre" type="text" placeholder="{{nombre}}" ngModel required></ion-input>
+              <ion-input name="nombre" type="text" placeholder="{{nombre}}" [(ngModel)]="ep.nombre" required>
+              </ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Usuario</ion-label>
-              <ion-input name="usuario" type="text" placeholder="{{usuario}}" ngModel required></ion-input>
+              <ion-input name="usuario" type="text" placeholder="{{usuario}}" [(ngModel)]="ep.usuario" required>
+              </ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Contraseña</ion-label>
-              <ion-input name="contrasenia" type="text" placeholder="{{contrasenia}}" ngModel required></ion-input>
+              <ion-input name="contrasenia" type="text" placeholder="{{contrasenia}}" [(ngModel)]="ep.contrasenia"
+                required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Correo Electronico</ion-label>
-              <ion-input name="correoElectronico" type="text" placeholder="{{correoElectronico}}" ngModel required>
+              <ion-input name="correoElectronico" type="text" placeholder="{{correoElectronico}}"
+                [(ngModel)]="ep.correo_electronico" required>
               </ion-input>
             </ion-item>
             <ion-item>
@@ -45,7 +54,7 @@
                 required
               ></ion-input> -->
 
-              <ion-select placeholder="{{sexo}}" name="sexo" type="text" ngModel required>
+              <ion-select placeholder="{{sexo}}" name="sexo" type="text" [(ngModel)]="ep.sexo" required>
                 <ion-select-option value="F">Femenino
                 </ion-select-option>
                 <ion-select-option value="M">Masculino
@@ -54,31 +63,22 @@
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Telefono</ion-label>
-              <ion-input name="telefono" type="text" placeholder="{{telefono}}" ngModel required></ion-input>
+              <ion-input name="telefono" type="text" placeholder="{{telefono}}" [(ngModel)]="ep.telefono" required>
+              </ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating"></ion-label>
-              <ion-select placeholder="{{estatus}}" name="estatus" type="text" ngModel required>
-                <ion-select-option value="1" >Activo
+              <ion-select placeholder="{{estatus}}" name="estatus" type="text" [(ngModel)]="ep.estatus" required>
+                <ion-select-option value="1">Activo
                 </ion-select-option>
-                <ion-select-option value="0" >Inactivo
+                <ion-select-option value="0">Inactivo
                 </ion-select-option>
               </ion-select>
             </ion-item>
           </div>
           <div padding>
             <ion-button size="large" type="submit" (click)="editarUsuario()" expand="block">
-              Editar</ion-button>
-            <p></p>
-            <p></p>
-            <!-- <ion-button
-              size="large"
-              color="danger"
-              (click)="eliminarUsuario()"
-              expand="block"
-              >Eliminar
-              </ion-button> -->
-            <ion-button size="large" color="danger" expand="block">Eliminar
+              Editar
             </ion-button>
           </div>
         </ion-col>

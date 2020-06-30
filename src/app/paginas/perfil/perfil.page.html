@@ -19,7 +19,7 @@
   > -->
   <ion-card
     *ngFor="let Usuarios of listado?.respuesta; let indice=index;"
-    href="editarperfil/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}"
+    href="editarperfil/{{Usuarios.idUsuario}}/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}/{{Usuarios.estatus}}"
     class="animated fast fadeInDown"
   >
   
@@ -32,6 +32,7 @@
       <ion-card-title>{{Usuarios.nombre}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <p>ID: {{Usuarios.idUsuario}}</p>
       <p>Usuario: {{Usuarios.usuario}}</p>
       <p>Sexo: {{Usuarios.sexo}}</p>
       <p>Telefono: {{Usuarios.telefono}}</p>
