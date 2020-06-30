@@ -8,22 +8,30 @@ import { NavParams } from "@ionic/angular";
   styleUrls: ["./menu.page.scss"],
 })
 export class MenuPage implements OnInit {
-  usuario : any;
+  usuario:any;
 
-  constructor(private storage: Storage, private navParams: NavParams) {
+  constructor
+  (
+    private storage: Storage, 
+    private navParams: NavParams
+  ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
-      if (this.usuario) {
-        this.verUsuario();
-      }
-      console.log("Rol de Usuario BlackCross= ", user.respuesta.idRol);
+
+      console.log("El usuario en MENU es :",this.usuario.respuesta.nombre);
+      console.log("Y su Rol es :", this.usuario.respuesta.idRol);
+      
+      // if (this.usuario) {
+      //   this.verUsuario();
+      // }
+      // console.log("Rol de Usuario BlackCross= ", user.respuesta.idRol);
     });
   }
 
-  verUsuario() {
-    console.log("MENU APP BLACKCROSS");
-    console.log("El usuario es:", this.usuario);
-  }
+  // verUsuario() {
+  //   console.log("MENU APP BLACKCROSS");
+  //   console.log("El usuario es:", this.usuario.respuesta.nombre);
+  // }
   ngOnInit() {}
 }

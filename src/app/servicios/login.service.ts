@@ -33,6 +33,7 @@ export class LoginService {
     return this.http.post(this.url + 'Usuarios/', clase, this.httpOptions)
   }
 
+  // Servicio de Login
   login(user) {
     console.log(user, "Bienvenido");
 
@@ -58,4 +59,6 @@ export class LoginService {
     //   tap(resp => console.log('heaeder', resp.headers.get('ReturnStatus')))
     // );
   }
+
+  // Servicio de Eliminar asistencia
 }

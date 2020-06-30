@@ -16,9 +16,13 @@
       </ion-list-header>
       
   <!-- <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index; let AsistenciaClase of listado2?.respuesta" href="/tabs/asistentes/{{Clases.idClase}}/{{Clases.nombre}}"> -->
-    <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index; let AsistenciaClase of listado2?.respuesta" href="/asistentes/{{Clases.idClase}}/{{Clases.nombre}}">
+    <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index;"  
+    href="asistentes/{{Clases.idClase}}/{{Clases.nombre}}"
+    class="animated fast fadeInDown"
+    >
 
-    <ion-label >
+    <!-- <ion-label *ngIf="usuario.respuesta.estatus == 1"> -->
+      <ion-label>
       <h2>Clase: {{Clases.nombre}} </h2>
     
       <p>Capacidad: {{Clases.personas}} personas</p>
