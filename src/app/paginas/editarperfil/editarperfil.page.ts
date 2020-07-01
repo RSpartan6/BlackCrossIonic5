@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import { Identifiers } from '@angular/compiler';
 
 @Component({
   selector: 'app-editarperfil',
@@ -47,6 +46,7 @@ export class EditarperfilPage implements OnInit {
     private servicio: LoginService,
     // public navCtrl: NavController,
     // public navCtrl: NavController,
+    private router: Router,
     public loadingController: LoadingController
   ) { }
 
@@ -100,10 +100,49 @@ export class EditarperfilPage implements OnInit {
     // this.navCtrl.push(PerfilPage)
   }
 
+  
+  activarUser(idUsuario){
+
+    this.servicio.activarUser(idUsuario).subscribe((response: any) => {
+      console.log(response, "Usuario Activado");
+  });
+  this.activandoLoading();
+  }
+
+  desactivarUser(idUsuario){
+
+    this.servicio.desactivarUser(idUsuario).subscribe((response: any) => {
+      console.log(response, "Usuario Desactivado");
+  });
+  this.desacactivadoLoading();
+  }
+
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Por favor espere...',
+      duration: 1000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+  }
+
+  async activandoLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Usuario Activado',
+      duration: 1000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+  }
+
+  async desacactivadoLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Usuario Desactivado',
       duration: 1000
     });
     await loading.present();

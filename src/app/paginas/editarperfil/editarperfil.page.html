@@ -19,11 +19,6 @@
             </div> -->
           <div padding>
             <ion-item>
-              <ion-label position="stacked">ID</ion-label>
-              <ion-input name="idusuario" type="text" placeholder="{{idUsuario}}" [(ngModel)]="ep.idUsuario" readonly>
-              </ion-input>
-            </ion-item>
-            <ion-item>
               <ion-label position="stacked">Nombre</ion-label>
               <ion-input name="nombre" type="text" placeholder="{{nombre}}" [(ngModel)]="ep.nombre" required>
               </ion-input>
@@ -66,7 +61,7 @@
               <ion-input name="telefono" type="text" placeholder="{{telefono}}" [(ngModel)]="ep.telefono" required>
               </ion-input>
             </ion-item>
-            <ion-item>
+            <!-- <ion-item>
               <ion-label position="floating"></ion-label>
               <ion-select placeholder="{{estatus}}" name="estatus" type="text" [(ngModel)]="ep.estatus" required>
                 <ion-select-option value="1">Activo
@@ -74,7 +69,7 @@
                 <ion-select-option value="0">Inactivo
                 </ion-select-option>
               </ion-select>
-            </ion-item>
+            </ion-item> -->
           </div>
           <div padding>
             <ion-button size="large" type="submit" (click)="editarUsuario()" expand="block">
@@ -83,6 +78,17 @@
           </div>
         </ion-col>
       </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button color="success" expand="block" (click)="activarUser(idUsuario)">Activo</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color="danger" expand="block" (click)="desactivarUser(idUsuario)">Inactivo</ion-button>
+          </ion-col>
+        </ion-row>
     </ion-grid>
   </form>
 </ion-content>

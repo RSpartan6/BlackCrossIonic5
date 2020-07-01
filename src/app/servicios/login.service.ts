@@ -27,8 +27,18 @@ export class LoginService {
   // }
 
   editarUsuario(usuario) {
-    console.log();
+    usuario = this.editarUsuario;
     return this.http.put(this.url + "Usuarios", usuario, this.httpOptions);
+  }
+
+  // Servicio cambiar status
+  activarUser(idUsuario){
+    return this.http.put(this.url + "Usuarios/"+ idUsuario + "/1",this.httpOptions);
+    
+  }
+
+  desactivarUser(idUsuario){
+    return this.http.put(this.url + "Usuarios/"+ idUsuario + "/0",this.httpOptions);
   }
 
   // Servicio crear nuevo usuario
