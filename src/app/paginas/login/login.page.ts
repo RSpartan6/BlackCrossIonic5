@@ -50,18 +50,18 @@ export class LoginPage implements OnInit {
 
           // if (this.login.usuario == 'LUISC') {
 
-          if (json.respuesta.idRol === 1) {
+          if (json.respuesta.idRol == 1) {
             console.log(this.login.usuario);
             console.log("Usuario Entrenador", json.respuesta.nombre);
-            this.navCtrl.navigateRoot('menu');
+            this.navCtrl.navigateRoot('/menu');
 
 
           } else 
           
-          if (json.respuesta.idRol === 2) {
+          if (json.respuesta.idRol == 2) {
             console.log(this.login.usuario);
             console.log("Usuario Cliente", json.respuesta.nombre)
-            this.navCtrl.navigateRoot('menu');
+            this.navCtrl.navigateRoot('/clases');
             this.clearForm();
           } else 
           

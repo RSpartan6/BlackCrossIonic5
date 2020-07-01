@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title>Clases</ion-title>
+    <ion-title>Horarios</ion-title>
     <ion-buttons slot="start" >
       <!-- <ion-back-button defaultHref="menu" routerLinkActive="router-link-active"  text="Atras"></ion-back-button> -->
       <ion-back-button defaultHref="menu" text="Atras"></ion-back-button>
@@ -8,12 +8,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
 
   <ion-list inset="true" class="animated fast fadeInDown" >
-    <ion-list-header>
-        <ion-label>Horarios</ion-label>
-      </ion-list-header>
       
   <!-- <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index; let AsistenciaClase of listado2?.respuesta" href="/tabs/asistentes/{{Clases.idClase}}/{{Clases.nombre}}"> -->
     <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index;"  
@@ -26,8 +23,6 @@
       <h2>Clase: {{Clases.nombre}} </h2>
     
       <p>Capacidad: {{Clases.personas}} personas</p>
-    
-
     </ion-label>
     <p>
         <ion-label *ngIf="Clases.horario == 'M'">

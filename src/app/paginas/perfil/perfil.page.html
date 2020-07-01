@@ -17,31 +17,33 @@
     href="./editarperfil/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}"
     class="animated fast fadeInDown"
   > -->
-  <ion-card
-    *ngFor="let Usuarios of listado?.respuesta; let indice=index;"
-    href="editarperfil/{{Usuarios.idUsuario}}/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}/{{Usuarios.estatus}}"
-    class="animated fast fadeInDown"
-  >
-  
-    <ion-card-header>
-      <!-- <ion-avatar class="image-center">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col *ngFor="let Usuarios of listado?.respuesta; let indice=index;" 
+      size="12" size-lg="3" size-md="4" size-sm="6">
+      <ion-card 
+        href="editarperfil/{{Usuarios.idUsuario}}/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}/{{Usuarios.estatus}}"
+        class="animated fast fadeInDown">
+        <ion-card-header>
+          <!-- <ion-avatar class="image-center">
               <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
             </ion-avatar> -->
-            <!-- <p slot="end" *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
+          <!-- <p slot="end" *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
         <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p> -->
-      <ion-card-title>{{Usuarios.nombre}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>ID: {{Usuarios.idUsuario}}</p>
-      <p>Usuario: {{Usuarios.usuario}}</p>
-      <p>Sexo: {{Usuarios.sexo}}</p>
-      <p>Telefono: {{Usuarios.telefono}}</p>
-      <p>Correo Electronico: {{Usuarios.correoElectronico}}</p>
-      <p *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
-      <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p>
-      <p *ngIf="Usuarios.idRol == 1" class="azul">Entrenador</p>
+          <ion-card-title>{{Usuarios.nombre}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Usuario: {{Usuarios.usuario}}</p>
+          <p>Sexo: {{Usuarios.sexo}}</p>
+          <p>Telefono: {{Usuarios.telefono}}</p>
+          <p>Correo Electronico: {{Usuarios.correoElectronico}}</p>
+          <p *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
+          <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p>
+          <p *ngIf="Usuarios.idRol == 1" class="azul" size="12">Entrenador</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
 
-
-    </ion-card-content>
-  </ion-card>
 </ion-content>
