@@ -3,7 +3,7 @@
     <ion-title>Horarios</ion-title>
     <ion-buttons slot="start" *ngIf="usuario.respuesta.idRol === 1">
       <!-- <ion-back-button defaultHref="menu" routerLinkActive="router-link-active"  text="Atras"></ion-back-button> -->
-      <ion-back-button defaultHref="menu" routerLinkActive="router-link-active"></ion-back-button>
+      <ion-back-button defaultHref="menu" text="Atras"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -23,8 +23,6 @@
       <h2>Clase: {{Clases.nombre}} </h2>
     
       <p>Capacidad: {{Clases.personas}} personas</p>
-    
-
     </ion-label>
     <p>
         <ion-label *ngIf="Clases.horario == 'M'">
