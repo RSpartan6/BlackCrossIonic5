@@ -33,7 +33,6 @@
           <ion-card-title>{{Usuarios.nombre}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>ID: {{Usuarios.idUsuario}}</p>
           <p>Usuario: {{Usuarios.usuario}}</p>
           <p>Sexo: {{Usuarios.sexo}}</p>
           <p>Telefono: {{Usuarios.telefono}}</p>
@@ -41,7 +40,6 @@
           <p *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
           <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p>
           <p *ngIf="Usuarios.idRol == 1" class="azul" size="12">Entrenador</p>
-
         </ion-card-content>
       </ion-card>
     </ion-col>

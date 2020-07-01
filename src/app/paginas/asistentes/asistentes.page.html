@@ -12,10 +12,7 @@
   <ion-list inset="true" lines="none">
 
     <ion-label>
-      <h2>
-        IdClase {{listado?.respuesta.clase.idClase}}
-    </h2>
-      <h2>
+       <h2>
           Clase {{listado?.respuesta.clase.nombre}}
       </h2>
       <h3>
@@ -42,21 +39,14 @@
       <p></p>
       <p></p>
       <p></p>
-      <ion-button color="success" expand="block" *ngIf="usuario.respuesta.idRol === 1" >Editar Clase</ion-button>
-      <p></p>
-      <p></p>
-      <ion-button color="danger" expand="block" *ngIf="usuario.respuesta.idRol === 1" >Eliminar Clase</ion-button>
-      <p></p>
-      <p></p>
-      <ion-button (click)="apartarLugar()" color="success" expand="block" *ngIf="usuario.respuesta.idRol === 2" >
+      
+      <ion-button color="success" expand="block"  >
         Apartar asistencia
       </ion-button>
 
-      <ion-button (click)="eliminarLugar()" color="danger" expand="block" *ngIf="usuario.respuesta.idRol === 2" >
+      <ion-button  color="danger" expand="block" >
         Eliminar asistencia
       </ion-button>
-
-
   </ion-list>
 
   <!-- <ion-label *ngIf="listado?.usuarios.lenght > 0"> Lugares Disponibles </ion-label> -->

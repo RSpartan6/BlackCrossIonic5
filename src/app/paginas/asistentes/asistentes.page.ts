@@ -48,29 +48,11 @@ export class AsistentesPage implements OnInit {
     console.log("El ID de la clase es :",this.idClase);
 
     this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/'+this.idClase).subscribe(data =>{
-      console.log(data);
+      console.log(data , "ngOnInit");
       this.listado=data;
 
       console.log(this.listado.respuesta.clase.profesor, "Profesor");
     });
   }
 
-  apartarLugar(){
-
-    console.log("Lugar apartado");
-    this.router.navigate(['/menu']);
-    
-  }
-
-  eliminarLugar(){
-
-    console.log("Lugar Eliminado");
-    console.log(this.idClase);
-    console.log(this.usuario.respuesta.idUsuario);
-    
-    
-    // return this.http.delete('http://localhost:8080/Wod/AsistenciaClases/'+this.idClase + "/" + this.usuario.respuesta.idUsuario)
-    // .pipe()  
-    
-  }
 }
