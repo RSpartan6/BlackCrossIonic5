@@ -32,18 +32,22 @@ ion-item {
     color: #fff;
     text-align: center;
   }
+  ion-col {
+    display: block;
+    margin: auto;
+  }
   
 //   ion-content {
 //     // --background-image: url('.././assets/img/login.png') 0 0/100% 100% no-repeat;
 //     background-image:url(./../../../assets/img/login.jpg)
 //   }
   
-//   ion-content.background {
-//     // --background: url(./assets/img/imgreg.jpg) !important;
-//     --background:url(./../../../assets/img/imgreg.jpg) !important;
-//     --background-size : cover;
+  ion-content.background {
+    // --background: url(./assets/img/imgreg.jpg) !important;
+    --background:url(./../../../assets/img/imgreg.jpg) 100% 100%  !important;
+    --background-size : cover;
   
-//   }
+  }
   
   ion-text.p{
     color: rgb(248, 3, 3);
