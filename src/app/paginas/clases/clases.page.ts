@@ -43,11 +43,6 @@ export class ClasesPage implements OnInit {
       this.presentLoading();
       this.listado=data;
     });
-
-    // this.servicio.getData(this.urlapi + 'Usuarios/').subscribe(data =>{
-    //   console.log(data);
-    //   this.listado2=data;
-    // });
   }
 
   async presentLoading() {
