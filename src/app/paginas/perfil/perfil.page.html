@@ -3,7 +3,7 @@
     <ion-title>Perfiles</ion-title>
     <ion-buttons slot="end">
       <ion-button href="registro">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
+        <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
@@ -39,6 +39,8 @@
       <p>Correo Electronico: {{Usuarios.correoElectronico}}</p>
       <p *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
       <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p>
+      <p *ngIf="Usuarios.idRol == 1" class="azul">Entrenador</p>
+
 
     </ion-card-content>
   </ion-card>
