@@ -37,9 +37,18 @@
           <p>Sexo: {{Usuarios.sexo}}</p>
           <p>Telefono: {{Usuarios.telefono}}</p>
           <p>Correo Electronico: {{Usuarios.correoElectronico}}</p>
-          <p *ngIf="Usuarios.estatus == 1" class="green">Activo</p>
-          <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p>
-          <p *ngIf="Usuarios.idRol == 1" class="azul" size="12">Entrenador</p>
+          <ion-chip *ngIf="Usuarios.estatus == 1" color="success">
+            <ion-label>Activo</ion-label>
+          </ion-chip>
+          <ion-chip *ngIf="Usuarios.estatus == 0" color="danger">
+            <ion-label>Inactivo</ion-label>
+          </ion-chip>
+          <ion-chip *ngIf="Usuarios.idRol == 1" color="secondary">
+            <ion-label>Entrenador</ion-label>
+          </ion-chip>
+          <!-- <p *ngIf="Usuarios.estatus == 1" class="green">Activo</p> -->
+          <!-- <p *ngIf="Usuarios.estatus == 0" class="red">Inactivo</p> -->
+          <!-- <p *ngIf="Usuarios.idRol == 1" class="azul" size="12">Entrenador</p> -->
         </ion-card-content>
       </ion-card>
     </ion-col>
