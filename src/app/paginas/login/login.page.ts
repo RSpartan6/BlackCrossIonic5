@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
           if (json.respuesta.idRol == 2) {
             console.log(this.login.usuario);
             console.log("Usuario Cliente", json.respuesta.nombre)
-            this.navCtrl.navigateRoot('/clases');
+            this.navCtrl.navigateRoot('/clasesalumnos');
             this.clearForm();
           } else 
           

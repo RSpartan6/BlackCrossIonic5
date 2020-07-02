@@ -43,6 +43,14 @@ const routes: Routes = [
     path: 'asistentes/:idClase/:nombre/:profesor',
     loadChildren: () => import('./paginas/asistentes/asistentes.module').then( m => m.AsistentesPageModule)
   },
+  {
+    path: 'clasesalumnos',
+    loadChildren: () => import('./paginas/clasesalumnos/clasesalumnos.module').then( m => m.ClasesalumnosPageModule)
+  },
+  {
+    path: 'asisalumno/:idClase/:nombre/:profesor',
+    loadChildren: () => import('./paginas/asisalumno/asisalumno.module').then( m => m.AsisalumnoPageModule)
+  },
 ];
 
 @NgModule({

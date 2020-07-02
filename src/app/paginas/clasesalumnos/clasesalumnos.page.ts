@@ -3,25 +3,23 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { LoginService } from 'src/app/servicios/login.service';
 
 @Component({
-  selector: 'app-clases',
-  templateUrl: './clases.page.html',
-  styleUrls: ['./clases.page.scss'],
+  selector: 'app-clasesalumnos',
+  templateUrl: './clasesalumnos.page.html',
+  styleUrls: ['./clasesalumnos.page.scss'],
 })
-export class ClasesPage implements OnInit {
+export class ClasesalumnosPage implements OnInit {
 
   listado:any;
+  // usuario:any;
   idClase: string;
 
   urlapi="http://3.133.28.198:8080/Wod/";
-
-
   
   constructor(
     private servicio : LoginService,
     public loadingController: LoadingController,
     public alertController: AlertController,
-  ) 
-  { }
+  ) { }
 
   ngOnInit() {
 
@@ -31,7 +29,6 @@ export class ClasesPage implements OnInit {
       this.listado=data;
     });
   }
-
   
   async presentLoading() {
     const loading = await this.loadingController.create({
@@ -53,5 +50,4 @@ export class ClasesPage implements OnInit {
 
     await alert.present();
   }
-
 }

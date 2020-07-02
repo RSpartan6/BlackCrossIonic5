@@ -55,7 +55,7 @@ export class RegistroPage implements OnInit {
       "imc": "--",
       "telefono": this.nu.telefono,
       "nivel": "10",
-      "estatus": this.nu.estatus,
+      "estatus": 1,
       "intentos": 0,
     }
 

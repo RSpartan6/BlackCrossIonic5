@@ -27,7 +27,6 @@ export class LoginService {
   // }
 
   editarUsuario(usuario) {
-    usuario = this.editarUsuario;
     return this.http.put(this.url + "Usuarios", usuario, this.httpOptions);
   }
 
@@ -39,6 +38,17 @@ export class LoginService {
 
   desactivarUser(idUsuario){
     return this.http.put(this.url + "Usuarios/"+ idUsuario + "/0",this.httpOptions);
+  }
+
+  // Servicio de apartar lugar
+
+  asistenciaAlumno(idUsuario,idClase){
+    return this.http.post(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario,this.httpOptions);
+  }
+
+  // Servicio eliminar asistencia
+  eliminarAlumno(idUsuario,idClase){
+    return this.http.delete(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario,this.httpOptions);
   }
 
   // Servicio crear nuevo usuario
