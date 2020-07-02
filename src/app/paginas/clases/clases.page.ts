@@ -12,7 +12,6 @@ import { LoginService } from 'src/app/servicios/login.service';
 export class ClasesPage implements OnInit {
 
   listado:any;
-  listado2:any;
   // usuario:any;
   idClase: string;
 

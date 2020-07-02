@@ -1,53 +1,34 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title size="large">{{usuario.respuesta.nombre}} </ion-title>
-    <ion-buttons slot="start" >
-      <ion-back-button defaultHref="menu" text="Atras"></ion-back-button>
-    </ion-buttons>
+    <ion-title>Asistentes</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="clases" text="Atras"></ion-back-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-list inset="true" lines="none">
-
-    <ion-label>
-       <h2>
-          Clase {{listado?.respuesta.clase.nombre}}
-      </h2>
-      <h3>
-          Profesor: {{listado?.respuesta.clase.profesor}}
-      </h3>
-      <p>
-        {{listado?.respuesta.lugares}} 
-      </p>
-
-    </ion-label>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-<!-- 
-    <ion-item *ngFor="let Asistentes of listado?.respuesta; let indice=index;">
+    <ion-item lines="full">
       <ion-label>
+        <h2>
+            Clase {{nombre}}
+        </h2>
+        <h3>
+            Profesor: {{profesor}}
+        </h3>
+        <p>
+          {{listado?.respuesta.lugares}} 
+        </p>
       </ion-label>
-    </ion-item> -->
-    
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      
-      <ion-button color="success" expand="block"  >
-        Apartar asistencia
-      </ion-button>
-
-      <ion-button  color="danger" expand="block" >
-        Eliminar asistencia
-      </ion-button>
+    </ion-item>
+    <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
+    let indice=index;"
+    class="animated fast fadeInDown"
+    lines="full">
+      <ion-label>
+        {{Asistentes.nombre}}
+      </ion-label>
+    </ion-item>
   </ion-list>
-
-  <!-- <ion-label *ngIf="listado?.usuarios.lenght > 0"> Lugares Disponibles </ion-label> -->
 </ion-content>
