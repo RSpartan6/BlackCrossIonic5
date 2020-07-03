@@ -117,6 +117,11 @@ export class RegistroPage implements OnInit {
     await alert.present();
   }
 
+ 
+    segmentChanged(ev: any) {
+      console.log('Segment changed', ev);
+    }
+
   ngOnInit() {
   }
 

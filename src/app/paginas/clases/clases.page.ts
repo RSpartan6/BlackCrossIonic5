@@ -54,4 +54,5 @@ export class ClasesPage implements OnInit {
     await alert.present();
   }
 
+
 }
