@@ -50,26 +50,33 @@ export class LoginPage implements OnInit {
 
           // if (this.login.usuario == 'LUISC') {
 
-          if (json.respuesta.idRol == 1) {
-            console.log(this.login.usuario);
-            console.log("Usuario Entrenador", json.respuesta.nombre);
-            this.navCtrl.navigateRoot('/menu');
+          if(json.codigo == 200){
 
+            if (json.respuesta.idRol == 1) {
+              console.log(this.login.usuario);
+              console.log("Usuario Entrenador", json.respuesta.nombre);
+              this.navCtrl.navigateRoot('/menu');  
+  
+  
+            } else 
+            
+            if (json.respuesta.idRol == 2) {
+              console.log(this.login.usuario);
+              console.log("Usuario Cliente", json.respuesta.nombre)
+              this.navCtrl.navigateRoot('/clasesalumnos');
+              this.clearForm();
+            } else 
+            
+            if (json.respuesta.usuario === null)
+            {
+              console.log("Usuario no registrado");
+              this.clearForm();
+            }
 
-          } else 
+          }else
+          console.log("Usuario no valido");
           
-          if (json.respuesta.idRol == 2) {
-            console.log(this.login.usuario);
-            console.log("Usuario Cliente", json.respuesta.nombre)
-            this.navCtrl.navigateRoot('/clasesalumnos');
-            this.clearForm();
-          } else 
           
-          if (json.respuesta.usuario === null)
-          {
-            console.log("Usuario no registrado");
-            this.clearForm();
-          }
 
           // else if(objUsuario.idRol == 5 || objUsuario.idRol == 3){
           //   this.navCtrl.push(ViajesTerminadosPage);

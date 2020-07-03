@@ -13,8 +13,6 @@ export class ClasesPage implements OnInit {
   idClase: string;
 
   urlapi="http://3.133.28.198:8080/Wod/";
-
-
   
   constructor(
     private servicio : LoginService,
@@ -31,7 +29,6 @@ export class ClasesPage implements OnInit {
       this.listado=data;
     });
   }
-
   
   async presentLoading() {
     const loading = await this.loadingController.create({

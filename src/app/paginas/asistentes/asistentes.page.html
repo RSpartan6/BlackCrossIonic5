@@ -9,6 +9,23 @@
 
 <ion-content [fullscreen]="true">
   <ion-img src="./../assets/img/BlackC-SF2.png"></ion-img>
+  
+    <!-- Fechas de clases -->
+    <ion-list-header>
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-datetime 
+        name="fecha"
+        [(ngModel)]="f.fecha" 
+        placeholder="{{fechaClase | date: 'yyy-MM-dd'}}" 
+        displayFormat="YYYY-MMMM-DD"
+        (ionChange)="cambiofecha($event)"        
+        ></ion-datetime> 
+      </ion-item>
+      
+    </ion-list-header>
+    <!-- fin fecha de clases -->
+
   <ion-list inset="true" lines="none">
     <ion-item lines="full">
       <ion-label>
