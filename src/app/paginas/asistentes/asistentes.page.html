@@ -2,50 +2,45 @@
   <ion-toolbar>
     <ion-title>Asistentes</ion-title>
     <ion-buttons slot="start">
-        <ion-back-button defaultHref="clases" text="Atras"></ion-back-button>
-      </ion-buttons>
+      <ion-back-button defaultHref="clases" text="Atras"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-img src="./../assets/img/BlackC-SF2.png"></ion-img>
-  
-    <!-- Fechas de clases -->
-    <ion-list-header>
-      <ion-item>
-        <ion-label>Fecha</ion-label>
-        <ion-datetime 
-        name="fecha"
-        [(ngModel)]="f.fecha" 
-        placeholder="{{fechaClase | date: 'yyy-MM-dd'}}" 
-        displayFormat="YYYY-MMMM-DD"
-        (ionChange)="cambiofecha($event)"  
-        cancelText="Cancelar"
-        doneText="Aceptar"      
-        ></ion-datetime> 
-      </ion-item>
-      
-    </ion-list-header>
-    <!-- fin fecha de clases -->
 
   <ion-list inset="true" lines="none">
     <ion-item lines="full">
       <ion-label>
         <h2>
-            Clase {{nombre}}
+          Clase: {{nombre}}
         </h2>
         <h3>
-            Profesor: {{profesor}}
+          Profesor: {{profesor}}
         </h3>
         <p>
-          {{listado?.respuesta.lugares}} 
+          {{listado?.respuesta.lugares}}
         </p>
       </ion-label>
     </ion-item>
+
+    
+      <!-- Fechas de clases -->
+      <ion-item>
+      <ion-list-header color="fecha">
+        <ion-item color="fecha">
+          <ion-label>Fecha</ion-label>
+          <ion-datetime name="fecha" [(ngModel)]="f.fecha" placeholder="{{fechaClase | date: 'yyy-MM-dd'}}"
+            displayFormat="YYYY-MMMM-DD" (ionChange)="cambiofecha($event)" cancelText="Cancelar" doneText="Aceptar">
+          </ion-datetime>
+        </ion-item>
+
+      </ion-list-header>
+    </ion-item>
+      <!-- fin fecha de clases -->
     <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
-    let indice=index;"
-    class="animated fast fadeInDown"
-    lines="full">
+    let indice=index;" class="animated fast fadeInDown" lines="full">
       <ion-label>
         {{Asistentes.nombre}}
       </ion-label>

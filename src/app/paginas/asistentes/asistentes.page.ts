@@ -20,6 +20,7 @@ export class AsistentesPage implements OnInit {
   fecha: string;
   nombre: string;
   profesor: string;
+  fechaDeClase:string;
 
 
   constructor(
@@ -45,12 +46,13 @@ export class AsistentesPage implements OnInit {
       // Convertir data en JSON
       let objUsuario = JSON.stringify(data);
       let json = JSON.parse(objUsuario);
+      this.fechaDeClase = json.respuesta.fecha;
       console.log("Fecha de la clase", json.respuesta.fecha);
 
     });
   }
 
-  cambiofecha(event) {
+  cambiofecha(filtro) {    
 
     this.fecha = this.f.fecha.substring(0,10);
     
@@ -62,6 +64,9 @@ export class AsistentesPage implements OnInit {
     console.log(event, "evento");
 
     console.log(this.fecha);
+
+    console.log("La fecha seleccionada es:" , this.fechaDeClase);
+    
   }
 
 

@@ -42,13 +42,13 @@ export class LoginService {
 
   // Servicio de apartar lugar
 
-  asistenciaAlumno(idUsuario,idClase){
-    return this.http.post(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario,this.httpOptions);
+  asistenciaAlumno(idUsuario,idClase,fecha){
+    return this.http.post(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario + '?fecha=' + fecha,this.httpOptions);
   }
 
   // Servicio eliminar asistencia
-  eliminarAlumno(idUsuario,idClase){
-    return this.http.delete(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario,this.httpOptions);
+  eliminarAlumno(idUsuario,idClase,fecha){
+    return this.http.delete(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario + '?fecha=' + fecha,this.httpOptions);
   }
 
   // Servicio crear nuevo usuario
