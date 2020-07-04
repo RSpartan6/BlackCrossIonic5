@@ -64,27 +64,25 @@ export class AsisalumnoPage implements OnInit {
 
     });
   }
-
-
-
+  
   asistir(idUser, idClase) {
 
-    this.servicio.asistenciaAlumno(this.idUser, this.idClase,this.fecha).subscribe((response: any) => {
+    this.servicio.asistenciaAlumno(this.idUser, this.idClase, this.fecha).subscribe((response: any) => {
       console.log(response, "Asistencia apartada");
 
     });
     this.activandoLoading();
-    console.log("Fecha seleccionada",this.fecha);
+    console.log("Fecha seleccionada", this.fecha);
   }
 
   quitarAsistencia(idUser, idClase, fecha) {
 
-    this.servicio.eliminarAlumno(this.idUser, this.idClase,this.fecha).subscribe((response: any) => {
+    this.servicio.eliminarAlumno(this.idUser, this.idClase, this.fecha).subscribe((response: any) => {
       console.log(response, "Asistencia eliminada");
     });
-    
+
     this.asistenciaEliminada();
-    console.log("Fecha seleccionada",this.fecha);
+    console.log("Fecha seleccionada", this.fecha);
   }
 
   async activandoLoading() {

@@ -20,35 +20,29 @@ export class LoginService {
     return this.http.get(`${url}`);
   }
 
-  // Servicio editar Usuario
-  // editarUsuario(usuario) {
-  //   console.log(usuario);
-  //   return this.http.put(this.url + "Usuarios", usuario, this.httpOptions);
-  // }
-
   editarUsuario(usuario) {
     return this.http.put(this.url + "Usuarios", usuario, this.httpOptions);
   }
 
   // Servicio cambiar status
-  activarUser(idUsuario){
-    return this.http.put(this.url + "Usuarios/"+ idUsuario + "/1",this.httpOptions);
-    
+  activarUser(idUsuario) {
+    return this.http.put(this.url + "Usuarios/" + idUsuario + "/1", this.httpOptions);
+
   }
 
-  desactivarUser(idUsuario){
-    return this.http.put(this.url + "Usuarios/"+ idUsuario + "/0",this.httpOptions);
+  desactivarUser(idUsuario) {
+    return this.http.put(this.url + "Usuarios/" + idUsuario + "/0", this.httpOptions);
   }
 
   // Servicio de apartar lugar
 
-  asistenciaAlumno(idUsuario,idClase,fecha){
-    return this.http.post(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario + '?fecha=' + fecha,this.httpOptions);
+  asistenciaAlumno(idUsuario, idClase, fecha) {
+    return this.http.post(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario + '?fecha=' + fecha, this.httpOptions);
   }
 
   // Servicio eliminar asistencia
-  eliminarAlumno(idUsuario,idClase,fecha){
-    return this.http.delete(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario + '?fecha=' + fecha,this.httpOptions);
+  eliminarAlumno(idUsuario, idClase, fecha) {
+    return this.http.delete(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario + '?fecha=' + fecha, this.httpOptions);
   }
 
   // Servicio crear nuevo usuario
@@ -73,17 +67,11 @@ export class LoginService {
     return this.http
       .post(
         "http://3.133.28.198:8080/Wod/IniciarSesion?usuario=" +
-          user.usuario +
-          "&contrasenia=" +
-          user.contrasenia,
+        user.usuario +
+        "&contrasenia=" +
+        user.contrasenia,
         {}
       )
       .pipe();
-
-    // (
-    //   tap(resp => console.log('heaeder', resp.headers.get('ReturnStatus')))
-    // );
   }
-
-  // Servicio de Eliminar asistencia
 }
