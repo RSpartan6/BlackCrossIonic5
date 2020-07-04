@@ -19,7 +19,9 @@
         [(ngModel)]="f.fecha" 
         placeholder="{{fechaClase | date: 'yyy-MM-dd'}}" 
         displayFormat="YYYY-MMMM-DD"
-        (ionChange)="cambiofecha($event)"        
+        (ionChange)="cambiofecha($event)"  
+        cancelText="Cancelar"
+        doneText="Aceptar"      
         ></ion-datetime> 
       </ion-item>
       

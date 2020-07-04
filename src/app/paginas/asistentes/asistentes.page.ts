@@ -50,10 +50,9 @@ export class AsistentesPage implements OnInit {
     });
   }
 
-
   cambiofecha(event) {
 
-    this.fecha = this.f.fecha;
+    this.fecha = this.f.fecha.substring(0,10);
     
     this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fecha).subscribe(data => {
       console.log(data, "cambioFecha");
