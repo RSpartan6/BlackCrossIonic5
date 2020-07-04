@@ -17,6 +17,7 @@ export class AsisalumnoPage implements OnInit {
     "fecha": ""
   }
 
+  mensaje:string;
   idClase: string;
   listado: any;
   idUsuario: string;
@@ -70,6 +71,16 @@ export class AsisalumnoPage implements OnInit {
     this.servicio.asistenciaAlumno(this.idUser, this.idClase, this.fecha).subscribe((response: any) => {
       console.log(response, "Asistencia apartada");
 
+      this.mensaje = response.respuesta;
+
+      if (response.codigo == 200) {
+        
+        this.activandoLoading();
+        console.log("Fecha seleccionada", this.fecha);
+          }else {
+            this.activandoLoading();        
+          }
+
     });
     this.activandoLoading();
     console.log("Fecha seleccionada", this.fecha);
@@ -79,16 +90,24 @@ export class AsisalumnoPage implements OnInit {
 
     this.servicio.eliminarAlumno(this.idUser, this.idClase, this.fecha).subscribe((response: any) => {
       console.log(response, "Asistencia eliminada");
-    });
 
+      this.mensaje = response.respuesta;
+
+      if (response.codigo == 200) {
+        
     this.asistenciaEliminada();
     console.log("Fecha seleccionada", this.fecha);
+      }else {
+        this.asistenciaEliminada();        
+      }
+    });    
   }
 
   async activandoLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Lugar apartado',
+      spinner: "crescent",
+      message: this.mensaje,
       duration: 1000
     });
     await loading.present();
@@ -99,7 +118,8 @@ export class AsisalumnoPage implements OnInit {
   async asistenciaEliminada() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Asistencia eliminada',
+      spinner: "crescent",
+      message: this.mensaje,
       duration: 1000
     });
     await loading.present();

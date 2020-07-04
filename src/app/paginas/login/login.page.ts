@@ -107,6 +107,7 @@ export class LoginPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Por favor espere...',
       duration: 1500
     });
@@ -118,6 +119,7 @@ export class LoginPage implements OnInit {
   async presentLoading2() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Por favor espere 2...',
       duration: 1500
     });
@@ -129,6 +131,7 @@ export class LoginPage implements OnInit {
   async presentLoading3() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Error al iniciar sesion',
       duration: 1500
     });
@@ -140,6 +143,7 @@ export class LoginPage implements OnInit {
   async Loadingdatosinc() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Favor de llenar todos los campos',
       duration: 1500
     });

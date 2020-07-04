@@ -84,6 +84,7 @@ export class RegistroPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Agregando usuario',
       duration: 1200,
     });
@@ -97,6 +98,7 @@ export class RegistroPage implements OnInit {
   async usuarioExistente() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Usuario ya registrado',
       duration: 500,
     });

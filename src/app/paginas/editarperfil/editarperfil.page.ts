@@ -120,6 +120,7 @@ export class EditarperfilPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Por favor espere...',
       duration: 1000
     });
@@ -131,6 +132,7 @@ export class EditarperfilPage implements OnInit {
   async activandoLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Usuario Activado',
       duration: 1000
     });
@@ -142,6 +144,7 @@ export class EditarperfilPage implements OnInit {
   async desacactivadoLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: 'Usuario Desactivado',
       duration: 1000
     });

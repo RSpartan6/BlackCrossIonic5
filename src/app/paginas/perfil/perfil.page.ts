@@ -30,6 +30,7 @@ export class PerfilPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: "my-custom-class",
+      spinner: "crescent",
       message: "Por favor espere...",
       duration: 1500,
     });
