@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 // import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { User } from 'src/app/interfaces/user';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,8 @@ export class LoginPage implements OnInit {
     usuario: '',
     contrasenia: ''
   };
+
+  mensaje:string;
 
   submitted = false;
 
@@ -36,6 +39,7 @@ export class LoginPage implements OnInit {
 
     this.submitted = true;
     if (form.valid) {
+
       this.presentLoading()
 
       this.loginService.login(this.login).subscribe(
@@ -46,6 +50,8 @@ export class LoginPage implements OnInit {
           let json = JSON.parse(objUsuario);
           this.storage.set('userData', data);
 
+          this.mensaje = json.descripcion;
+
           console.log("Rol Usuario", json.respuesta.idRol);
 
           // if (this.login.usuario == 'LUISC') {
@@ -55,8 +61,7 @@ export class LoginPage implements OnInit {
             if (json.respuesta.idRol == 1) {
               console.log(this.login.usuario);
               console.log("Usuario Entrenador", json.respuesta.nombre);
-              this.navCtrl.navigateRoot('/menu');  
-  
+              this.navCtrl.navigateRoot('/menu');
   
             } else 
             
@@ -73,29 +78,13 @@ export class LoginPage implements OnInit {
               this.clearForm();
             }
 
-          }else
-          console.log("Usuario no valido");
-          
-          
+          }else {
+            this.clearForm();
+            console.log("Usuario no valido");
+            this.errordeSesion();
 
-          // else if(objUsuario.idRol == 5 || objUsuario.idRol == 3){
-          //   this.navCtrl.push(ViajesTerminadosPage);
-          // }else{
-          //   this.showAlert("Credenciales no validas para la aplicación")
-          // }
-        },
-        error=> {
-          this.presentLoading3();
-          this.clearForm();
-          // if(err.status==400){
-          //    console.log("Los datos ingresados parecen ser incorrectos, intentelo nuevamente.");
-          // }else if(err.status==202){
-          //   console.log("El usuario está bloqueado, favor de comunicarse con el administrador.");
 
-          // }
-          // else{
-          //   console.log("Ocurrió un error inesperado, verifique su conexión");
-          // }
+          }
         }
       );
     } else {
@@ -108,31 +97,19 @@ export class LoginPage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       spinner: "crescent",
-      message: 'Por favor espere...',
-      duration: 1500
+      message: 'Iniciando Sesion',
+      duration: 1000
     });
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
   }
 
-  async presentLoading2() {
+  async errordeSesion() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       spinner: "crescent",
-      message: 'Por favor espere 2...',
-      duration: 1500
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-  }
-
-  async presentLoading3() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      spinner: "crescent",
-      message: 'Error al iniciar sesion',
+      message: this.mensaje,
       duration: 1500
     });
     await loading.present();

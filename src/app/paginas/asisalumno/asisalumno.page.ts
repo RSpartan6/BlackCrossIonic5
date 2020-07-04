@@ -80,7 +80,6 @@ export class AsisalumnoPage implements OnInit {
           }else {
             this.activandoLoading();        
           }
-
     });
     this.activandoLoading();
     console.log("Fecha seleccionada", this.fecha);
