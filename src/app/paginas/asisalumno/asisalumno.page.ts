@@ -41,7 +41,7 @@ export class AsisalumnoPage implements OnInit {
     this.storage.get("userData").then((user) => {
       this.usuario = user;
 
-      console.log("El usuario en MENU es :", this.usuario.respuesta.nombre);
+      console.log("El usuario en ASISTENCIA ALUMNO es :", this.usuario.respuesta.nombre);
       console.log("Y su Rol es :", this.usuario.respuesta.idRol);
       console.log("El ID es :", this.usuario.respuesta.idUsuario);
 
