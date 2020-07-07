@@ -24,7 +24,7 @@ export class AsisalumnoPage implements OnInit {
   nombre: string;
   profesor: string;
   usuario: any;
-  idUser: string;
+  numeroUsuario: string;
   fechaDeClase: string;
   fecha: string;
 
@@ -36,25 +36,28 @@ export class AsisalumnoPage implements OnInit {
     public loadingController: LoadingController,
     private storage: Storage,
     private navParams: NavParams
-  ) {
+  ) 
+  {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
 
       console.log("El usuario en ASISTENCIA ALUMNO es :", this.usuario.respuesta.nombre);
       console.log("Y su Rol es :", this.usuario.respuesta.idRol);
-      console.log("El ID es :", this.usuario.respuesta.idUsuario);
+      console.log("");
+      
+      console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
 
-      this.idUser = this.usuario.respuesta.idUsuario;
+      this.numeroUsuario = this.usuario.respuesta.idUsuario;
 
-      console.log(this.idUser);
+      console.log(this.numeroUsuario);
 
     });
   }
 
   ionViewWillEnter() {
 
-    this.idUsuario = this.activatedRoute.snapshot.paramMap.get('idusuario');
+    this.idUsuario = this.activatedRoute.snapshot.paramMap.get('idUsuario');
     this.usuario = this.activatedRoute.snapshot.paramMap.get('usuario');
 
     this.servicio.getData(this.urlapi + 'Usuarios/usuario/' + this.usuario + '/').subscribe(data => {
@@ -68,7 +71,7 @@ export class AsisalumnoPage implements OnInit {
   
   asistir(idUser, idClase) {
 
-    this.servicio.asistenciaAlumno(this.idUser, this.idClase, this.fecha).subscribe((response: any) => {
+    this.servicio.asistenciaAlumno( this.idClase, this.numeroUsuario, this.fecha).subscribe((response: any) => {
       console.log(response, "Asistencia apartada");
 
       this.mensaje = response.respuesta;
@@ -87,7 +90,7 @@ export class AsisalumnoPage implements OnInit {
 
   quitarAsistencia(idUser, idClase, fecha) {
 
-    this.servicio.eliminarAlumno(this.idUser, this.idClase, this.fecha).subscribe((response: any) => {
+    this.servicio.eliminarAlumno(this.numeroUsuario, this.idClase, this.fecha).subscribe((response: any) => {
       console.log(response, "Asistencia eliminada");
 
       this.mensaje = response.respuesta;
@@ -133,7 +136,7 @@ export class AsisalumnoPage implements OnInit {
     this.profesor = this.activatedRoute.snapshot.paramMap.get('profesor');
 
     console.log("El ID de la clase es :", this.idClase);
-
+    
     this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '/').subscribe(data => {
       console.log(data, "ngOnInit");
       this.listado = data;

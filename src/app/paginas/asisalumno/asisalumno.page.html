@@ -31,7 +31,7 @@
           <ion-label>Fecha</ion-label>
           <ion-datetime name="fecha" [(ngModel)]="fa.fecha" placeholder="{{fechaClase | date: 'yyy-MM-dd'}}"
             displayFormat="YYYY-MM-DD" min="2020-07-04" max="2020-12-31" (ionChange)="cambiofecha($event)"
-            cancelText="Cancelar" doneText="Aceptar"></ion-datetime>
+            cancelText="Cancelar" doneText="Aceptar" value="{{fechaClase}}"></ion-datetime>
         </ion-item>
 
       </ion-list-header>
@@ -40,12 +40,15 @@
 
     <ion-grid>
       <ion-row>
-        <ion-col>
+        <ion-col *ngIf="listado?.respuesta.lugares > 0">
           <ion-button color="success" expand="block" (click)="asistir(idUsuario,fa.fecha)">Apartar lugar</ion-button>
         </ion-col>
         <ion-col>
           <ion-button color="danger" expand="block" (click)="quitarAsistencia(idUsuario)">Elminar Asistencia
           </ion-button>
+        </ion-col>
+        <ion-col *ngIf="listado?.respuesta.lugares === 0">
+          <h2>Clase Llena</h2>
         </ion-col>
       </ion-row>
     </ion-grid>
