@@ -28,14 +28,12 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private storage: Storage,
     private navCtrl: NavController,
+    public alertController: AlertController,
     // private http: HttpClient,
-    private alertCtrl: AlertController
   ) { }
 
   onLogin(form: NgForm) {
-
     this.storage.clear();
-
 
     this.submitted = true;
     if (form.valid) {
@@ -81,14 +79,13 @@ export class LoginPage implements OnInit {
           }else {
             this.clearForm();
             console.log("Usuario no valido");
-            this.errordeSesion();
-
+            this.Loadingdatosinc(this.mensaje);
 
           }
         }
       );
     } else {
-      this.Loadingdatosinc()
+      this.Loadingdatosinc("Verifica que el usuario y contraseña esten ingresados")
       this.clearForm();
     }
   }
@@ -105,28 +102,38 @@ export class LoginPage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
   }
 
-  async errordeSesion() {
-    const loading = await this.loadingController.create({
+  // async errordeSesion() {
+  //   const loading = await this.loadingController.create({
+  //     cssClass: 'my-custom-class',
+  //     spinner: "crescent",
+  //     message: this.mensaje,
+  //     duration: 1500
+  //   });
+  //   await loading.present();
+
+  //   const { role, data } = await loading.onDidDismiss();
+  // }
+
+
+  // async Loadingdatosinc() {
+  //   const loading = await this.loadingController.create({
+  //     cssClass: 'my-custom-class',
+  //     spinner: "crescent",
+  //     message: 'Favor de llenar todos los campos',
+  //     duration: 1500
+  //   });
+  //   await loading.present();
+
+  //   const { role, data } = await loading.onDidDismiss();
+  // }
+
+  async Loadingdatosinc(msj) {
+    const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      spinner: "crescent",
-      message: this.mensaje,
-      duration: 1500
+      message: msj,
+      buttons: ['OK']
     });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-  }
-
-  async Loadingdatosinc() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      spinner: "crescent",
-      message: 'Favor de llenar todos los campos',
-      duration: 1500
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
+    await alert.present();
   }
 
   clearForm() {
@@ -135,7 +142,7 @@ export class LoginPage implements OnInit {
   }
 
   async showAlert(msj) {
-    const alert = await this.alertCtrl.create({
+    const alert = await this.alertController.create({
       header: 'Alerta',
       subHeader: msj,
       buttons: ['Aceptar']

@@ -38,7 +38,18 @@ export class AsistentesPage implements OnInit {
 
     console.log("El ID de la clase es :", this.idClase);
 
-    this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '/').subscribe(data => {
+    console.log('fecha in:' + this.fecha);
+    if (this.fecha === undefined) {
+      console.log('entro');
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      this.fecha = yyyy + "-" + mm + "-" + dd;
+    }
+    console.log('fecha f:' + this.fecha);
+
+    this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fecha).subscribe(data => {
 
       console.log(data, "ngOnInit");
       this.listado = data;
