@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from "src/app/servicios/login.service";
 import { ActivatedRoute } from "@angular/router";
-import { LoadingController, NavParams } from '@ionic/angular';
+import { LoadingController, NavParams, AlertController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 
 @Component({
@@ -17,7 +17,7 @@ export class AsisalumnoPage implements OnInit {
     "fecha": ""
   }
 
-  mensaje:string;
+  mensaje: string;
   idClase: string;
   listado: any;
   idUsuario: string;
@@ -27,30 +27,30 @@ export class AsisalumnoPage implements OnInit {
   numeroUsuario: string;
   fechaDeClase: string;
   fecha: string;
+  mensajeerror: string;
 
   urlapi = "http://3.133.28.198:8080/Wod/"
 
   constructor(
     private servicio: LoginService,
     private activatedRoute: ActivatedRoute,
+    public alertController: AlertController,
     public loadingController: LoadingController,
     private storage: Storage,
-    private navParams: NavParams
-  ) 
-  {
+    private navParams: NavParams,
+
+  ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
 
       console.log("El usuario en ASISTENCIA ALUMNO es :", this.usuario.respuesta.nombre);
       console.log("Y su Rol es :", this.usuario.respuesta.idRol);
-      console.log("");
-      
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
-
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
+      console.log("La fecha es :", this.fechaDeClase);
 
-      console.log(this.numeroUsuario);
+
 
     });
   }
@@ -68,27 +68,49 @@ export class AsisalumnoPage implements OnInit {
 
     });
   }
-  
+
   asistir(idUser, idClase) {
 
-    this.servicio.asistenciaAlumno( this.idClase, this.numeroUsuario, this.fecha).subscribe((response: any) => {
+    console.log('fecha in:' + this.fecha);
+    if (this.fecha === undefined) {
+      console.log('entro');
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      this.fecha = yyyy + "-" + mm + "-" + dd;
+    }
+    console.log('fecha f:' + this.fecha);
+
+    this.servicio.asistenciaAlumno(this.idClase, this.numeroUsuario, this.fecha).subscribe((response: any) => {
       console.log(response, "Asistencia apartada");
-
       this.mensaje = response.respuesta;
-
+      this.mensajeerror = response.descripcion;
+      console.log(this.fechaDeClase, "Fecha clase");
       if (response.codigo == 200) {
-        
-        this.activandoLoading();
-        console.log("Fecha seleccionada", this.fecha);
-          }else {
-            this.activandoLoading();        
-          }
+
+        this.agregadoAlert();
+        console.log("Fecha seleccionada", this.fechaDeClase);
+
+      } else {
+        this.usuarioEnclase();
+      }
     });
-    this.activandoLoading();
     console.log("Fecha seleccionada", this.fecha);
   }
 
   quitarAsistencia(idUser, idClase, fecha) {
+
+    console.log('fecha in:' + this.fecha);
+    if (this.fecha === undefined) {
+      console.log('entro');
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      this.fecha = yyyy + "-" + mm + "-" + dd;
+    }
+    console.log('fecha f:' + this.fecha);
 
     this.servicio.eliminarAlumno(this.numeroUsuario, this.idClase, this.fecha).subscribe((response: any) => {
       console.log(response, "Asistencia eliminada");
@@ -96,14 +118,55 @@ export class AsisalumnoPage implements OnInit {
       this.mensaje = response.respuesta;
 
       if (response.codigo == 200) {
-        
-    this.asistenciaEliminada();
-    console.log("Fecha seleccionada", this.fecha);
-      }else {
-        this.asistenciaEliminada();        
+
+        this.eliminarAsistencia();
+        console.log("Fecha seleccionada", this.fecha);
+      } else {
+        this.eliminarAsistencia();
       }
-    });    
+    });
   }
+
+  // Inicio de alertas
+
+  // Agregado correctamente
+
+  async agregadoAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: this.mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  // Error al agregar
+
+  async usuarioEnclase() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: this.mensajeerror,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  // Eliminar Asistenca
+
+  async eliminarAsistencia() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: this.mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  // Fin de Alertas
+
 
   async activandoLoading() {
     const loading = await this.loadingController.create({
@@ -136,7 +199,7 @@ export class AsisalumnoPage implements OnInit {
     this.profesor = this.activatedRoute.snapshot.paramMap.get('profesor');
 
     console.log("El ID de la clase es :", this.idClase);
-    
+
     this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '/').subscribe(data => {
       console.log(data, "ngOnInit");
       this.listado = data;

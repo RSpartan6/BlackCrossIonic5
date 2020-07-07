@@ -36,9 +36,11 @@ export class LoginService {
 
   // Servicio de apartar lugar
 
-  asistenciaAlumno(idUsuario, idClase, fecha) {
+  asistenciaAlumno(idClase, idUsuario, fecha) {
+
     return this.http.post(this.url + "AsistenciaClases/" + idClase + "/" + idUsuario + '?fecha=' + fecha, this.httpOptions);
   }
+
 
   // Servicio eliminar asistencia
   eliminarAlumno(idUsuario, idClase, fecha) {
