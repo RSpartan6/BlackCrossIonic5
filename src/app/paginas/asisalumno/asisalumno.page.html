@@ -29,9 +29,18 @@
       <ion-list-header>
         <ion-item>
           <ion-label>Fecha</ion-label>
-          <ion-datetime name="fecha" [(ngModel)]="fa.fecha" placeholder="{{fechaClase | date: 'yyyy-MM-dd'}}"
-            displayFormat="YYYY-MM-DD" min="2020-07-04" max="2020-12-31" (ionChange)="cambiofecha($event)"
-            cancelText="Cancelar" doneText="Aceptar" value="{{fechaDeClase}}"></ion-datetime>
+          <ion-datetime 
+          name="fecha" 
+          [(ngModel)]="fa.fecha" 
+          placeholder="{{fechaClase | date: 'yyyy-MM-dd'}}"
+          displayFormat="YYYY-MM-DD" 
+          min="2020-07-04" max="2020-12-31" 
+          (ionChange)="cambiofecha($event)"
+          cancelText="Cancelar" 
+          doneText="Aceptar" 
+          value="{{fechaDeClase}}"
+          monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre">
+          ></ion-datetime>
         </ion-item>
       </ion-list-header>
       <!-- fin fecha de clases -->

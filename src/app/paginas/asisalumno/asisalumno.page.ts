@@ -50,8 +50,6 @@ export class AsisalumnoPage implements OnInit {
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
       console.log("La fecha es :", this.fechaDeClase);
 
-
-
     });
   }
 

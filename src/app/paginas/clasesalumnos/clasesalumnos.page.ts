@@ -59,5 +59,8 @@ export class ClasesalumnosPage implements OnInit {
 
   onChange($event) {
     console.log($event);
+
+    console.log("Fecha Precionada");
+    
   }
 }
