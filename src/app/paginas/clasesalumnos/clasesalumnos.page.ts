@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { LoginService } from 'src/app/servicios/login.service';
 
+
+
 @Component({
   selector: 'app-clasesalumnos',
   templateUrl: './clasesalumnos.page.html',
   styleUrls: ['./clasesalumnos.page.scss'],
 })
 export class ClasesalumnosPage implements OnInit {
+
+  date: string;
+  type: 'string';
 
   listado:any;
   // usuario:any;
@@ -50,5 +55,9 @@ export class ClasesalumnosPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  onChange($event) {
+    console.log($event);
   }
 }

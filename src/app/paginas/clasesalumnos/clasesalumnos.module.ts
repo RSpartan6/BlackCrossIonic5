@@ -8,12 +8,22 @@ import { ClasesalumnosPageRoutingModule } from './clasesalumnos-routing.module';
 
 import { ClasesalumnosPage } from './clasesalumnos.page';
 
+import { CalendarModule } from 'ion2-calendar';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ClasesalumnosPageRoutingModule
+    ClasesalumnosPageRoutingModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: ClasesalumnosPage
+      }
+    ]),
+    CalendarModule
   ],
   declarations: [ClasesalumnosPage]
 })
