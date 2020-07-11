@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { LoadingController, ActionSheetController } from "@ionic/angular";
 import { LoginService } from "src/app/servicios/login.service";
 import { Router } from "@angular/router";
+import { IfStmt } from '@angular/compiler';
 
 @Component({
   selector: "app-perfil",
@@ -9,6 +10,11 @@ import { Router } from "@angular/router";
   styleUrls: ["./perfil.page.scss"],
 })
 export class PerfilPage implements OnInit {
+
+  perfiles :any[] =[];
+
+  textoBuscar = '';
+
   listado: any;
   urlapi = "http://3.133.28.198:8080/Wod/";
 
@@ -41,5 +47,11 @@ export class PerfilPage implements OnInit {
 
   menuPerfil() {
     this.router.navigate(["/menu"]);
+  }
+
+  buscar(event){
+    console.log(event); 
+    this.textoBuscar   = event.detail.value;
+    
   }
 }

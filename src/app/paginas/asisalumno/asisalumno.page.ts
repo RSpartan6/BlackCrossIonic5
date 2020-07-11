@@ -50,8 +50,6 @@ export class AsisalumnoPage implements OnInit {
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
       console.log("La fecha es :", this.fechaDeClase);
 
-
-
     });
   }
 
@@ -99,7 +97,7 @@ export class AsisalumnoPage implements OnInit {
     console.log("Fecha seleccionada", this.fecha);
   }
 
-  quitarAsistencia(idUser, idClase, fecha) {
+  quitarAsistencia(idUser) {
 
     console.log('fecha in:' + this.fecha);
     if (this.fecha === undefined) {
