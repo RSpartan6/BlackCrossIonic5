@@ -14,6 +14,7 @@ import { LoginService } from './servicios/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -23,6 +24,7 @@ import { PipesModule } from './pipes/pipes.module';
     SplashScreen,
     LoginService,
     NavParams,
+    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

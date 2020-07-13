@@ -2,7 +2,7 @@
 <div></div>
 <ion-content fullscreen="true" padding class="background">
   <form #loginForm="ngForm" novalidate>
-    <ion-img src=".././assets/img/BCF.png"></ion-img>    
+    <ion-img src=".././assets/img/BCF.png"></ion-img>
 
     <ion-grid>
       <ion-row color="primary">
@@ -13,9 +13,6 @@
               <ion-input type="text" [(ngModel)]="login.usuario" name="usuario" #usuario="ngModel" spellcheck="false"
                 autocapitalize="on" required></ion-input>
             </ion-item>
-            <!-- <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
-              Campo Usuario requerido
-            </p> -->
             <ion-item>
               <ion-label position="floating"> Contraseña</ion-label>
               <ion-input type="password" [(ngModel)]="login.contrasenia" name="contrasenia" type="password"
@@ -23,7 +20,8 @@
             </ion-item>
           </div>
           <div>
-            <ion-button ion-button (click)="onLogin(loginForm)" type="submit" size="large" expand="block" color="primary">
+            <ion-button ion-button (click)="onLogin(loginForm)" type="submit" size="large" expand="block"
+              color="primary">
               Iniciar Sesión
             </ion-button>
           </div>
