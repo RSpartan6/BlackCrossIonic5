@@ -27,10 +27,12 @@ export class CalalumnoPage implements OnInit {
   ngOnInit() {
   }
 
+
+  // Ese metodo es el que llama muestra la cadena que te mande
+
   onClick(date){
 
-    this.fecha = date._d;   
-    
+    this.fecha = date._d;       
     //   formatearFecha = function(d) {
     //   var mm = d.getMonth() + 1; // getMonth() is zero-based
     //   var dd = d.getDate();
@@ -39,13 +41,9 @@ export class CalalumnoPage implements OnInit {
     //           (mm>9 ? '' : '0') + mm,'-',
     //           (dd>9 ? '' : '0') + dd
     //          ].join('');
-    // };
-    
-    // var date1 = new Date();
-    
+    // };    
+    // var date1 = new Date();    
     // console.log("f:"+d(this.fecha))
-
-
     console.log(this.fecha);    
   }
 
