@@ -7,11 +7,13 @@
 <ion-content [fullscreen]="true">
 
   <div>
-    <ion-calendar [(ngModel)]="date"
-              (change)="onChange($event)"
-              [type]="type"
-              [format]="'YYYY-MM-DD'">
-</ion-calendar>
+    <ion-calendar 
+      [(ngModel)]="date"
+      (onChange)="onChange($event)"
+      [type]="type"
+      format="YYYY-MM-DD"
+      (click)="onClick(date)">
+    </ion-calendar>
   </div>
 
 </ion-content>

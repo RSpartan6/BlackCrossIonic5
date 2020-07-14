@@ -8,6 +8,7 @@ import { AlertController, NavController } from '@ionic/angular';
 })
 export class CalalumnoPage implements OnInit {
   
+  fecha
   date: string;
   type: 'moment';
 
@@ -26,31 +27,26 @@ export class CalalumnoPage implements OnInit {
   ngOnInit() {
   }
 
+  onClick(date){
 
-  // async asistencia() {
-  //   const alert = await this.alertController.create({
-  //     cssClass: 'my-custom-class',
-  //     message: 'Desea asistir  ',
-  //     buttons: [
-  //       {
-  //         text: 'Eliminar',
-  //         role: 'cancel',
-  //         cssClass: 'secondary',
-  //         handler: (blah) => {
-  //           console.log('Confirm Cancel: blah');
-            
-  //         }
-  //       }, {
-  //         text: 'Asistir',
-  //         handler: () => {
-  //           console.log('Confirm Okay');
-  //         }
-  //       }
-  //     ]
-  //   });
+    this.fecha = date._d;   
+    
+    //   formatearFecha = function(d) {
+    //   var mm = d.getMonth() + 1; // getMonth() is zero-based
+    //   var dd = d.getDate();
+    
+    //   return [d.getFullYear(),'-',
+    //           (mm>9 ? '' : '0') + mm,'-',
+    //           (dd>9 ? '' : '0') + dd
+    //          ].join('');
+    // };
+    
+    // var date1 = new Date();
+    
+    // console.log("f:"+d(this.fecha))
 
-  //   await alert.present();
-  // }
-  
+
+    console.log(this.fecha);    
+  }
 
 }
