@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-calalumno',
@@ -32,7 +33,7 @@ export class CalalumnoPage implements OnInit {
 
   onClick(date){
 
-    this.fecha = date._d;       
+    this.fecha = date._d;    
     //   formatearFecha = function(d) {
     //   var mm = d.getMonth() + 1; // getMonth() is zero-based
     //   var dd = d.getDate();
@@ -44,7 +45,9 @@ export class CalalumnoPage implements OnInit {
     // };    
     // var date1 = new Date();    
     // console.log("f:"+d(this.fecha))
-    console.log(this.fecha);    
+    console.log(this.fecha); 
+    console.log(date, "Cadena completa");
+       
   }
 
 }
