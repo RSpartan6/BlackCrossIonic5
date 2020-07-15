@@ -34,12 +34,10 @@ export class HorariosPage implements OnInit {
 
   ngOnInit() {
 
-    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/"+ this.fechaf ).subscribe(data =>{
+    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf).subscribe(data =>{
       console.log(data, "listado de clases");
       this.listado=data;
-
-      console.log(this.fechaf);
-      
+      console.log(this.fechaf, "fecha del ngoninit");      
     });
   }
 
