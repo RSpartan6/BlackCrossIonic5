@@ -9,8 +9,6 @@ import { LoginService } from 'src/app/servicios/login.service';
 })
 export class ClasesalumnosPage implements OnInit {
 
-  date: string;
-  type: 'string';
 
   listado:any;
   // usuario:any;

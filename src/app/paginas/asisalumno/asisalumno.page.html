@@ -5,10 +5,8 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-img src="./../assets/img/BlackC-SF2.png"></ion-img>
-
   <ion-list inset="true" lines="none">
     <ion-item>
       <ion-label>
@@ -23,29 +21,20 @@
         </p>
       </ion-label>
     </ion-item>
-
     <ion-item>
       <!-- Fechas de clases -->
       <ion-list-header>
         <ion-item>
           <ion-label>Fecha</ion-label>
-          <ion-datetime 
-          name="fecha" 
-          [(ngModel)]="fa.fecha" 
-          placeholder="{{fechaClase | date: 'yyyy-MM-dd'}}"
-          displayFormat="YYYY-MM-DD" 
-          min="2020-07-04" max="2020-12-31" 
-          (ionChange)="cambiofecha($event)"
-          cancelText="Cancelar" 
-          doneText="Aceptar" 
-          value="{{fechaDeClase}}"
-          monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre">
-          ></ion-datetime>
+          <ion-datetime name="fecha" [(ngModel)]="fa.fecha" placeholder="{{fechaClase | date: 'yyyy-MM-dd'}}"
+            displayFormat="YYYY-MM-DD" min="2020-07-04" max="2020-12-31" (ionChange)="cambiofecha($event)"
+            cancelText="Cancelar" doneText="Aceptar" value="{{fechaDeClase}}"
+            monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre">
+            ></ion-datetime>
         </ion-item>
       </ion-list-header>
       <!-- fin fecha de clases -->
     </ion-item>
-
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -60,6 +49,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-
   </ion-list>
 </ion-content>

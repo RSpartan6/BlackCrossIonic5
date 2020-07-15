@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'calalumno',
     loadChildren: () => import('./paginas/calalumno/calalumno.module').then( m => m.CalalumnoPageModule)
   },
+  {
+    path: 'horarios/:fechaf',
+    loadChildren: () => import('./paginas/horarios/horarios.module').then( m => m.HorariosPageModule)
+  },
 ];
 
 @NgModule({

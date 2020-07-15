@@ -1,19 +1,16 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Calendario</ion-title>
+    <!-- <ion-title>Calendario</ion-title> -->
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-
   <div>
     <ion-calendar 
-      [(ngModel)]="date"
-      (onChange)="onChange($event)"
-      [type]="type"
-      format="YYYY-MM-DD"
-      (click)="onClick(date)">
+    [(ngModel)]="date" 
+    [type]="type" 
+    format="YYYY-MM-DD"
+    (click)="onClick(date,fechaf)"
+    >
     </ion-calendar>
   </div>
-
 </ion-content>

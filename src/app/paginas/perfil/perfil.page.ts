@@ -11,7 +11,7 @@ import { IfStmt } from '@angular/compiler';
 })
 export class PerfilPage implements OnInit {
 
-  perfiles :any[] =[];
+  perfiles: any[] = [];
 
   textoBuscar = '';
 
@@ -23,7 +23,7 @@ export class PerfilPage implements OnInit {
     private servicio: LoginService,
     public actionSheetController: ActionSheetController,
     public loadingController: LoadingController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.servicio.getData(this.urlapi + "Usuarios/").subscribe((data) => {
@@ -49,9 +49,9 @@ export class PerfilPage implements OnInit {
     this.router.navigate(["/menu"]);
   }
 
-  buscar(event){
-    console.log(event); 
-    this.textoBuscar   = event.detail.value;
-    
+  buscar(event) {
+    console.log(event);
+    this.textoBuscar = event.detail.value;
+
   }
 }
