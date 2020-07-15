@@ -34,20 +34,18 @@ export class CalalumnoPage implements OnInit {
   onClick(date){
 
     this.fecha = date._d;    
-    //   formatearFecha = function(d) {
-    //   var mm = d.getMonth() + 1; // getMonth() is zero-based
-    //   var dd = d.getDate();
+
+       function format(d) {
+      var mm = d.getMonth() + 1; // getMonth() is zero-based
+       var dd = d.getDate();
     
-    //   return [d.getFullYear(),'-',
-    //           (mm>9 ? '' : '0') + mm,'-',
-    //           (dd>9 ? '' : '0') + dd
-    //          ].join('');
-    // };    
-    // var date1 = new Date();    
-    // console.log("f:"+d(this.fecha))
-    console.log(this.fecha); 
-    console.log(date, "Cadena completa");
-       
+       return [d.getFullYear(),'-',
+               (mm>9 ? '' : '0') + mm,'-',
+               (dd>9 ? '' : '0') + dd
+              ].join('');
+     };    
+   var date1 = new Date();    
+   console.log(format(this.fecha))
   }
 
 }
