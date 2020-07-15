@@ -17,6 +17,8 @@ export class HorariosPage implements OnInit {
 
   urlapi="http://3.133.28.198:8080/Wod/";
 
+  fechacal = this.fechaf;
+
   constructor
   (
     private servicio : LoginService,
@@ -24,17 +26,12 @@ export class HorariosPage implements OnInit {
   ) { }
 
   ionViewWillEnter(){
-
     this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf'); 
-
-    console.log(this.fechaf, "fecha del calendario");
-    
+    console.log(this.fechaf, "fecha del calendario");    
   }
 
-
   ngOnInit() {
-
-    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf).subscribe(data =>{
+    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechacal).subscribe(data =>{
       console.log(data, "listado de clases");
       this.listado=data;
       console.log(this.fechaf, "fecha del ngoninit");      
