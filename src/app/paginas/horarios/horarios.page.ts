@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-horarios',
@@ -8,17 +9,28 @@ import { LoginService } from 'src/app/servicios/login.service';
 })
 export class HorariosPage implements OnInit {
 
+  
   listado:any;
   // usuario:any;
   idClase: string;
-  fechaf
+  fechaf :string;
 
   urlapi="http://3.133.28.198:8080/Wod/";
 
   constructor
   (
     private servicio : LoginService,
+    private activatedRoute: ActivatedRoute, 
   ) { }
+
+  ionViewWillEnter(){
+
+    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf'); 
+
+    console.log(this.fechaf, "fecha del calendario");
+    
+  }
+
 
   ngOnInit() {
 
