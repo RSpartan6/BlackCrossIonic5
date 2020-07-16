@@ -6,7 +6,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content [fullscreen]="true">
   <ion-list inset="true" class="animated fast fadeInDown">
     <ion-item *ngFor="let Clases of listado?.respuesta; 
       let indice=index;" class="animated fast fadeInDown">

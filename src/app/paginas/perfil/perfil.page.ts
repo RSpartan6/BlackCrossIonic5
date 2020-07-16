@@ -38,7 +38,7 @@ export class PerfilPage implements OnInit {
       cssClass: "my-custom-class",
       spinner: "crescent",
       message: "Por favor espere...",
-      duration: 1500,
+      duration: 800,
     });
     await loading.present();
 
