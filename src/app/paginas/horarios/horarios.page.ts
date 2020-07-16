@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute } from '@angular/router';
+import { NavParams } from '@ionic/angular';
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: 'app-horarios',
@@ -8,10 +10,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./horarios.page.scss'],
 })
 export class HorariosPage implements OnInit {
-
   
   listado:any;
-  // usuario:any;
+  usuario:any;
   idClase: string;
   fechaf :string;
 
@@ -22,8 +23,18 @@ export class HorariosPage implements OnInit {
   constructor
   (
     private servicio : LoginService,
-    private activatedRoute: ActivatedRoute, 
-  ) { }
+    private activatedRoute: ActivatedRoute,
+    private storage: Storage, 
+    private navParams: NavParams
+  ) 
+    {
+      this.usuario = this.navParams.get(this.usuario);
+      this.storage.get("userData").then((user) => {
+      this.usuario = user;
+      console.log("El usuario en HORARIO es :",this.usuario.respuesta.nombre);
+      console.log("Y su Rol es :", this.usuario.respuesta.idRol);
+    });
+     }
 
   ionViewWillEnter(){
     this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf'); 

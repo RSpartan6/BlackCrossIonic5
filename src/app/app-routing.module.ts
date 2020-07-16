@@ -63,6 +63,14 @@ const routes: Routes = [
     path: 'crearclase',
     loadChildren: () => import('./paginas/crearclase/crearclase.module').then( m => m.CrearclasePageModule)
   },
+  {
+    path: 'caladmin',
+    loadChildren: () => import('./paginas/caladmin/caladmin.module').then( m => m.CaladminPageModule)
+  },
+  {
+    path: 'horariosadmin/:fechaf',
+    loadChildren: () => import('./paginas/horariosadmin/horariosadmin.module').then( m => m.HorariosadminPageModule)
+  },
 ];
 
 @NgModule({
