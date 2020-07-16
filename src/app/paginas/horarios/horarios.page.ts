@@ -15,10 +15,9 @@ export class HorariosPage implements OnInit {
   usuario:any;
   idClase: string;
   fechaf :string;
+  
 
   urlapi="http://3.133.28.198:8080/Wod/";
-
-  fechacal = this.fechaf;
 
   constructor
   (
@@ -42,7 +41,10 @@ export class HorariosPage implements OnInit {
   }
 
   ngOnInit() {
-    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechacal).subscribe(data =>{
+
+    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf'); 
+
+    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf).subscribe(data =>{
       console.log(data, "listado de clases");
       this.listado=data;
       console.log(this.fechaf, "fecha del ngoninit");      
