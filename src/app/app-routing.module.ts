@@ -59,6 +59,10 @@ const routes: Routes = [
     path: 'horarios/:fechaf',
     loadChildren: () => import('./paginas/horarios/horarios.module').then( m => m.HorariosPageModule)
   },
+  {
+    path: 'crearclase',
+    loadChildren: () => import('./paginas/crearclase/crearclase.module').then( m => m.CrearclasePageModule)
+  },
 ];
 
 @NgModule({

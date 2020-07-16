@@ -15,7 +15,7 @@ export class FiltroPipe implements PipeTransform {
 
     return arreglo.filter(item => {
 
-      return item.usuario.toLowerCase().includes(texto);
+      return item.nombre.toLowerCase().includes(texto);
 
     });
 

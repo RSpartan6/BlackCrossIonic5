@@ -54,6 +54,14 @@ export class LoginService {
     return this.http.post(this.url + 'Usuarios/', clase, this.httpOptions)
   }
 
+  // Servicio crear clase
+
+  setNuevaclase(clase) {
+    clase = JSON.stringify(clase);
+    console.log(clase);
+    return this.http.post(this.url + 'Clases', this.httpOptions)
+  }
+
   // Servicio de Login
   login(user) {
     console.log(user, "Bienvenido");
