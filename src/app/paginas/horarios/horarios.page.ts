@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute } from '@angular/router';
-import { NavParams } from '@ionic/angular';
+import { NavParams, AlertController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 
 @Component({
@@ -14,8 +14,7 @@ export class HorariosPage implements OnInit {
   listado:any;
   usuario:any;
   idClase: string;
-  fechaf :string;
-  
+  fechaf :string;  
 
   urlapi="http://3.133.28.198:8080/Wod/";
 
@@ -24,7 +23,8 @@ export class HorariosPage implements OnInit {
     private servicio : LoginService,
     private activatedRoute: ActivatedRoute,
     private storage: Storage, 
-    private navParams: NavParams
+    private navParams: NavParams,
+    public alertController: AlertController
   ) 
     {
       this.usuario = this.navParams.get(this.usuario);
@@ -50,5 +50,43 @@ export class HorariosPage implements OnInit {
       console.log(this.fechaf, "fecha del ngoninit");      
     });
   }
+
+
+  marcarAsistencia(){
+
+    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf'); 
+
+    console.log("Fecha de la alerta",this.fechaf);
+    
+
+    this.presentAlertConfirm();
+
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Boton de cancelar');
+          }
+        }, {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Boton de aceptar');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
 
 }
