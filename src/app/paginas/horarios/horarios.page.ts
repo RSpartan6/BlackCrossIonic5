@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute } from '@angular/router';
 import { NavParams, AlertController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-horarios',
@@ -17,10 +18,12 @@ export class HorariosPage implements OnInit {
   fechaf: string;
   numeroUsuario: string;
   mensaje: string;
+  estatus: string;
   nombre
   mensajeerror: string;
 
   urlapi = "http://3.133.28.198:8080/Wod/";
+
 
   constructor
     (
@@ -58,11 +61,6 @@ export class HorariosPage implements OnInit {
 
   marcarAsistencia(idClase) {
 
-    this.presentAlertConfirm(idClase);
-  }
-
-  async presentAlertConfirm(idClase) {
-
     this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
     this.servicio.getData(this.urlapi + 'Clases' + "/esta-en-clase/" + idClase + "/" + this.numeroUsuario + "/" + this.fechaf).subscribe(data => {
       let objUsuario = JSON.stringify(data);
@@ -70,46 +68,97 @@ export class HorariosPage implements OnInit {
       this.storage.set('userData', data);
       this.mensaje = json.respuesta.mensaje;
       console.log("Mensaje : ", this.mensaje);
+      this.estatus = json.respuesta.estatus;
+      console.log("Estatus del asistente", this.estatus);
+
+      this.presentAlertConfirm(idClase);
 
     });
-
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      subHeader: this.mensaje,
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Boton de cancelar');
-          }
-        }, {
-          text: 'Aceptar',
-          handler: () => {
-            console.log(this.idClase, this.mensaje);
-
-          }
-        }
-      ]
-    });
-    await alert.present();
   }
 
+  async presentAlertConfirm(idClase) {
 
-  asistir() {
+    if (this.estatus == "0") {
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        message: this.mensaje,
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Boton de cancelar');
+            }
+          }, {
+            text: 'Aceptar',
+            handler: () => {
+              this.asistir(idClase);
+              console.log(idClase, this.mensaje);
+
+            }
+          }
+        ]
+      });
+      await alert.present();
+    } else if (this.estatus == "1") {
+      console.log("usuairo ya dado de alta");
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        message: this.mensaje,
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Boton de cancelar');
+            }
+          }, {
+            text: 'Aceptar',
+            handler: () => {
+              this.quitarAsistencia(idClase);
+              console.log(idClase, this.mensaje);
+
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+  }
+
+  asistir(idClase) {
 
     console.log('fecha asistir:' + this.fechaf);
-    this.servicio.asistenciaAlumno(this.idClase, this.numeroUsuario, this.fechaf).subscribe((response: any) => {
+    this.servicio.asistenciaAlumno(idClase, this.numeroUsuario, this.fechaf).subscribe((response: any) => {
       console.log(response, "Asistencia apartada");
       this.mensaje = response.respuesta;
       this.mensajeerror = response.descripcion;
       console.log(this.fechaf, "Fecha clase");
+      console.log("Id de clase", idClase);
+
       if (response.codigo == 200) {
         this.agregadoAlert();
         console.log("Fecha seleccionada", this.fechaf);
       } else {
         this.usuarioEnclase();
+      }
+    });
+  }
+
+  quitarAsistencia(idClase) {
+
+    console.log('fecha f:' + this.fechaf);
+    this.servicio.eliminarAlumno(this.numeroUsuario, idClase, this.fechaf).subscribe((response: any) => {
+      console.log(response, "Asistencia eliminada"); this.mensaje = response.respuesta;
+
+      if (response.codigo == 200) {
+
+        this.eliminarAsistencia();
+        console.log("Fecha seleccionada", this.fechaf);
+      } else {
+        this.eliminarAsistencia();
       }
     });
   }
@@ -134,5 +183,13 @@ export class HorariosPage implements OnInit {
     await alert.present();
   }
 
+  async eliminarAsistencia() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: this.mensaje,
+      buttons: ['OK']
+    });
 
+    await alert.present();
+  }
 }
