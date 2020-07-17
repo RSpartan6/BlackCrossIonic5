@@ -15,12 +15,11 @@ export class CambiarpassPage implements OnInit {
   urlapi = "http://3.133.28.198:8080/Wod/"
 
   cp = {
-
     "idUsuario": "",
     "contraseniaAnterior": "",
     "contraseniaNueva": "",
     "confirmarpass": ""
-  }
+    }
 
   mensaje: string;
   submitted = false;
