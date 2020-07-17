@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
   },
   {
-    path: 'asistentes/:idClase/:nombre/:profesor',
+    path: 'asistentes/:idClase/:nombre/:profesor/:fechaf',
     loadChildren: () => import('./paginas/asistentes/asistentes.module').then( m => m.AsistentesPageModule)
   },
   {

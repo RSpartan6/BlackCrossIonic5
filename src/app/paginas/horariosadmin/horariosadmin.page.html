@@ -9,7 +9,9 @@
 <ion-content [fullscreen]="true">
   <ion-list inset="true" class="animated fast fadeInDown">
     <ion-item *ngFor="let Clases of listado?.respuesta; 
-      let indice=index;" class="animated fast fadeInDown">
+      let indice=index;"
+      href="asistentes/{{Clases.idClase}}/{{Clases.nombre}}/{{Clases.profesor}}/{{fechaf}}" 
+      class="animated fast fadeInDown">
       <ion-label>
         <h2>Clase: {{Clases.nombre}} </h2>
         <p>Profesor: {{Clases.profesor}}</p>
