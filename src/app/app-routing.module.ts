@@ -71,6 +71,10 @@ const routes: Routes = [
     path: 'horariosadmin/:fechaf',
     loadChildren: () => import('./paginas/horariosadmin/horariosadmin.module').then( m => m.HorariosadminPageModule)
   },
+  {
+    path: 'cambiarpass',
+    loadChildren: () => import('./paginas/cambiarpass/cambiarpass.module').then( m => m.CambiarpassPageModule)
+  },
 ];
 
 @NgModule({
