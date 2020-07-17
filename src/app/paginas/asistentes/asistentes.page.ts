@@ -26,7 +26,8 @@ export class AsistentesPage implements OnInit {
   constructor(
     private servicio: LoginService,
     private activatedRoute: ActivatedRoute,
-  ) {
+  ) 
+  {
 
   }
 
