@@ -13,6 +13,7 @@
   <ion-list inset="true" lines="none">
     <ion-item lines="full">
       <ion-label>
+        <h2>Fecha: {{fechaf}}</h2>
         <h2>
           Clase: {{nombre}}
         </h2>
@@ -48,11 +49,14 @@
       </ion-list-header>
     </ion-item> -->
       <!-- fin fecha de clases -->
-    <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
-    let indice=index;" class="animated fast fadeInDown" lines="full">
-      <ion-label>
-        {{Asistentes.nombre}}
-      </ion-label>
-    </ion-item>
+      <ion-card>
+        <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
+        let indice=index;" class="animated fast fadeInDown">
+          <!-- <ion-icon name="flash-outline" slot="start"></ion-icon> -->
+          <ion-card-content>
+            {{Asistentes.nombre}} 
+          </ion-card-content>
+        </ion-item>
+      </ion-card>
   </ion-list>
 </ion-content>
