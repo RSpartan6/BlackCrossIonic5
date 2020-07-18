@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
-    path: 'editarclase',
+    path: 'editarclase/:idClase',
     loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
   },
   {

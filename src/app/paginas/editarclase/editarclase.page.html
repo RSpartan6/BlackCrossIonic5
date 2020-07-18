@@ -2,43 +2,62 @@
   <ion-toolbar>
     <ion-title>Editar Clase</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="clases"></ion-back-button>
+      <ion-back-button defaultHref="clases" text="Atras"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
-  <!-- <ion-img src="../assets/img/fondoIS.png"></ion-img> -->
-  <form #form="ngForm">
-    <!-- <form  #form="ngForm" (ngSubmit)="register(form)"> -->
-
-    <!-- <ion-img src="../assets/img/BlackC-SF2.png"></ion-img> -->
+  <form #editarClase="ngForm" novalidate>
+    <!-- <ion-img src=".././assets/img/BlackC-SF2.png"></ion-img> -->
     <ion-grid>
-      <ion-row color="primary" justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <!-- <div text-center>
-          <h3>Agregar cuenta</h3>
-        </div> -->
+      <ion-row>
+        <ion-col size-md="6" size-lg="5" size-xs="12">
           <div padding>
             <ion-item>
-              <ion-input name="name" type="text" placeholder="Nombre de la Clase" ngModel required></ion-input>
-            </ion-item>
-            <ion-item slot="start">
-              <ion-label></ion-label>
-              <ion-datetime placeholder="Horario" displayFormat="HH:mm"></ion-datetime>
+              <ion-label position="floating"> Nombre de la clase</ion-label>
+              <ion-input [(ngModel)]="ec.nombre" name="nombre" type="text" required></ion-input>
+            </ion-item>            
+            <ion-item>
+              <ion-label position="floating">Hora inicio</ion-label>
+              <ion-input [(ngModel)]="ec.horaInicio" name="horaInicio" type="number" required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="name" type="text" placeholder="Nivel" ngModel required></ion-input>
+              <ion-label position="floating">Hora fin</ion-label>
+              <ion-input [(ngModel)]="ec.horaFin" name="horaFin" type="number" required></ion-input>
+            </ion-item> 
+            <ion-item no-lines>
+              <ion-segment (ionChange)="segmentChanged($event)" name="horario" type="text" [(ngModel)]="ec.horario"> 
+                <ion-segment-button value="M" >
+                  <ion-label>Matutino</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="V" >
+                  <ion-label>Vespertino</ion-label>
+                </ion-segment-button>
+              </ion-segment>
             </ion-item>
             <ion-item>
-              <ion-input name="name" type="number" placeholder="Numero de Personas" ngModel required></ion-input>
-            </ion-item>
+              <ion-label position="floating">Personas</ion-label>
+              <ion-input [(ngModel)]="ec.personas" name="personas" type="number" required></ion-input>
+            </ion-item>   
+            <ion-item>
+              <ion-label position="floating">Profesor</ion-label>
+              <ion-input [(ngModel)]="ec.profesor" name="profesor" type="text" required></ion-input>
+            </ion-item>             
           </div>
+          <br>
+          <br>
+          <br>
           <div padding>
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Editar</ion-button>
-            <!-- <ion-button (click)="claseCreada()"  size="large" type="submit" [disabled]="form.invalid" expand="block">Editar</ion-button> -->
+            <ion-button (click)="editarClass(editarClase)" size="large" type="submit" expand="block">Cambiar</ion-button>
+          </div>
 
+          <br>
+          <br>
+          <div padding>
+            <ion-button color="danger" expand="block" (click)="eliminarClase(idClase)">Eliminar clase</ion-button>
           </div>
+
         </ion-col>
       </ion-row>
     </ion-grid>
