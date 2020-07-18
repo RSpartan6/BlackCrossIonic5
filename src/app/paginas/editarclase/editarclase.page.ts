@@ -19,8 +19,6 @@ export class EditarclasePage implements OnInit {
   mensaje
   msjC
 
-  
-
   constructor(
     private servicio: LoginService,
     private storage: Storage,
@@ -57,7 +55,8 @@ export class EditarclasePage implements OnInit {
     "horaFin": "",
     "horario": "",
     "personas": "",
-    "profesor": "",  
+    "profesor": "", 
+    "estatus":"" 
   }
   submitted = false;
 
@@ -73,6 +72,7 @@ export class EditarclasePage implements OnInit {
       "horario": this.ec.horario,
       "personas": this.ec.personas,
       "profesor": this.ec.profesor,
+      "estatus":this.ec.estatus
     }
     this.submitted = true;
 
@@ -114,7 +114,6 @@ export class EditarclasePage implements OnInit {
         this.deleteClase();
       }
     });
-
   }
 
   // Eliminar Clase

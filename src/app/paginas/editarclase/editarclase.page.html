@@ -43,13 +43,23 @@
             <ion-item>
               <ion-label position="floating">Profesor</ion-label>
               <ion-input [(ngModel)]="ec.profesor" name="profesor" type="text" required></ion-input>
-            </ion-item>             
+            </ion-item>   
+            <ion-item no-lines>
+              <ion-segment (ionChange)="segmentChanged($event)" name="estatus" type="text" [(ngModel)]="ec.estatus"> 
+                <ion-segment-button value="1" >
+                  <ion-label>Activar</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="0" >
+                  <ion-label>Desactivar</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-item>          
           </div>
           <br>
           <br>
           <br>
           <div padding>
-            <ion-button (click)="editarClass(editarClase)" size="large" type="submit" expand="block">Cambiar</ion-button>
+            <ion-button (click)="editarClass(editarClase)" type="submit" expand="block">Cambiar</ion-button>
           </div>
 
           <br>
