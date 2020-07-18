@@ -19,9 +19,10 @@ export class CambiarpassPage implements OnInit {
     "contraseniaAnterior": "",
     "contraseniaNueva": "",
     "confirmarpass": ""
-    }
+  }
 
   mensaje: string;
+  mensajerr: string;
   submitted = false;
   numeroUsuario: string;
   usuario: any;
@@ -42,8 +43,8 @@ export class CambiarpassPage implements OnInit {
       this.usuario = user;
       console.log("El usuario en ASISTENCIA ALUMNO es :", this.usuario.respuesta.nombre);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
-      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);      
-      
+      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);
+
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
       this.idRol = this.usuario.respuesta.idRol;
     });
@@ -53,12 +54,12 @@ export class CambiarpassPage implements OnInit {
 
   }
 
-  atras(){
-    if(this.usuario.respuesta.idRol === 1){
+  atras() {
+    if (this.usuario.respuesta.idRol === 1) {
 
       this.navCtrl.navigateRoot('/menu');
 
-    }else{
+    } else {
       this.navCtrl.navigateRoot('/calalumno');
 
     }
@@ -82,16 +83,24 @@ export class CambiarpassPage implements OnInit {
 
         this.mensaje = response.respuesta;
 
+        this.mensajerr = response.descripcion;
+
         if (response.codigo == 200) {
 
           this.cambioPass();
+          this.navCtrl.navigateRoot('/calalumno');
+
+
         } else {
-          this.cambioPass();
+          this.erroPass();
+          this.clearForm();
+
         }
       });
 
     } else {
       this.passIncorrecto();
+      this.clearForm();
     }
   }
 
@@ -103,6 +112,17 @@ export class CambiarpassPage implements OnInit {
     toast.present();
   }
 
+  async erroPass() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: this.mensajerr,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+
   async cambioPass() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -111,6 +131,12 @@ export class CambiarpassPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  clearForm() {
+    this.cp.contraseniaAnterior = '';
+    this.cp.contraseniaNueva = '';
+    this.cp.confirmarpass = '';
   }
 
 }

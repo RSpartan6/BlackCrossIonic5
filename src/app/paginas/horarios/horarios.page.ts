@@ -40,6 +40,7 @@ export class HorariosPage implements OnInit {
       console.log("Y su Rol es :", this.usuario.respuesta.idRol);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
+      
     });
   }
 
@@ -102,7 +103,7 @@ export class HorariosPage implements OnInit {
       });
       await alert.present();
     } else if (this.estatus == "1") {
-      console.log("usuairo ya dado de alta");
+      console.log("usuario ya dado de alta");
       const alert = await this.alertController.create({
         cssClass: 'my-custom-class',
         message: this.mensaje,
@@ -152,13 +153,15 @@ export class HorariosPage implements OnInit {
     console.log('fecha f:' + this.fechaf);
     this.servicio.eliminarAlumno(this.numeroUsuario, idClase, this.fechaf).subscribe((response: any) => {
       console.log(response, "Asistencia eliminada"); this.mensaje = response.respuesta;
-
+      this.mensajeerror = response.descripcion;
       if (response.codigo == 200) {
 
         this.eliminarAsistencia();
         console.log("Fecha seleccionada", this.fechaf);
-      } else {
-        this.eliminarAsistencia();
+      } else if (response.codigo == 500) {
+        console.log("Erro 500");
+
+        this.errorQuitar();
       }
     });
   }
@@ -167,6 +170,16 @@ export class HorariosPage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       message: this.mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async errorQuitar() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: this.mensajeerror,
       buttons: ['OK']
     });
 
