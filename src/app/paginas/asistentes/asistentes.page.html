@@ -2,13 +2,13 @@
   <ion-toolbar>
     <ion-title>Asistentes</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref=""(click)="regresar()" text="Atras"></ion-back-button>
+      <ion-back-button defaultHref="" (click)="regresar()" text="Atras"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button href="editarclase/{{idClase}}">
         <ion-icon slot="icon-only" name="create-outline"></ion-icon>
       </ion-button>
-    </ion-buttons>   
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +22,6 @@
         <h2>
           Clase: {{nombre}}
         </h2>
-        <h2>ID: {{idClase}}</h2>
         <h3>
           Profesor: {{profesor}}
         </h3>
@@ -31,9 +30,9 @@
         </p>
       </ion-label>
     </ion-item>
-    
-      <!-- Fechas de clases -->
-      <!-- <ion-item>
+
+    <!-- Fechas de clases -->
+    <!-- <ion-item>
       <ion-list-header color="fecha">
         <ion-item color="fecha">
           <ion-label>Fecha</ion-label>
@@ -54,15 +53,15 @@
 
       </ion-list-header>
     </ion-item> -->
-      <!-- fin fecha de clases -->
-      <ion-card>
-        <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
+    <!-- fin fecha de clases -->
+    <ion-card>
+      <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
         let indice=index;" class="animated fast fadeInDown">
-          <!-- <ion-icon name="flash-outline" slot="start"></ion-icon> -->
-          <ion-card-content>
-            {{Asistentes.nombre}} 
-          </ion-card-content>
-        </ion-item>
-      </ion-card>
+        <!-- <ion-icon name="flash-outline" slot="start"></ion-icon> -->
+        <ion-card-content>
+          {{Asistentes.nombre}}
+        </ion-card-content>
+      </ion-item>
+    </ion-card>
   </ion-list>
 </ion-content>

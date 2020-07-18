@@ -40,7 +40,6 @@ export class EditarclasePage implements OnInit {
       this.idClase = this.activatedRoute.snapshot.paramMap.get('idClase');
 
       console.log("Id de la clase a editar",this.idClase);
-
     });
   }
 
@@ -128,8 +127,6 @@ export class EditarclasePage implements OnInit {
     await alert.present();
   }
 
-
-
   async errorEditar() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -139,7 +136,6 @@ export class EditarclasePage implements OnInit {
 
     await alert.present();
   }
-
   async editadaCorrect() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
