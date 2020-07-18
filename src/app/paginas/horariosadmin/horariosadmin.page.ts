@@ -45,8 +45,9 @@ export class HorariosadminPage implements OnInit {
     ngOnInit() {
 
       this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf'); 
+
       this.servicio.getData(this.urlapi + 'Clases').subscribe(data =>{
-        console.log(data, "listado de clases");
+        console.log(data, "listado de clases");        
         this.listado=data;
         console.log(this.fechaf, "fecha del ngoninit");      
       });

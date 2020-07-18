@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
   ) { }
 
   onLogin(form: NgForm) {
-    this.storage.clear();
+    // this.storage.clear();
 
     this.submitted = true;
     if (form.valid) {

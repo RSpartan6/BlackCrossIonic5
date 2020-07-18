@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController, NavParams } from '@ionic/angular';
+import { Storage } from "@ionic/storage";
+
 
 @Component({
   selector: 'app-calalumno',
@@ -11,12 +13,31 @@ export class CalalumnoPage implements OnInit {
   fecha
   date: string;
   type: 'string';
+  usuario: any;
+  numeroUsuario: string;
+  idUsuario: string;
+  idRol
+
 
   constructor
     (
       public alertController: AlertController,
-      public navCtrl: NavController
-    ) { }
+      public navCtrl: NavController,
+      private storage: Storage,
+      private navParams: NavParams
+    ) { 
+      this.usuario = this.navParams.get(this.usuario);
+      this.storage.get("userData").then((user) => {
+      this.usuario = user;
+      console.log("El usuario en CALENDARIO es :", this.usuario.respuesta.nombre);
+      console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
+      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);  
+      
+      this.numeroUsuario = this.usuario.respuesta.idUsuario;
+      this.idRol = this.usuario.respuesta.idRol;
+      
+    });
+    }
 
   // onChange(date) {
     

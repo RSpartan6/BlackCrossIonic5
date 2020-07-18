@@ -70,6 +70,20 @@ export class LoginService {
     return this.http.post(this.url + 'Clases', this.httpOptions)
   }
 
+  // Editar Clase
+
+  editarClase(edit) {
+    edit = JSON.stringify(edit);
+    console.log(edit);
+    return this.http.put(this.url + 'Clases',edit, this.httpOptions)
+  }
+
+  // Eliminar Clase
+
+  eliminarClase(idClase) {
+    return this.http.delete(this.url + "Clases/" + idClase, this.httpOptions);
+  }
+
   // Servicio de Login
   login(user) {
     console.log(user, "Bienvenido");
