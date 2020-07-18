@@ -101,6 +101,11 @@ export class EditarclasePage implements OnInit {
 
   eliminarClase(){
 
+    this.presentAlertConfirm();    
+  }
+
+
+  classeliminar(){
     this.servicio.eliminarClase(this.idClase).subscribe((response: any) => {
       console.log(response, "Clase Eliminada");
 
@@ -160,4 +165,29 @@ export class EditarclasePage implements OnInit {
     console.log('Segment changed', ev);
   }
 
-}
+  async presentAlertConfirm() {
+ 
+      console.log("Seguro que desea eliminar la clase");
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        message: "Seguro que desea eliminar la clase",
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+            }
+          }, {
+            text: 'Aceptar',
+            handler: () => {
+              this.classeliminar();
+            }
+          }
+        ]
+      });
+      await alert.present();
+    }
+  }
+
+
