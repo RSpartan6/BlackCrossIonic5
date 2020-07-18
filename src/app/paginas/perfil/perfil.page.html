@@ -2,9 +2,12 @@
   <ion-toolbar>
     <ion-title>Perfiles</ion-title>
     <ion-buttons slot="end">
+      <ion-button href="cambiarpass">
+        <ion-icon slot="icon-only" name="cog-outline"></ion-icon>
+      </ion-button>
       <ion-button href="registro">
         <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
-      </ion-button>
+      </ion-button>      
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button (click)="menuPerfil()" defaultHref="menu" text="Atras"></ion-back-button>
@@ -15,8 +18,7 @@
         placeholder="Buscar" 
         animated
         (ionChange)="buscar($event)" 
-        [debounce]="250"   
-  >
+        [debounce]="250"     >
   </ion-searchbar>
   
 </ion-header>

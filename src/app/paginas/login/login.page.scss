@@ -48,4 +48,9 @@ ion-item {
   ion-text.p{
     color: rgb(248, 3, 3);
   }
+
+  ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+  }
   

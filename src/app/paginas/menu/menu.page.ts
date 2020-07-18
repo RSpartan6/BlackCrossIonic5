@@ -18,20 +18,9 @@ export class MenuPage implements OnInit {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
-
       console.log("El usuario en MENU es :",this.usuario.respuesta.nombre);
       console.log("Y su Rol es :", this.usuario.respuesta.idRol);
-      
-      // if (this.usuario) {
-      //   this.verUsuario();
-      // }
-      // console.log("Rol de Usuario BlackCross= ", user.respuesta.idRol);
     });
   }
-
-  // verUsuario() {
-  //   console.log("MENU APP BLACKCROSS");
-  //   console.log("El usuario es:", this.usuario.respuesta.nombre);
-  // }
   ngOnInit() {}
 }

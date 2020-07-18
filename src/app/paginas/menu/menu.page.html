@@ -1,19 +1,14 @@
-<!-- <ion-header class="ion-no-border" [translucent]="true">
+<ion-header collapse="condense" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Bienvenido</ion-title>
+    <ion-title size="large">{{usuario.respuesta.nombre}} </ion-title>
   </ion-toolbar>
-</ion-header> -->
+</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense" class="ion-no-border">
-    <ion-toolbar>
-      <ion-title size="large">{{usuario.respuesta.nombre}} </ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" >
   <!-- Observaciones -->
-  <ion-list inset="true" class="animated fast fadeInLeft">
+  <ion-list inset="true" class="animated fast fadeInLeft" >
     <!-- <ion-item href="/tabs/clases" no-border> -->
-    <ion-item no-border href="/clases">
+    <ion-item no-border href="/caladmin">
       <!-- <ion-avatar slot="start"> -->
       <ion-icon name="barbell-outline" slot="start" style="zoom: 2;"></ion-icon>
       <!-- </ion-avatar> -->
@@ -32,3 +27,7 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+
+
+

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { LoginService } from 'src/app/servicios/login.service';
 
-
-
 @Component({
   selector: 'app-clasesalumnos',
   templateUrl: './clasesalumnos.page.html',
@@ -11,8 +9,6 @@ import { LoginService } from 'src/app/servicios/login.service';
 })
 export class ClasesalumnosPage implements OnInit {
 
-  date: string;
-  type: 'string';
 
   listado:any;
   // usuario:any;
@@ -23,7 +19,7 @@ export class ClasesalumnosPage implements OnInit {
   constructor(
     private servicio : LoginService,
     public loadingController: LoadingController,
-    public alertController: AlertController,
+    public alertController: AlertController,    
   ) { }
 
   ngOnInit() {
@@ -40,7 +36,7 @@ export class ClasesalumnosPage implements OnInit {
       cssClass: 'my-custom-class',
       spinner: "crescent",
       message: 'Por favor espere...',
-      duration: 1500
+      duration: 500
     });
     await loading.present();
 
@@ -55,12 +51,5 @@ export class ClasesalumnosPage implements OnInit {
     });
 
     await alert.present();
-  }
-
-  onChange($event) {
-    console.log($event);
-
-    console.log("Fecha Precionada");
-    
-  }
+  }  
 }

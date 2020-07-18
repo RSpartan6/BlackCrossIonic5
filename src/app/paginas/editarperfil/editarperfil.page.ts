@@ -13,7 +13,6 @@ export class EditarperfilPage implements OnInit {
   urlapi="http://3.133.28.198:8080/Wod/"
 
   ep={
-    "idUsuario": "",
     "idRol": "",
     "usuario":"",
     "contrasenia":"",
@@ -29,7 +28,6 @@ export class EditarperfilPage implements OnInit {
     "intentos":"",
   }
 
-  idUsuario : string;
   usuario: string;
   sexo: string;
   correoElectronico: string;
@@ -51,8 +49,7 @@ export class EditarperfilPage implements OnInit {
   ) { }
 
   ionViewWillEnter(){
-
-    this.idUsuario = this.activatedRoute.snapshot.paramMap.get('idusuario');    
+   
     this.usuario = this.activatedRoute.snapshot.paramMap.get('usuario');
     this.sexo = this.activatedRoute.snapshot.paramMap.get('sexo');
     this.correoElectronico = this.activatedRoute.snapshot.paramMap.get('correoElectronico');
@@ -62,7 +59,6 @@ export class EditarperfilPage implements OnInit {
     this.estatus = this.activatedRoute.snapshot.paramMap.get('estatus');
 
     console.log(this.usuario, "Usuario");
-    console.log(this.idUsuario, "idUsuario");
     
    
     this.servicio.getData(this.urlapi+'Usuarios/usuario/'+this.usuario+'/').subscribe(data => {
@@ -76,7 +72,6 @@ export class EditarperfilPage implements OnInit {
 
   editarUsuario(){
     let obj = {
-      "idUsuario":this.idUsuario,
       "idRol": 2,
       "usuario":this.usuario,
       "contrasenia":this.contrasenia,

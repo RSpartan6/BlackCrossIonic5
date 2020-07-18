@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "src/app/servicios/login.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: "app-asistentes",
@@ -21,35 +22,38 @@ export class AsistentesPage implements OnInit {
   nombre: string;
   profesor: string;
   fechaDeClase:string;
+  fechaf:string;
 
 
   constructor(
     private servicio: LoginService,
     private activatedRoute: ActivatedRoute,
-  ) {
-
-  }
+    private navCtrl: NavController
+  ) 
+  { }
 
   ngOnInit() {
 
     this.idClase = this.activatedRoute.snapshot.paramMap.get('idClase');
     this.nombre = this.activatedRoute.snapshot.paramMap.get('nombre');
     this.profesor = this.activatedRoute.snapshot.paramMap.get('profesor');
+    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
+    
 
     console.log("El ID de la clase es :", this.idClase);
 
-    console.log('fecha in:' + this.fecha);
-    if (this.fecha === undefined) {
-      console.log('entro');
-      var today = new Date();
-      var dd = String(today.getDate()).padStart(2, '0');
-      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-      var yyyy = today.getFullYear();
-      this.fecha = yyyy + "-" + mm + "-" + dd;
-    }
-    console.log('fecha f:' + this.fecha);
+    console.log('fecha ngOnInit:' + this.fechaf);
+    // if (this.fecha === undefined) {
+    //   console.log('entro');
+    //   var today = new Date();
+    //   var dd = String(today.getDate()).padStart(2, '0');
+    //   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    //   var yyyy = today.getFullYear();
+    //   this.fecha = yyyy + "-" + mm + "-" + dd;
+    // }
+    // console.log('fecha f:' + this.fecha);
 
-    this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fecha).subscribe(data => {
+    this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fechaf).subscribe(data => {
 
       console.log(data, "ngOnInit");
       this.listado = data;
@@ -78,6 +82,10 @@ export class AsistentesPage implements OnInit {
 
     console.log("La fecha seleccionada es:" , this.fechaDeClase);
     
+  }
+
+  regresar(){
+    this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
   }
 
 

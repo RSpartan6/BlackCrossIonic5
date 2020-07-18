@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Asistentes</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="clases" text="Atras"></ion-back-button>
+      <ion-back-button defaultHref=""(click)="regresar()" text="Atras"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -13,6 +13,7 @@
   <ion-list inset="true" lines="none">
     <ion-item lines="full">
       <ion-label>
+        <h2>Fecha: {{fechaf}}</h2>
         <h2>
           Clase: {{nombre}}
         </h2>
@@ -26,7 +27,7 @@
     </ion-item>
     
       <!-- Fechas de clases -->
-      <ion-item>
+      <!-- <ion-item>
       <ion-list-header color="fecha">
         <ion-item color="fecha">
           <ion-label>Fecha</ion-label>
@@ -46,13 +47,16 @@
         </ion-item>
 
       </ion-list-header>
-    </ion-item>
+    </ion-item> -->
       <!-- fin fecha de clases -->
-    <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
-    let indice=index;" class="animated fast fadeInDown" lines="full">
-      <ion-label>
-        {{Asistentes.nombre}}
-      </ion-label>
-    </ion-item>
+      <ion-card>
+        <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
+        let indice=index;" class="animated fast fadeInDown">
+          <!-- <ion-icon name="flash-outline" slot="start"></ion-icon> -->
+          <ion-card-content>
+            {{Asistentes.nombre}} 
+          </ion-card-content>
+        </ion-item>
+      </ion-card>
   </ion-list>
 </ion-content>

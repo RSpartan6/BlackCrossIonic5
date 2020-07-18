@@ -27,6 +27,7 @@
     "@ionic/angular": "^5.0.0",
     "@ionic/storage": "^2.2.0",
     "cordova-ios": "^5.1.1",
+    "cordova-plugin-calendar": "^5.1.5",
     "cordova-res": "^0.15.1",
     "cordova-sqlite-storage": "^5.0.0",
     "ion2-calendar": "^3.0.0-rc.0",
@@ -76,7 +77,11 @@
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-calendar": {
+        "CALENDAR_USAGE_DESCRIPTION": " ",
+        "CONTACTS_USAGE_DESCRIPTION": " "
+      }
     },
     "platforms": [
       "ios"

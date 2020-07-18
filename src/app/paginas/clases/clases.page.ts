@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, NavParams } from '@ionic/angular';
 import { LoginService } from 'src/app/servicios/login.service';
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: 'app-clases',
@@ -11,6 +12,7 @@ export class ClasesPage implements OnInit {
 
   listado:any;
   idClase: string;
+  usuario:any;
 
   urlapi="http://3.133.28.198:8080/Wod/";
   
@@ -18,8 +20,17 @@ export class ClasesPage implements OnInit {
     private servicio : LoginService,
     public loadingController: LoadingController,
     public alertController: AlertController,
+    private storage: Storage, 
+    private navParams: NavParams
   ) 
-  { }
+  {
+    this.usuario = this.navParams.get(this.usuario);
+      this.storage.get("userData").then((user) => {
+      this.usuario = user;
+      console.log("El usuario en HORARIO es :",this.usuario.respuesta.nombre);
+      console.log("Y su Rol es :", this.usuario.respuesta.idRol);
+    });
+   }
 
   ngOnInit() {
 
@@ -35,7 +46,7 @@ export class ClasesPage implements OnInit {
       cssClass: 'my-custom-class',
       spinner: "crescent",
       message: 'Por favor espere...',
-      duration: 1500
+      duration: 800
     });
     await loading.present();
 

@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
   },
   {
-    path: 'asistentes/:idClase/:nombre/:profesor',
+    path: 'asistentes/:idClase/:nombre/:profesor/:fechaf',
     loadChildren: () => import('./paginas/asistentes/asistentes.module').then( m => m.AsistentesPageModule)
   },
   {
@@ -50,6 +50,30 @@ const routes: Routes = [
   {
     path: 'asisalumno/:idClase/:nombre/:profesor',
     loadChildren: () => import('./paginas/asisalumno/asisalumno.module').then( m => m.AsisalumnoPageModule)
+  },
+  {
+    path: 'calalumno',
+    loadChildren: () => import('./paginas/calalumno/calalumno.module').then( m => m.CalalumnoPageModule)
+  },
+  {
+    path: 'horarios/:fechaf',
+    loadChildren: () => import('./paginas/horarios/horarios.module').then( m => m.HorariosPageModule)
+  },
+  {
+    path: 'crearclase',
+    loadChildren: () => import('./paginas/crearclase/crearclase.module').then( m => m.CrearclasePageModule)
+  },
+  {
+    path: 'caladmin',
+    loadChildren: () => import('./paginas/caladmin/caladmin.module').then( m => m.CaladminPageModule)
+  },
+  {
+    path: 'horariosadmin/:fechaf',
+    loadChildren: () => import('./paginas/horariosadmin/horariosadmin.module').then( m => m.HorariosadminPageModule)
+  },
+  {
+    path: 'cambiarpass',
+    loadChildren: () => import('./paginas/cambiarpass/cambiarpass.module').then( m => m.CambiarpassPageModule)
   },
 ];
 
