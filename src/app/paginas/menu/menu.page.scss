@@ -10,3 +10,7 @@ ion-title {
     background-image: none !important;
     border-bottom: none !important;
 }
+
+ion-content {
+  --overflow: hidden;
+}

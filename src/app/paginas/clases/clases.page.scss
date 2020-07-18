@@ -57,3 +57,7 @@ ion-img {
   display: block;
   margin: auto;
 }
+
+ion-content {
+  --overflow: hidden;
+}
