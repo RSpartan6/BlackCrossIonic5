@@ -1,8 +1,8 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>Cambiar contraseña</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="calalumno" text="Atras"></ion-back-button>
+      <ion-back-button defaultHref="" (click)="atras()" text="Atras"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -27,6 +27,9 @@
               <ion-input [(ngModel)]="cp.confirmarpass" name="contraseniaNueva" type="password" required></ion-input>
             </ion-item>            
           </div>
+          <br>
+          <br>
+          <br>
           <div padding>
             <ion-button (click)="passNuevo(cambiarPass)" size="large" type="submit" expand="block">Cambiar</ion-button>
           </div>

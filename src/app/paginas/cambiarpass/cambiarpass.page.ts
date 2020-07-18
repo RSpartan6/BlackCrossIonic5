@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ToastController, AlertController } from '@ionic/angular';
+import { NavParams, ToastController, AlertController, NavController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login.service';
@@ -26,6 +26,7 @@ export class CambiarpassPage implements OnInit {
   numeroUsuario: string;
   usuario: any;
   idUsuario: string;
+  idRol
 
   constructor
     (
@@ -33,19 +34,34 @@ export class CambiarpassPage implements OnInit {
       private storage: Storage,
       private navParams: NavParams,
       public toastController: ToastController,
-      public alertController: AlertController
+      public alertController: AlertController,
+      private navCtrl: NavController
     ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
       console.log("El usuario en ASISTENCIA ALUMNO es :", this.usuario.respuesta.nombre);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
+      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);      
+      
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
+      this.idRol = this.usuario.respuesta.idRol;
     });
   }
 
   ngOnInit() {
 
+  }
+
+  atras(){
+    if(this.usuario.respuesta.idRol === 1){
+
+      this.navCtrl.navigateRoot('/menu');
+
+    }else{
+      this.navCtrl.navigateRoot('/calalumno');
+
+    }
   }
 
   passNuevo(form: NgForm) {
