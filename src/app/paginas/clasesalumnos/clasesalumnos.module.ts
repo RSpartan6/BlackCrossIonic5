@@ -8,7 +8,6 @@ import { ClasesalumnosPageRoutingModule } from './clasesalumnos-routing.module';
 
 import { ClasesalumnosPage } from './clasesalumnos.page';
 
-import { CalendarModule } from 'ion2-calendar';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -22,8 +21,7 @@ import { RouterModule } from '@angular/router';
         path: '',
         component: ClasesalumnosPage
       }
-    ]),
-    CalendarModule
+    ])
   ],
   declarations: [ClasesalumnosPage]
 })
