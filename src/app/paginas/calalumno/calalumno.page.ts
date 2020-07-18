@@ -11,13 +11,13 @@ import { Storage } from "@ionic/storage";
 export class CalalumnoPage implements OnInit {
 
   fecha
+  fechaf
   date: string;
   type: 'string';
   usuario: any;
   numeroUsuario: string;
   idUsuario: string;
   idRol
-
 
   constructor
     (

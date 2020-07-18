@@ -8,6 +8,7 @@ import { AlertController, NavController } from '@ionic/angular';
 })
 export class CaladminPage implements OnInit {
 
+  fechaf
   fecha
   date: string;
   type: 'string';
