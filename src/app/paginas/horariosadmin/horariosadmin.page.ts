@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute } from '@angular/router';
-import { NavParams } from '@ionic/angular';
+import { NavParams, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 
 
@@ -26,7 +26,8 @@ export class HorariosadminPage implements OnInit {
     private servicio : LoginService,
     private activatedRoute: ActivatedRoute,
     private storage: Storage, 
-    private navParams: NavParams
+    private navParams: NavParams,
+    private loadingController: LoadingController
   ) 
     {
       this.usuario = this.navParams.get(this.usuario);
@@ -51,6 +52,20 @@ export class HorariosadminPage implements OnInit {
         this.listado=data;
         console.log(this.fechaf, "fecha del ngoninit");      
       });
+
+      this.horariosLoading();
+    }
+
+    async horariosLoading() {
+      const loading = await this.loadingController.create({
+        cssClass: 'my-custom-class',
+        spinner: "crescent",
+        message: "Cargando clases",
+        duration: 800
+      });
+      await loading.present();
+  
+      const { role, data } = await loading.onDidDismiss();
     }
 
 }

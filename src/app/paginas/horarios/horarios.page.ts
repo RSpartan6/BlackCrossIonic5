@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute } from '@angular/router';
-import { NavParams, AlertController } from '@ionic/angular';
+import { NavParams, AlertController, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
@@ -31,7 +31,8 @@ export class HorariosPage implements OnInit {
       private activatedRoute: ActivatedRoute,
       private storage: Storage,
       private navParams: NavParams,
-      public alertController: AlertController
+      public alertController: AlertController,
+      private loadingController: LoadingController
     ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
@@ -56,8 +57,9 @@ export class HorariosPage implements OnInit {
       console.log(data, "listado de clases");
       this.listado = data;
       console.log(this.fechaf, "fecha del ngoninit");
-
     });
+
+    this.horariosLoading();
   }
 
   marcarAsistencia(idClase) {
@@ -204,5 +206,17 @@ export class HorariosPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async horariosLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      spinner: "crescent",
+      message: "Cargando clases",
+      duration: 800
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
   }
 }

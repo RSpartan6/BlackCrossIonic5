@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ToastController, AlertController, NavController } from '@ionic/angular';
+import { NavParams, ToastController, AlertController, NavController, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login.service';
@@ -36,7 +36,8 @@ export class CambiarpassPage implements OnInit {
       private navParams: NavParams,
       public toastController: ToastController,
       public alertController: AlertController,
-      private navCtrl: NavController
+      private navCtrl: NavController,
+      private loadingController: LoadingController
     ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
@@ -87,7 +88,7 @@ export class CambiarpassPage implements OnInit {
 
         if (response.codigo == 200) {
 
-          this.cambioPass();
+          this.cambiopassLoading();
           this.navCtrl.navigateRoot('/calalumno');
 
 
@@ -122,15 +123,16 @@ export class CambiarpassPage implements OnInit {
     await alert.present();
   }
 
-
-  async cambioPass() {
-    const alert = await this.alertController.create({
+  async cambiopassLoading() {
+    const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: this.mensaje,
-      buttons: ['OK']
+      duration: 800
     });
+    await loading.present();
 
-    await alert.present();
+    const { role, data } = await loading.onDidDismiss();
   }
 
   clearForm() {
