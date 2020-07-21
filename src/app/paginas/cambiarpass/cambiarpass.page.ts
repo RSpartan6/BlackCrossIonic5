@@ -44,15 +44,13 @@ export class CambiarpassPage implements OnInit {
       this.usuario = user;
       console.log("El usuario en ASISTENCIA ALUMNO es :", this.usuario.respuesta.nombre);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
-      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);
-
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
       this.idRol = this.usuario.respuesta.idRol;
     });
   }
 
   ngOnInit() {
-
+    this.cambioloading();
   }
 
   atras() {
@@ -62,20 +60,15 @@ export class CambiarpassPage implements OnInit {
 
     } else {
       this.navCtrl.navigateRoot('/calalumno');
-
     }
   }
 
   passNuevo(form: NgForm) {
-
-    console.log("ID del usuario:", this.numeroUsuario);
-
     let obj = {
       "idUsuario": this.numeroUsuario,
       "contraseniaAnterior": this.cp.contraseniaAnterior,
       "contraseniaNueva": this.cp.contraseniaNueva
     }
-
     this.submitted = true;
 
     if (this.cp.contraseniaNueva === this.cp.confirmarpass) {
@@ -91,11 +84,9 @@ export class CambiarpassPage implements OnInit {
           this.cambiopassLoading();
           this.navCtrl.navigateRoot('/calalumno');
 
-
         } else {
           this.erroPass();
           this.clearForm();
-
         }
       });
 
@@ -139,6 +130,18 @@ export class CambiarpassPage implements OnInit {
     this.cp.contraseniaAnterior = '';
     this.cp.contraseniaNueva = '';
     this.cp.confirmarpass = '';
+  }
+
+  async cambioloading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      spinner: "crescent",
+      message: "Cargando",
+      duration: 800
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
   }
 
 }
