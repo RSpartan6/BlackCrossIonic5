@@ -8,15 +8,10 @@
 </ion-header>
 
 <ion-content>
-  <!-- <form #form="ngForm" (ngSubmit)="register(form)"> -->
   <form #form="ngForm">
-
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <!-- <div text-center>
-              <h3>Agregar cuenta</h3>
-            </div> -->
           <div padding>
             <ion-item>
               <ion-label position="stacked">Nombre</ion-label>
@@ -41,14 +36,6 @@
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Sexo</ion-label>
-              <!-- <ion-input
-                name="sexo"
-                type="text"
-                placeholder="{{sexo}}"
-                ngModel
-                required
-              ></ion-input> -->
-
               <ion-select placeholder="{{sexo}}" name="sexo" type="text" [(ngModel)]="ep.sexo" required>
                 <ion-select-option value="F">Femenino
                 </ion-select-option>
