@@ -32,9 +32,9 @@ export class HorariosadminPage implements OnInit {
     {
       this.usuario = this.navParams.get(this.usuario);
       this.storage.get("userData").then((user) => {
-      this.usuario = user;
-      console.log("El usuario en HORARIO es :",this.usuario.respuesta.nombre);
-      console.log("Y su Rol es :", this.usuario.respuesta.idRol);
+      this.usuario = user;      
+      // console.log("El usuario en HORARIO es :",this.usuario.respuesta.nombre);
+      // console.log("Y su Rol es :", this.usuario.respuesta.idRol);
     });
      }
 

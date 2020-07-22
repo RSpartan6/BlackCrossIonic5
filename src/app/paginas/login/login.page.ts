@@ -36,6 +36,7 @@ export class LoginPage implements OnInit {
     // this.storage.clear();
 
     this.submitted = true;
+
     if (form.valid) {
 
       this.presentLoading()
@@ -51,18 +52,16 @@ export class LoginPage implements OnInit {
 
           console.log("Rol Usuario", json.respuesta.idRol);
 
-          // if (this.login.usuario == 'LUISC') {
-
           if (json.codigo == 200) {
 
-            if (json.respuesta.idRol == 1) {
+            if (json.respuesta.idRol === 1) {
               console.log(this.login.usuario);
               console.log("Usuario Entrenador", json.respuesta.nombre);
               this.navCtrl.navigateRoot('/menu');
 
             } else
 
-              if (json.respuesta.idRol == 2) {
+              if (json.respuesta.idRol === 2) {
                 console.log(this.login.usuario);
                 console.log("Usuario Cliente", json.respuesta.nombre)
                 this.navCtrl.navigateRoot('/calalumno');
