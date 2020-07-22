@@ -9,6 +9,7 @@ import { NavParams } from "@ionic/angular";
 })
 export class MenuPage implements OnInit {
   usuario:any;
+  respuesta
 
   constructor
   (

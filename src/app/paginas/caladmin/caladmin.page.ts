@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController, NavParams } from '@ionic/angular';
+import { Storage } from "@ionic/storage";
+
 
 @Component({
   selector: 'app-caladmin',
@@ -13,11 +15,23 @@ export class CaladminPage implements OnInit {
   date: string;
   type: 'string';
 
+  usuario:any;
+
+
   constructor
     (
       public alertController: AlertController,
-      public navCtrl: NavController
-    ) { }
+      public navCtrl: NavController,
+      private storage: Storage, 
+     private navParams: NavParams
+    ) { 
+      this.usuario = this.navParams.get(this.usuario);
+      this.storage.get("userData").then((user) => {
+      this.usuario = user;
+      console.log("El admin en CALENDARIO es :",this.usuario.respuesta.nombre);
+      console.log("Y su Rol es :", this.usuario.respuesta.idRol);
+    });
+    }
 
   ngOnInit() {
   }
