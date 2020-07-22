@@ -12,7 +12,7 @@
   <!-- Observaciones -->
   <ion-list inset="true" class="animated fast fadeInLeft" >
     <!-- <ion-item href="/tabs/clases" no-border> -->
-    <ion-item no-border href="/caladmin">
+    <ion-item no-border (click)="caladmin()">
       <!-- <ion-avatar slot="start"> -->
       <ion-icon name="barbell-outline" slot="start" style="zoom: 2;"></ion-icon>
       <!-- </ion-avatar> -->
@@ -21,7 +21,7 @@
       </ion-label>
     </ion-item>
     <!-- <ion-item href="/tabs/perfil" *ngIf="usuario.respuesta.idRol == 1"> -->
-    <ion-item href="/perfil">
+    <ion-item (click)="perfil()">
       <!-- <ion-avatar slot="start"> -->
       <ion-icon name="people-circle-outline" slot="start" style="zoom: 2;"></ion-icon>
       <!-- </ion-avatar> -->
