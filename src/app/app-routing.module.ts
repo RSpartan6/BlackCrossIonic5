@@ -75,6 +75,10 @@ const routes: Routes = [
     path: 'cambiarpass',
     loadChildren: () => import('./paginas/cambiarpass/cambiarpass.module').then( m => m.CambiarpassPageModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./paginas/admin/admin.module').then( m => m.AdminPageModule)
+  },
 ];
 
 @NgModule({

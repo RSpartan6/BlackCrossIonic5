@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
             if (json.respuesta.idRol === 1) {
               console.log(this.login.usuario);
               console.log("Usuario Entrenador", json.respuesta.nombre);
-              this.navCtrl.navigateRoot('/menu');
+              this.navCtrl.navigateRoot('/admin');
 
             } else
 
