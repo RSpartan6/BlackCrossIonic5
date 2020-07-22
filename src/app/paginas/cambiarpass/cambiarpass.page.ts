@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ToastController, AlertController, NavController } from '@ionic/angular';
+import { NavParams, ToastController, AlertController, NavController, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login.service';
@@ -36,22 +36,21 @@ export class CambiarpassPage implements OnInit {
       private navParams: NavParams,
       public toastController: ToastController,
       public alertController: AlertController,
-      private navCtrl: NavController
+      private navCtrl: NavController,
+      private loadingController: LoadingController
     ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
       console.log("El usuario en ASISTENCIA ALUMNO es :", this.usuario.respuesta.nombre);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
-      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);
-
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
       this.idRol = this.usuario.respuesta.idRol;
     });
   }
 
   ngOnInit() {
-
+    this.cambioloading();
   }
 
   atras() {
@@ -61,20 +60,15 @@ export class CambiarpassPage implements OnInit {
 
     } else {
       this.navCtrl.navigateRoot('/calalumno');
-
     }
   }
 
   passNuevo(form: NgForm) {
-
-    console.log("ID del usuario:", this.numeroUsuario);
-
     let obj = {
       "idUsuario": this.numeroUsuario,
       "contraseniaAnterior": this.cp.contraseniaAnterior,
       "contraseniaNueva": this.cp.contraseniaNueva
     }
-
     this.submitted = true;
 
     if (this.cp.contraseniaNueva === this.cp.confirmarpass) {
@@ -87,14 +81,12 @@ export class CambiarpassPage implements OnInit {
 
         if (response.codigo == 200) {
 
-          this.cambioPass();
+          this.cambiopassLoading();
           this.navCtrl.navigateRoot('/calalumno');
-
 
         } else {
           this.erroPass();
           this.clearForm();
-
         }
       });
 
@@ -122,21 +114,34 @@ export class CambiarpassPage implements OnInit {
     await alert.present();
   }
 
-
-  async cambioPass() {
-    const alert = await this.alertController.create({
+  async cambiopassLoading() {
+    const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
+      spinner: "crescent",
       message: this.mensaje,
-      buttons: ['OK']
+      duration: 800
     });
+    await loading.present();
 
-    await alert.present();
+    const { role, data } = await loading.onDidDismiss();
   }
 
   clearForm() {
     this.cp.contraseniaAnterior = '';
     this.cp.contraseniaNueva = '';
     this.cp.confirmarpass = '';
+  }
+
+  async cambioloading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      spinner: "crescent",
+      message: "Cargando",
+      duration: 800
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
   }
 
 }

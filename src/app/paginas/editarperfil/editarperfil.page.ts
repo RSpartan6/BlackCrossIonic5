@@ -18,7 +18,7 @@ export class EditarperfilPage implements OnInit {
     "contrasenia":"",
     "nombre":"",
     "sexo":"",
-    "correo_electronico":"",
+    "correoElectronico":"",
     "peso":"",
     "altura":"--",
     "imc":"--",
@@ -35,7 +35,6 @@ export class EditarperfilPage implements OnInit {
   telefono: string;
   contrasenia: string;
   estatus: string;
-
   listado:any;
 
   constructor
@@ -58,32 +57,27 @@ export class EditarperfilPage implements OnInit {
     this.contrasenia =this.activatedRoute.snapshot.paramMap.get('contrasenia');
     this.estatus = this.activatedRoute.snapshot.paramMap.get('estatus');
 
-    console.log(this.usuario, "Usuario");
-    
-   
-    this.servicio.getData(this.urlapi+'Usuarios/usuario/'+this.usuario+'/').subscribe(data => {
-    
+    console.log(this.usuario, "Usuario");   
+    this.servicio.getData(this.urlapi+'Usuarios/usuario/'+this.usuario+'/').subscribe(data => {    
       console.log(data);
-
       this.listado=data;
-      
        });
   }
 
   editarUsuario(){
     let obj = {
       "idRol": 2,
-      "usuario":this.usuario,
-      "contrasenia":this.contrasenia,
-      "nombre":this.nombre,
-      "sexo":this.sexo,
-      "correoElectronico":this.correoElectronico,
+      "usuario":this.ep.usuario,
+      "contrasenia":this.ep.contrasenia,
+      "nombre":this.ep.nombre,
+      "sexo":this.ep.sexo,
+      "correoElectronico":this.ep.correoElectronico,
       "peso":0,
       "altura":0,
       "imc":"--",
-      "telefono":this.telefono,
+      "telefono":this.ep.telefono,
       "nivel": "10" ,
-      "estatus":this.estatus,
+      "estatus":this.ep.estatus,
       "intentos":0,
     }   
 

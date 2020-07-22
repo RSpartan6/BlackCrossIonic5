@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  fullscreen="true">
+<ion-content  [fullscreen]="true">
 
   <form #claseNueva="ngForm" novalidate>
     <!-- <ion-img src=".././assets/img/BlackC-SF2.png"></ion-img> -->
@@ -59,7 +59,7 @@
           </div>
           <br>
           <div padding>
-            <ion-button (click)="nuevaClase(claseNueva)" size="large" type="submit" expand="block">Agregar</ion-button>
+            <ion-button (click)="nuevaClase(claseNueva)" size="large" type="submit" expand="block" color="primary">Agregar</ion-button>
           </div>
         </ion-col>
       </ion-row>

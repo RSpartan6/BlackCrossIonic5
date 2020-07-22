@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController, NavParams } from '@ionic/angular';
+import { AlertController, NavController, NavParams, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 
 
@@ -24,7 +24,8 @@ export class CalalumnoPage implements OnInit {
       public alertController: AlertController,
       public navCtrl: NavController,
       private storage: Storage,
-      private navParams: NavParams
+      private navParams: NavParams,
+      private loadingController: LoadingController
     ) { 
       this.usuario = this.navParams.get(this.usuario);
       this.storage.get("userData").then((user) => {
@@ -63,6 +64,7 @@ export class CalalumnoPage implements OnInit {
   // }
 
   ngOnInit() {
+    
   }
 
   onClick(date,fechaf) {
@@ -82,7 +84,6 @@ export class CalalumnoPage implements OnInit {
     fechaf = format(this.fecha);
     this.navCtrl.navigateRoot('/horarios/' + fechaf)
     console.log(fechaf)
-  }
-  
+  }  
 
 }

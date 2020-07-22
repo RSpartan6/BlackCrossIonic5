@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="true" class="background">
+<ion-content [fullscreen]="true" class="background">
   <form #guardarPerfil="ngForm" novalidate>
     <!-- <ion-img src=".././assets/img/BlackC-SF2.png"></ion-img> -->
     <ion-grid>
@@ -59,7 +59,7 @@
           </div>
           <br>
           <div padding>
-            <ion-button (click)="nuevoUsuario(guardarPerfil)" size="large" type="submit" expand="block">Registrar</ion-button>
+            <ion-button (click)="nuevoUsuario(guardarPerfil)" size="large" type="submit" expand="block" color="primary">Registrar</ion-button>
           </div>
         </ion-col>
       </ion-row>
