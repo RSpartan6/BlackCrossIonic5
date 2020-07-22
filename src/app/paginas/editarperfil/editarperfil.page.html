@@ -9,7 +9,7 @@
 
 <ion-content>
   <form #form="ngForm">
-    <ion-grid>
+    <ion-grid size-md="6" size-lg="5" size-xs="12">
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div padding>
@@ -34,40 +34,41 @@
                 [(ngModel)]="ep.correo_electronico" required>
               </ion-input>
             </ion-item>
-            <ion-item>
-              <ion-label position="stacked">Sexo</ion-label>
-              <ion-select placeholder="{{sexo}}" name="sexo" type="text" [(ngModel)]="ep.sexo" required>
-                <ion-select-option value="F">Femenino
-                </ion-select-option>
-                <ion-select-option value="M">Masculino
-                </ion-select-option>
-              </ion-select>
+            <ion-item no-lines>
+              <ion-segment (ionChange)="segmentChanged($event)" name="sexo" type="text" [(ngModel)]="ep.sexo">
+                <ion-segment-button value="F">
+                  <ion-label>Femenino</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="M">
+                  <ion-label>Masculino</ion-label>
+                </ion-segment-button>
+              </ion-segment>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Telefono</ion-label>
               <ion-input name="telefono" type="text" placeholder="{{telefono}}" [(ngModel)]="ep.telefono" required>
               </ion-input>
             </ion-item>
-          </div>          
+          </div>
+          <div>
+            <ion-row>
+              <ion-col>
+                <ion-button color="primary" type="submit" (click)="editarUsuario()" expand="block">Editar</ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col>
+                <ion-button color="success" expand="block" (click)="activarUser(usuario)">Activo</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button color="danger" expand="block" (click)="desactivarUser(usuario)">Inactivo</ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
         </ion-col>
       </ion-row>
-    </ion-grid>
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col size="12">
-          <ion-button color="primary" type="submit" (click)="editarUsuario()" expand="block">Editar</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-button color="success" expand="block" (click)="activarUser(usuario)">Activo</ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button color="danger" expand="block" (click)="desactivarUser(usuario)">Inactivo</ion-button>
-          </ion-col>
-        </ion-row>
     </ion-grid>
   </form>
 </ion-content>
