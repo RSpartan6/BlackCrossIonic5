@@ -47,7 +47,6 @@ export class LoginPage implements OnInit {
           let objUsuario = JSON.stringify(data);
           let json = JSON.parse(objUsuario);
           this.storage.set('userData', data);
-
           this.mensaje = json.descripcion;
 
           console.log("Rol Usuario", json.respuesta.idRol);
@@ -79,7 +78,6 @@ export class LoginPage implements OnInit {
             this.clearForm();
             console.log("Usuario no valido");
             this.Loadingdatosinc(this.mensaje);
-
           }
         }
       );
@@ -125,6 +123,9 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+        this.storage.clear();
+        console.log("Storage Clear", this.storage);
+        
   }
 
 }
