@@ -43,11 +43,11 @@ export class LoginPage implements OnInit {
 
       this.loginService.login(this.login).subscribe(
         data => {
-          // this.storage.set('token', data);
-          // let userData = (data);
           let objUsuario = JSON.stringify(data);
           let json = JSON.parse(objUsuario);
           this.storage.set('userData', data);
+          console.log("Json", json);
+          
           this.mensaje = json.descripcion;
 
           console.log("Rol Usuario", json.respuesta.idRol);
