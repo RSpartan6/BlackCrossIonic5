@@ -36,19 +36,18 @@ export class EditarperfilPage implements OnInit {
   contrasenia: string;
   estatus: string;
   listado:any;
+  idUsuario
 
   constructor
   (
     private activatedRoute: ActivatedRoute, 
     private servicio: LoginService,
-    // public navCtrl: NavController,
-    // public navCtrl: NavController,
-    private router: Router,
     public loadingController: LoadingController
   ) { }
 
   ionViewWillEnter(){
    
+    this.idUsuario = this.activatedRoute.snapshot.paramMap.get('idUsuario')
     this.usuario = this.activatedRoute.snapshot.paramMap.get('usuario');
     this.sexo = this.activatedRoute.snapshot.paramMap.get('sexo');
     this.correoElectronico = this.activatedRoute.snapshot.paramMap.get('correoElectronico');
@@ -57,7 +56,10 @@ export class EditarperfilPage implements OnInit {
     this.contrasenia =this.activatedRoute.snapshot.paramMap.get('contrasenia');
     this.estatus = this.activatedRoute.snapshot.paramMap.get('estatus');
 
-    console.log(this.usuario, "Usuario");   
+    console.log(this.usuario, "Usuario"); 
+
+    console.log(this.idUsuario, "Id del usuario seleccionado");
+    
     this.servicio.getData(this.urlapi+'Usuarios/usuario/'+this.usuario+'/').subscribe(data => {    
       console.log(data);
       this.listado=data;
@@ -87,8 +89,7 @@ export class EditarperfilPage implements OnInit {
       });
     console.log(obj, "ep");
     // this.navCtrl.push(PerfilPage)
-  }
-
+  }  
   
   activarUser(idUsuario){
 

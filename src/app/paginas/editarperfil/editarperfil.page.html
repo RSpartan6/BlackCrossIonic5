@@ -14,6 +14,10 @@
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div padding>
             <ion-item>
+              <ion-label>ID Usuario</ion-label>
+              <ion-input type="text" placeholder="{{idUsuario}}"></ion-input>
+            </ion-item>
+            <ion-item>
               <ion-label position="stacked">Nombre</ion-label>
               <ion-input name="nombre" type="text" placeholder="{{nombre}}" [(ngModel)]="ep.nombre" required>
               </ion-input>
@@ -60,7 +64,7 @@
           <div>
             <ion-row>
               <ion-col>
-                <ion-button color="success" expand="block" (click)="activarUser(usuario)">Activo</ion-button>
+                <ion-button color="success" expand="block" (click)="activarUser(idUsuario)">Activo</ion-button>
               </ion-col>
               <ion-col>
                 <ion-button color="danger" expand="block" (click)="desactivarUser(usuario)">Inactivo</ion-button>
