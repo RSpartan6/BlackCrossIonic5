@@ -46,7 +46,7 @@ export class PerfilPage implements OnInit {
   }
 
   menuPerfil() {
-    this.router.navigate(["/menu"]);
+    this.router.navigate(["/admin"]);
   }
 
   buscar(event) {

@@ -56,7 +56,7 @@ export class CambiarpassPage implements OnInit {
   atras() {
     if (this.usuario.respuesta.idRol === 1) {
 
-      this.navCtrl.navigateRoot('/menu');
+      this.navCtrl.navigateRoot('/admin');
 
     } else {
       this.navCtrl.navigateRoot('/calalumno');
