@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController, AlertController } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-editarperfil',
@@ -10,23 +11,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class EditarperfilPage implements OnInit {
 
-  urlapi="http://3.133.28.198:8080/Wod/"
-
-  ep={
-    "idRol": "",
-    "usuario":"",
-    "contrasenia":"",
-    "nombre":"",
-    "sexo":"",
-    "correoElectronico":"",
-    "peso":"",
-    "altura":"--",
-    "imc":"--",
-    "telefono":"",
-    "nivel": "",
-    "estatus":"",
-    "intentos":"",
-  }
+  urlapi="http://3.133.28.198:8080/Wod/"; 
 
   usuario: string;
   sexo: string;
@@ -37,12 +22,15 @@ export class EditarperfilPage implements OnInit {
   estatus: string;
   listado:any;
   idUsuario: string;
+  mensaje
 
   constructor
   (
     private activatedRoute: ActivatedRoute, 
     private servicio: LoginService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private navCtrl: NavController,
+    private alertController: AlertController
   ) { }
 
   ionViewWillEnter(){
@@ -64,7 +52,27 @@ export class EditarperfilPage implements OnInit {
        });
   }
 
-  editarUsuario(){
+  ep={
+    "idRol": "",
+    "usuario":"",
+    "contrasenia":"",
+    "nombre":"",
+    "sexo":"",
+    "correoElectronico":"",
+    "peso":"",
+    "altura":"--",
+    "imc":"--",
+    "telefono":"",
+    "nivel": "",
+    "estatus":"",
+    "intentos":"",
+  }
+
+  submitted = false;
+
+  // Metodos
+
+  editarUsuario(form:NgForm){
     let obj = {
       "idRol": 2,
       "usuario":this.ep.usuario,
@@ -81,12 +89,30 @@ export class EditarperfilPage implements OnInit {
       "intentos":0,
     }   
 
-    this.presentLoading();
-    this.servicio.editarUsuario(obj).subscribe((response: any) => {
-          console.log(response, "Editar Usuario method");
-      });
-    console.log(obj, "ep");
-    // this.navCtrl.push(PerfilPage)
+    this.submitted = true;
+
+    if (form.valid) {
+
+      this.servicio.editarUsuario(obj).subscribe((response: any) => {
+
+        this.mensaje = response.respuesta;
+  
+            if (response.codigo === 200) {
+              this.actualizado();
+              this.navCtrl.navigateRoot('/perfil');
+            }else{
+              this.actualizado();
+            }
+        });
+      
+    } else{
+      this.todoslosCampos();
+    }
+    
+    
+    
+
+    console.log(obj, "ediar perfil");    
   }  
   
   activarUser(idUsuario){
@@ -103,6 +129,19 @@ export class EditarperfilPage implements OnInit {
       console.log(response, "Usuario Desactivado");
   });
   this.desacactivadoLoading();
+  }
+
+  // Fin Metodos
+
+  // Alerta actualizado
+  async actualizado() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: this.mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   async presentLoading() {
@@ -139,6 +178,16 @@ export class EditarperfilPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
+  }
+
+  async todoslosCampos() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Todos los campos son necesarios',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   ngOnInit() {

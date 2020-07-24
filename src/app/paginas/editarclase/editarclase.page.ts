@@ -95,7 +95,7 @@ export class EditarclasePage implements OnInit {
       // this.navCtrl.push(ClasesPage)
 
     } else {
-      this.todoslosCampos()
+      this.todoslosCampos();
     }
   }
 

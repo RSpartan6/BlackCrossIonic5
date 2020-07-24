@@ -20,8 +20,10 @@ export class LoginService {
     return this.http.get(`${url}`);
   }
 
-  editarUsuario(usuario) {
-    return this.http.put(this.url + "Usuarios", usuario, this.httpOptions);
+  editarUsuario(editar) {
+    editar = JSON.stringify(editar);
+    console.log(editar,"Editar service");
+    return this.http.put(this.url + "Usuarios", editar, this.httpOptions);
   }
 
   // Servicio cambiar status
@@ -87,15 +89,6 @@ export class LoginService {
   // Servicio de Login
   login(user) {
     console.log(user, "Bienvenido");
-
-    // console.log(user.usuario);
-    // console.log(user.contrasenia);
-
-    // let usuario = {
-    //   'usuario': user.usuario,
-    //   'contrasenia': user.contrasenia
-    // }
-
     return this.http
       .post(
         "http://3.133.28.198:8080/Wod/IniciarSesion?usuario=" +
@@ -105,5 +98,12 @@ export class LoginService {
         {}
       )
       .pipe();
+  }
+
+  loginPost(user) {
+    console.log(user, "Bienvenido");
+    user = JSON.stringify(user);
+    console.log(user);
+    return this.http.post(this.url + 'IniciarSesion/iniciar-sesion', user, this.httpOptions)
   }
 }

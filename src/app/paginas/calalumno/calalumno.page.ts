@@ -26,23 +26,24 @@ export class CalalumnoPage implements OnInit {
       private storage: Storage,
       private navParams: NavParams,
       private loadingController: LoadingController
-    ) { 
-      this.usuario = this.navParams.get(this.usuario);
-      this.storage.get("userData").then((user) => {
+    ) {
+    this.usuario = this.navParams.get(this.usuario);
+    this.storage.get("userData").then((user) => {
       this.usuario = user;
-      console.log("El usuario en CALENDARIO es :", this.usuario.respuesta.nombre);
+
+      console.log("El usuario en CALENDARIO es :", this.usuario.respuesta.usuario);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
-      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);  
-      
+      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);
+
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
       this.idRol = this.usuario.respuesta.idRol;
-      
+
     });
-    }
+  }
 
   // onChange(date) {
-    
-    
+
+
   //   this.fecha = date._d;
 
   //   function format(d) {
@@ -64,10 +65,10 @@ export class CalalumnoPage implements OnInit {
   // }
 
   ngOnInit() {
-    
+
   }
 
-  onClick(date,fechaf) {
+  onClick(date, fechaf) {
 
     this.fecha = date._d;
 
@@ -84,6 +85,6 @@ export class CalalumnoPage implements OnInit {
     fechaf = format(this.fecha);
     this.navCtrl.navigateRoot('/horarios/' + fechaf)
     console.log(fechaf)
-  }  
+  }
 
 }

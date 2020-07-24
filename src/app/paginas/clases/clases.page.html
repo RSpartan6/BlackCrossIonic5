@@ -8,12 +8,12 @@
       <ion-button href="crearclase">
         <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
-    </ion-buttons>    
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list inset="true" class="animated fast fadeInDown">   
+  <ion-list inset="true" class="animated fast fadeInDown">
     <!-- <ion-item *ngFor="let Clases of listado?.respuesta; let indice=index; let AsistenciaClase of listado2?.respuesta" href="/tabs/asistentes/{{Clases.idClase}}/{{Clases.nombre}}"> -->
     <ion-item *ngFor="let Clases of listado?.respuesta; 
     let indice=index;" href="asistentes/{{Clases.idClase}}/{{Clases.nombre}}/{{Clases.profesor}}"

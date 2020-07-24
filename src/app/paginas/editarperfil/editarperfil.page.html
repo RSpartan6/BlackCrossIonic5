@@ -7,16 +7,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form #form="ngForm">
+<ion-content [fullscreen]="true">
+  <form #editarPerfil="ngForm" novalidate>
     <ion-grid size-md="6" size-lg="5" size-xs="12">
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div padding>
-            <ion-item>
-              <ion-label>ID Usuario</ion-label>
-              <ion-input type="text" placeholder="{{idUsuario}}"></ion-input>
-            </ion-item>
             <ion-item>
               <ion-label position="stacked">Nombre</ion-label>
               <ion-input name="nombre" type="text" placeholder="{{nombre}}" [(ngModel)]="ep.nombre" required>
@@ -57,7 +53,7 @@
           <div>
             <ion-row>
               <ion-col>
-                <ion-button color="primary" type="submit" (click)="editarUsuario()" expand="block">Editar</ion-button>
+                <ion-button color="primary" type="submit" (click)="editarUsuario(editarPerfil)" expand="block">Editar</ion-button>
               </ion-col>
             </ion-row>
           </div>
