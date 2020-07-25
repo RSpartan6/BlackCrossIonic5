@@ -73,6 +73,7 @@ export class EditarperfilPage implements OnInit {
   // Metodos
 
   editarUsuario(form:NgForm){
+    
     let obj = {
       "idRol": 2,
       "usuario":this.ep.usuario,

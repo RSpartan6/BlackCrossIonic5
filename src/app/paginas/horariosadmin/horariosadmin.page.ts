@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute } from '@angular/router';
-import { NavParams, LoadingController } from '@ionic/angular';
+import { NavParams, LoadingController, NavController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 
 
@@ -27,7 +27,8 @@ export class HorariosadminPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private storage: Storage, 
     private navParams: NavParams,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private navCtrl: NavController
   ) 
     {
       this.usuario = this.navParams.get(this.usuario);
@@ -54,6 +55,10 @@ export class HorariosadminPage implements OnInit {
       });
 
       this.horariosLoading();
+    }
+
+    atras(){
+      this.navCtrl.navigateBack('/caladmin');
     }
 
     async horariosLoading() {
