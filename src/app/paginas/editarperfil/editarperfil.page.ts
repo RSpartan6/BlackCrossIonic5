@@ -47,7 +47,7 @@ export class EditarperfilPage implements OnInit {
     console.log(this.usuario, "Usuario");
     
     this.servicio.getData(this.urlapi+'Usuarios/usuario/'+this.usuario+'/').subscribe(data => {    
-      console.log(data);
+      console.log(data, "informacion del perfil seleccionado");
       this.listado=data;
        });
   }
@@ -121,7 +121,9 @@ export class EditarperfilPage implements OnInit {
     this.servicio.activarUser(idUsuario).subscribe((response: any) => {
       console.log(response, "Usuario Activado");
   });
-  this.activandoLoading();
+  this.userActivado();
+
+  // this.navCtrl.navigateRoot('/perfil');
   }
 
   desactivarUser(idUsuario){
@@ -129,7 +131,10 @@ export class EditarperfilPage implements OnInit {
     this.servicio.desactivarUser(idUsuario).subscribe((response: any) => {
       console.log(response, "Usuario Desactivado");
   });
-  this.desacactivadoLoading();
+  this.userDesactivado();
+
+  // this.navCtrl.navigateRoot('/perfil');
+
   }
 
   // Fin Metodos
@@ -157,29 +162,32 @@ export class EditarperfilPage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
   }
 
-  async activandoLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      spinner: "crescent",
-      message: 'Usuario Activado',
-      duration: 1000
-    });
-    await loading.present();
+    // Alertas de activo e inactivo
 
-    const { role, data } = await loading.onDidDismiss();
+  
+    async userActivado() {
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: 'Usuario activado',
+        buttons: ['OK']
+      });
+  
+      await alert.present();
+    }
+
+  async userDesactivado() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Usuario desactivado',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
-  async desacactivadoLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      spinner: "crescent",
-      message: 'Usuario Desactivado',
-      duration: 1000
-    });
-    await loading.present();
+  
 
-    const { role, data } = await loading.onDidDismiss();
-  }
+  // Fin alertas activo o inactivo
 
   async todoslosCampos() {
     const alert = await this.alertController.create({
@@ -197,5 +205,4 @@ export class EditarperfilPage implements OnInit {
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
   }
-
 }

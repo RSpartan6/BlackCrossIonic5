@@ -19,6 +19,7 @@ export class LoginPage implements OnInit {
   mensaje: string;
   Rol
   usuario
+  codigo
 
   submitted = false;
 
@@ -51,8 +52,12 @@ export class LoginPage implements OnInit {
         this.mensaje = response.mensaje;
         this.Rol = response.respuesta.idRol;
         this.usuario = response.respuesta.usuario;
+        this.codigo = response.codigo;
         console.log(response, "Login nuevo method");
+
         if (response.codigo == 200) {
+
+          this.presentLoading();
 
           if (this.Rol === 1) {
             console.log(this.login.usuario);
@@ -73,9 +78,12 @@ export class LoginPage implements OnInit {
                 this.clearForm();
               }
 
-        } else {
+        } else if (response.codigo == 500) {
           this.errorLogin();
+          console.log("Error 500");
+          
         }
+          
       });
       console.log(this.login);
 
@@ -94,6 +102,7 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
+
   // Alert todos los campos necesarios
   async todoslosCampos() {
     const alert = await this.alertController.create({
@@ -163,7 +172,8 @@ export class LoginPage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       spinner: "crescent",
-      message: 'Iniciando Sesion',
+      translucent: true,
+      message: 'Bienvenido' + ' ' + this.usuario,
       duration: 1000
     });
     await loading.present();
@@ -192,6 +202,17 @@ export class LoginPage implements OnInit {
       buttons: ['Aceptar']
     });
     alert.present();
+  }
+
+  async userDesactivado() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Atencion !',
+      message: 'Usuario desactivado, contactate con el administrador.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   ngOnInit() {

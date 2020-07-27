@@ -24,8 +24,7 @@ export class CalalumnoPage implements OnInit {
       public alertController: AlertController,
       public navCtrl: NavController,
       private storage: Storage,
-      private navParams: NavParams,
-      private loadingController: LoadingController
+      private navParams: NavParams
     ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
@@ -34,7 +33,8 @@ export class CalalumnoPage implements OnInit {
       console.log("El usuario en CALENDARIO es :", this.usuario.respuesta.usuario);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
       console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);
-
+      console.log("El estatus del usuario es:", this.usuario.respuesta.estatus);
+      
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
       this.idRol = this.usuario.respuesta.idRol;
 
@@ -65,7 +65,11 @@ export class CalalumnoPage implements OnInit {
   // }
 
   ngOnInit() {
+    if (this.usuario.respuesta.estatus === '0') {
 
+      this.userDesactivado();
+      
+    }
   }
 
   onClick(date, fechaf) {
@@ -85,6 +89,17 @@ export class CalalumnoPage implements OnInit {
     fechaf = format(this.fecha);
     this.navCtrl.navigateRoot('/horarios/' + fechaf)
     console.log(fechaf)
+  }
+
+  async userDesactivado() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Atencion !',
+      message: 'Usuario desactivado, contactate con el administrador.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }
