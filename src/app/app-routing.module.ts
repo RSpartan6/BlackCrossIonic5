@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
-    path: 'editarclase/:idClase',
+    path: 'editarclase/:idClase/:fechaf',
     loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
   },
   {
