@@ -18,6 +18,7 @@ export class EditarclasePage implements OnInit {
   idClase: string;
   mensaje
   msjC
+  fechaf: string;
 
   constructor(
     private servicio: LoginService,
@@ -44,7 +45,10 @@ export class EditarclasePage implements OnInit {
   }
 
   ngOnInit() {    
-    
+    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
+
+    console.log('fecha ngOnInit:' + this.fechaf);
+
   }
 
   ec = {
@@ -87,8 +91,10 @@ export class EditarclasePage implements OnInit {
           this.errorEditar()
         } else {
           this.editadaCorrect();
-          this.navCtrl.navigateRoot('/clases');
 
+          this.navCtrl.navigateRoot('/horariosadmin/'+ this.fechaf)
+          console.log("Fecha de clase editada", this.fechaf);
+          
         }
       });
       console.log(this.ec);
