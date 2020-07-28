@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController, NavParams } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
-
+import { CalendarComponentOptions } from 'ion2-calendar';
 
 @Component({
   selector: 'app-caladmin',
@@ -16,7 +16,6 @@ export class CaladminPage implements OnInit {
   type: 'string';
 
   usuario:any;
-
 
   constructor
     (
@@ -35,6 +34,10 @@ export class CaladminPage implements OnInit {
 
   ngOnInit() {
   }
+
+  options: CalendarComponentOptions = {
+    monthPickerFormat: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+  };
 
   onClick(date,fechaf) {
 
