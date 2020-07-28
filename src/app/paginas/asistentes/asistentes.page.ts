@@ -62,7 +62,6 @@ export class AsistentesPage implements OnInit {
       let objUsuario = JSON.stringify(data);
       let json = JSON.parse(objUsuario);
       this.fechaDeClase = json.respuesta.fecha;
-      console.log("Fecha de la clase", json.respuesta.fecha);
 
     });
   }

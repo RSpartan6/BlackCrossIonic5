@@ -19,7 +19,7 @@ export class EditarclasePage implements OnInit {
   mensaje
   msjC
   fechaf: string;
-  
+
 
   constructor(
     private servicio: LoginService,
@@ -27,55 +27,53 @@ export class EditarclasePage implements OnInit {
     private navParams: NavParams,
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController,
-    private loadingController: LoadingController,
-    private router: Router,
+    // private loadingController: LoadingController,
+    // private router: Router,
     private navCtrl: NavController
 
-    ) {
+  ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
-      console.log("El usuario en HORARIO es :", this.usuario.respuesta.nombre);
-      console.log("Y su Rol es :", this.usuario.respuesta.idRol);
-      console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
-      this.numeroUsuario = this.usuario.respuesta.idUsuario;
+
       this.idClase = this.activatedRoute.snapshot.paramMap.get('idClase');
 
       console.log("Id de la clase a editar",this.idClase);
     });
   }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
-    console.log('fecha ngOnInit:' + this.fechaf);    
+    console.log('fecha ngOnInit editar clase:' + this.fechaf);
   }
 
   ec = {
-    "idClase":"",
+    "idClase": this.idClase,
     "nombre": "",
     "horaInicio": "",
     "horaFin": "",
     "horario": "",
     "personas": "",
-    "profesor": "", 
-    "estatus":"" 
+    "profesor": "",
+    "estatus": ""
   }
   submitted = false;
 
   editarClass(form: NgForm) {
 
     console.log("ID de la clase editada", this.idClase);
-    
+
     let obj = {
-      "idClase":this.idClase,
+      "idClase": this.idClase,
       "nombre": this.ec.nombre,
       "horaInicio": this.ec.horaInicio,
       "horaFin": this.ec.horaFin,
       "horario": this.ec.horario,
       "personas": this.ec.personas,
       "profesor": this.ec.profesor,
-      "estatus":this.ec.estatus
+      "estatus": this.ec.estatus
     }
+
     this.submitted = true;
 
     if (form.valid) {
@@ -84,16 +82,13 @@ export class EditarclasePage implements OnInit {
         this.mensaje = response.mensaje;
         this.msjC = response.respuesta;
         console.log(response, "Editar clase Method ");
-        if (response.codigo == 500) {
-          this.errorEditar()
-        } if (response.codigo == 400) {
-          this.errorEditar()
-        } else {
-          this.editadaCorrect();
 
-          this.navCtrl.navigateRoot('/horariosadmin/'+ this.fechaf)
+        if (response.codigo === 200) {
+          this.editadaCorrect();
+          this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
           console.log("Fecha de clase editada", this.fechaf);
-          
+        } else {
+          this.errorEditar()
         }
       });
       console.log(this.ec);
@@ -104,12 +99,14 @@ export class EditarclasePage implements OnInit {
     }
   }
 
-  eliminarClase(){
+  // Eliminar Clase
 
-    this.presentAlertConfirm();    
+  eliminarClase() {
+
+    this.presentAlertConfirm();
   }
 
-  classeliminar(){
+  classeliminar() {
     this.servicio.eliminarClase(this.idClase).subscribe((response: any) => {
       console.log(response, "Clase Eliminada");
 
@@ -123,8 +120,6 @@ export class EditarclasePage implements OnInit {
       }
     });
   }
-
-  // Eliminar Clase
 
   async deleteClase() {
     const alert = await this.alertController.create({
@@ -153,7 +148,7 @@ export class EditarclasePage implements OnInit {
     });
 
     await alert.present();
-  } 
+  }
 
   async todoslosCampos() {
     const alert = await this.alertController.create({
@@ -170,33 +165,33 @@ export class EditarclasePage implements OnInit {
   }
 
   async presentAlertConfirm() {
- 
-      console.log("Seguro que desea eliminar la clase");
-      const alert = await this.alertController.create({
-        cssClass: 'my-custom-class',
-        message: "Seguro que desea eliminar la clase",
-        buttons: [
-          {
-            text: 'Cancelar',
-            role: 'cancel',
-            cssClass: 'secondary',
-            handler: (blah) => {
-            }
-          }, {
-            text: 'Aceptar',
-            handler: () => {
-              this.classeliminar();
-            }
-          }
-        ]
-      });
-      await alert.present();
-    }
 
-    atras(){
-      // this.navCtrl.navigateRoot('/horariosadmin/'+ this.fechaf)
-      this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
-    }
+    console.log("Seguro que desea eliminar la clase");
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: "Seguro que desea eliminar la clase",
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'Aceptar',
+          handler: () => {
+            this.classeliminar();
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
+
+  atras() {
+    // this.navCtrl.navigateRoot('/horariosadmin/'+ this.fechaf)
+    this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
+  }
+}
 
 
