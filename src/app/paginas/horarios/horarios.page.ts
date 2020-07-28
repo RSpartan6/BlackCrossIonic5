@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute } from '@angular/router';
-import { NavParams, AlertController, LoadingController } from '@ionic/angular';
+import { NavParams, AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 
 @Component({
@@ -32,7 +32,8 @@ export class HorariosPage implements OnInit {
       private storage: Storage,
       private navParams: NavParams,
       public alertController: AlertController,
-      private loadingController: LoadingController
+      private loadingController: LoadingController,
+      private navCtrl : NavController
     ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
@@ -228,5 +229,9 @@ export class HorariosPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
+  }
+
+  atras(){
+    this.navCtrl.navigateRoot('/calalumno');
   }
 }
