@@ -36,7 +36,8 @@ export class CaladminPage implements OnInit {
   }
 
   options: CalendarComponentOptions = {
-    monthPickerFormat: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    monthPickerFormat: ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    weekdays:['D', 'L', 'M', 'M', 'J', 'V', 'S']	
   };
 
   onClick(date,fechaf) {

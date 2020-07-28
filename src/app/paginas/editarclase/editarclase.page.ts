@@ -110,7 +110,6 @@ export class EditarclasePage implements OnInit {
     this.presentAlertConfirm();    
   }
 
-
   classeliminar(){
     this.servicio.eliminarClase(this.idClase).subscribe((response: any) => {
       console.log(response, "Clase Eliminada");

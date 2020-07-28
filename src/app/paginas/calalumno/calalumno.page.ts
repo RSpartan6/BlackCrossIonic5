@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController, NavParams, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
+import { CalendarComponentOptions } from 'ion2-calendar';
+
 
 
 @Component({
@@ -101,5 +103,10 @@ export class CalalumnoPage implements OnInit {
 
     await alert.present();
   }
+
+  options: CalendarComponentOptions = {
+    monthPickerFormat: ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    weekdays:['D', 'L', 'M', 'M', 'J', 'V', 'S']	
+  };
 
 }
