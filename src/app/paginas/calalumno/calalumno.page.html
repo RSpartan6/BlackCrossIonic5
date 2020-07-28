@@ -4,8 +4,13 @@
     <ion-buttons slot="end">
       <ion-button href="cambiarpass">
         <ion-icon slot="icon-only" name="cog-outline"></ion-icon>
-      </ion-button>
+      </ion-button>       
     </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="confirmCerrar()">
+        <ion-icon slot="icon-only" name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">

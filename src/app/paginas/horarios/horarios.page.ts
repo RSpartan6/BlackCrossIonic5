@@ -3,7 +3,6 @@ import { LoginService } from 'src/app/servicios/login.service';
 import { ActivatedRoute } from '@angular/router';
 import { NavParams, AlertController, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-horarios',
@@ -15,6 +14,7 @@ export class HorariosPage implements OnInit {
   listado: any;
   usuario: any;
   idClase: string;
+  idUsuario: string;
   fechaf: string;
   numeroUsuario: string;
   mensaje: string;
@@ -37,11 +37,24 @@ export class HorariosPage implements OnInit {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
+
       console.log("El usuario en HORARIO es :", this.usuario.respuesta.nombre);
       console.log("Y su Rol es :", this.usuario.respuesta.idRol);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
-      
+
+      console.log("sdsdfsdf", this.numeroUsuario);
+
+      this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
+      this.idUsuario
+
+      this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf + "/" + this.numeroUsuario).subscribe(data => {
+        console.log(data, "listado de clases");
+
+        this.listado = data;
+        console.log(this.fechaf, "fecha del constrauctor");
+      });
+      this.horariosLoading();
     });
   }
 
@@ -51,15 +64,13 @@ export class HorariosPage implements OnInit {
   }
 
   ngOnInit() {
+  }
 
-    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
-    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf).subscribe(data => {
+  obtenerDatos() {
+    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf + "/" + this.numeroUsuario).subscribe(data => {
       console.log(data, "listado de clases");
       this.listado = data;
-      console.log(this.fechaf, "fecha del ngoninit");
     });
-
-    this.horariosLoading();
   }
 
   marcarAsistencia(idClase) {
@@ -98,7 +109,6 @@ export class HorariosPage implements OnInit {
             handler: () => {
               this.asistir(idClase);
               console.log(idClase, this.mensaje);
-
             }
           }
         ]
@@ -140,10 +150,10 @@ export class HorariosPage implements OnInit {
       this.mensajeerror = response.descripcion;
       console.log(this.fechaf, "Fecha clase");
       console.log("Id de clase", idClase);
-
       if (response.codigo == 200) {
         this.agregadoAlert();
         console.log("Fecha seleccionada", this.fechaf);
+        this.obtenerDatos();
       } else {
         this.usuarioEnclase();
       }
@@ -157,9 +167,9 @@ export class HorariosPage implements OnInit {
       console.log(response, "Asistencia eliminada"); this.mensaje = response.respuesta;
       this.mensajeerror = response.descripcion;
       if (response.codigo == 200) {
-
         this.eliminarAsistencia();
         console.log("Fecha seleccionada", this.fechaf);
+        this.obtenerDatos();
       } else if (response.codigo == 500) {
         console.log("Erro 500");
 

@@ -19,6 +19,7 @@ export class EditarclasePage implements OnInit {
   mensaje
   msjC
   fechaf: string;
+  
 
   constructor(
     private servicio: LoginService,
@@ -46,9 +47,7 @@ export class EditarclasePage implements OnInit {
 
   ngOnInit() {    
     this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
-
-    console.log('fecha ngOnInit:' + this.fechaf);
-
+    console.log('fecha ngOnInit:' + this.fechaf);    
   }
 
   ec = {
@@ -192,6 +191,11 @@ export class EditarclasePage implements OnInit {
         ]
       });
       await alert.present();
+    }
+
+    atras(){
+      // this.navCtrl.navigateRoot('/horariosadmin/'+ this.fechaf)
+      this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
     }
   }
 

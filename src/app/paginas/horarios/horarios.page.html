@@ -14,6 +14,12 @@
         <h2>Clase: {{Clases.nombre}} </h2>
         <p>Profesor: {{Clases.profesor}}</p>
         <p> {{Clases.lugaresDisponibles}} Lugares disponibles de {{Clases.personas}}</p>
+        <p>
+          <ion-chip color="success" *ngIf="Clases.asistencia === 'true'">
+            <label> Apartado </label>
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-chip>
+        </p>
       </ion-label>
       <p>
         <ion-label *ngIf="Clases.horario == 'M'">
