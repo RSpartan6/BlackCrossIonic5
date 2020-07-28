@@ -19,6 +19,11 @@ export class EditarclasePage implements OnInit {
   mensaje
   msjC
   fechaf: string;
+  horaFin
+  horaInicio
+  horario
+  nombreC:string
+  profesor
 
 
   constructor(
@@ -40,6 +45,16 @@ export class EditarclasePage implements OnInit {
 
       console.log("Id de la clase a editar",this.idClase);
     });
+  }
+
+  ionViewWillEnter(){
+
+    this.nombreC = this.activatedRoute.snapshot.paramMap.get('nombreC');
+    this.horaInicio = this.activatedRoute.snapshot.paramMap.get('horaInicio');
+    this.horaFin = this.activatedRoute.snapshot.paramMap.get('horaFin');
+    this.horario = this.activatedRoute.snapshot.paramMap.get('horario');
+    this.profesor = this.activatedRoute.snapshot.paramMap.get('profesor');
+
   }
 
   ngOnInit() {

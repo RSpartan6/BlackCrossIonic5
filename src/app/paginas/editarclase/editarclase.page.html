@@ -16,15 +16,15 @@
           <div padding>
             <ion-item>
               <ion-label position="floating"> Nombre de la clase</ion-label>
-              <ion-input [(ngModel)]="ec.nombre" name="nombre" type="text" required></ion-input>
+              <ion-input [(ngModel)]="ec.nombre" name="nombre" type="text" placeholder="{{nombreC}}" required></ion-input>
             </ion-item>            
             <ion-item>
               <ion-label position="floating">Hora inicio</ion-label>
-              <ion-input [(ngModel)]="ec.horaInicio" name="horaInicio" type="tel" required></ion-input>
+              <ion-input [(ngModel)]="ec.horaInicio" name="horaInicio" type="tel" placeholder="{{horaInicio}}" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Hora fin</ion-label>
-              <ion-input [(ngModel)]="ec.horaFin" name="horaFin" type="tel" required></ion-input>
+              <ion-input [(ngModel)]="ec.horaFin" name="horaFin" type="tel" placeholder="{{horaFin}}" required></ion-input>
             </ion-item> 
             <ion-item no-lines>
               <ion-segment (ionChange)="segmentChanged($event)" name="horario" type="text" [(ngModel)]="ec.horario"> 
@@ -42,7 +42,7 @@
             </ion-item>   
             <ion-item>
               <ion-label position="floating">Profesor</ion-label>
-              <ion-input [(ngModel)]="ec.profesor" name="profesor" type="text" required></ion-input>
+              <ion-input [(ngModel)]="ec.profesor" name="profesor" type="text" placeholder="{{profesor}}" required></ion-input>
             </ion-item>   
             <ion-item no-lines>
               <ion-segment (ionChange)="segmentChanged($event)" name="estatus" type="text" [(ngModel)]="ec.estatus"> 
