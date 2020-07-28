@@ -106,7 +106,8 @@ export class CalalumnoPage implements OnInit {
 
   options: CalendarComponentOptions = {
     monthPickerFormat: ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-    weekdays:['D', 'L', 'M', 'M', 'J', 'V', 'S']	
+    weekdays:['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+    disableWeeks: [0, 6]
   };
 
 }
