@@ -16,22 +16,25 @@
           <div padding>
             <ion-item>
               <ion-label position="floating"> Nombre de la clase</ion-label>
-              <ion-input [(ngModel)]="ec.nombre" name="nombre" type="text" placeholder="{{nombreC}}" required></ion-input>
-            </ion-item>            
+              <ion-input [(ngModel)]="ec.nombre" name="nombre" type="text" placeholder="{{nombreC}}" required>
+              </ion-input>
+            </ion-item>
             <ion-item>
               <ion-label position="floating">Hora inicio</ion-label>
-              <ion-input [(ngModel)]="ec.horaInicio" name="horaInicio" type="tel" placeholder="{{horaInicio}}" required></ion-input>
+              <ion-input [(ngModel)]="ec.horaInicio" name="horaInicio" type="tel" placeholder="{{horaInicio}}" required>
+              </ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Hora fin</ion-label>
-              <ion-input [(ngModel)]="ec.horaFin" name="horaFin" type="tel" placeholder="{{horaFin}}" required></ion-input>
-            </ion-item> 
+              <ion-input [(ngModel)]="ec.horaFin" name="horaFin" type="tel" placeholder="{{horaFin}}" required>
+              </ion-input>
+            </ion-item>
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" name="horario" type="text" [(ngModel)]="ec.horario"> 
-                <ion-segment-button value="M" >
+              <ion-segment (ionChange)="segmentChanged($event)" name="horario" type="text" [(ngModel)]="ec.horario">
+                <ion-segment-button value="M">
                   <ion-label>Matutino</ion-label>
                 </ion-segment-button>
-                <ion-segment-button value="V" >
+                <ion-segment-button value="V">
                   <ion-label>Vespertino</ion-label>
                 </ion-segment-button>
               </ion-segment>
@@ -39,21 +42,22 @@
             <ion-item>
               <ion-label position="floating">Personas</ion-label>
               <ion-input [(ngModel)]="ec.personas" name="personas" type="tel" required></ion-input>
-            </ion-item>   
+            </ion-item>
             <ion-item>
               <ion-label position="floating">Profesor</ion-label>
-              <ion-input [(ngModel)]="ec.profesor" name="profesor" type="text" placeholder="{{profesor}}" required></ion-input>
-            </ion-item>   
+              <ion-input [(ngModel)]="ec.profesor" name="profesor" type="text" placeholder="{{profesor}}" required>
+              </ion-input>
+            </ion-item>
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" name="estatus" type="text" [(ngModel)]="ec.estatus"> 
-                <ion-segment-button value="1" >
+              <ion-segment (ionChange)="segmentChanged($event)" name="estatus" type="text" [(ngModel)]="ec.estatus">
+                <ion-segment-button value="1">
                   <ion-label>Activar</ion-label>
                 </ion-segment-button>
-                <ion-segment-button value="0" >
+                <ion-segment-button value="0">
                   <ion-label>Desactivar</ion-label>
                 </ion-segment-button>
               </ion-segment>
-            </ion-item>          
+            </ion-item>
           </div>
         </ion-col>
       </ion-row>
@@ -61,7 +65,8 @@
     <ion-grid fixed>
       <ion-row>
         <ion-col size="6">
-          <ion-button color="primary" (click)="editarClass(editarClase)" type="submit" expand="block">Editar</ion-button>
+          <ion-button color="primary" (click)="editarClass(editarClase)" type="submit" expand="block">Editar
+          </ion-button>
         </ion-col>
         <ion-col size="6">
           <ion-button color="danger" expand="block" (click)="eliminarClase()">Eliminar clase</ion-button>
