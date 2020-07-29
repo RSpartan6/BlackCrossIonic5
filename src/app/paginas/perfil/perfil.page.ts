@@ -49,6 +49,11 @@ export class PerfilPage implements OnInit {
     this.router.navigate(["/admin"]);
   }
 
+  registro(){
+    this.router.navigate(["/registro"]);
+
+  }
+
   buscar(event) {
     console.log(event);
     this.textoBuscar = event.detail.value;

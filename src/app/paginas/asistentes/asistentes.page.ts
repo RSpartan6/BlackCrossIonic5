@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "src/app/servicios/login.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { NavController } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-asistentes",
@@ -27,14 +28,22 @@ export class AsistentesPage implements OnInit {
   horaInicio
   horario
   nombreC:string
+  usuario:any;
 
 
   constructor(
     private servicio: LoginService,
     private activatedRoute: ActivatedRoute,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private storage: Storage, 
+    private navParams: NavParams
   ) 
-  { }
+  {
+    this.usuario = this.navParams.get(this.usuario);
+      this.storage.get("userData").then((user) => {
+      this.usuario = user;  
+   });
+  }
 
   ngOnInit() {
 

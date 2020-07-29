@@ -25,25 +25,7 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      console.log("Se inicio la App");
-      this.storage.get("userData").then((data) => {
-        this.usuario = data;
-        console.log("user :", data);
-        if (data !== null) {
-
-          if (this.usuario.respuesta.idRol === 1) {
-            console.log("Usuario Entrenador");
-            this.navCtrl.navigateRoot('/admin');
-
-          } else
-
-            if (this.usuario.respuesta.idRol=== 2) {
-              console.log("Usuario Cliente",)
-              this.navCtrl.navigateRoot('/calalumno');
-            }          
-        }
-      });
+    this.platform.ready().then(() => {      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
