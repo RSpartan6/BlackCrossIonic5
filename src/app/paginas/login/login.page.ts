@@ -41,6 +41,9 @@ export class LoginPage implements OnInit {
 
     if (form.valid) {
 
+      console.log(this.storage);
+      
+
       this.servicio.loginPost(obj).subscribe((response: any) => {
 
         let data = response;
@@ -216,8 +219,8 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.storage.clear();
-    console.log("Storage Clear", this.storage);
+    // this.storage.clear();
+    // console.log("Storage Clear", this.storage);
 
   }
 
