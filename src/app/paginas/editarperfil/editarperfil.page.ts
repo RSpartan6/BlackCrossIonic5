@@ -23,6 +23,7 @@ export class EditarperfilPage implements OnInit {
   listado: any;
   idUsuario: string;
   mensaje
+  msjError
 
   constructor
     (
@@ -118,22 +119,32 @@ export class EditarperfilPage implements OnInit {
   activarUser(idUsuario) {
 
     this.servicio.activarUser(idUsuario).subscribe((response: any) => {
-      console.log(response, "Usuario Activado");
-    });
-    this.userActivado();
 
+      this.mensaje = response.respuesta;
+      this.msjError = response.descripcion;
+      if (response.codigo === 200) {
+        console.log(response, "Usuario Activado");
+        this.userActivado();
+      } else {
+        this.msjError();
+      }
+    });
     // this.navCtrl.navigateRoot('/perfil');
   }
 
   desactivarUser(idUsuario) {
 
     this.servicio.desactivarUser(idUsuario).subscribe((response: any) => {
-      console.log(response, "Usuario Desactivado");
+      this.mensaje = response.respuesta;
+      this.msjError = response.descripcion;
+      if (response.codigo === 200) {
+        console.log(response, "Usuario Desactivado");
+        this.userDesactivado();
+      } else {
+        this.msjError();
+      }
     });
-    this.userDesactivado();
-
-    // this.navCtrl.navigateRoot('/perfil');
-
+    // this.navCtrl.navigateRoot('/perfil');    
   }
 
   // Fin Metodos
@@ -149,25 +160,22 @@ export class EditarperfilPage implements OnInit {
     await alert.present();
   }
 
-  async presentLoading() {
-    const loading = await this.loadingController.create({
+  async errActiDesac() {
+    const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      spinner: "crescent",
-      message: 'Por favor espere...',
-      duration: 1000
+      header: this.msjError,
+      buttons: ['OK']
     });
-    await loading.present();
 
-    const { role, data } = await loading.onDidDismiss();
+    await alert.present();
   }
 
   // Alertas de activo e inactivo
 
-
   async userActivado() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Usuario activado',
+      header: this.mensaje,
       buttons: ['OK']
     });
 
@@ -177,14 +185,12 @@ export class EditarperfilPage implements OnInit {
   async userDesactivado() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Usuario desactivado',
+      header: this.mensaje,
       buttons: ['OK']
     });
 
     await alert.present();
   }
-
-
 
   // Fin alertas activo o inactivo
 

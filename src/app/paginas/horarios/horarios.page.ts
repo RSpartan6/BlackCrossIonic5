@@ -33,7 +33,7 @@ export class HorariosPage implements OnInit {
       private navParams: NavParams,
       public alertController: AlertController,
       private loadingController: LoadingController,
-      private navCtrl : NavController
+      private navCtrl: NavController
     ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
@@ -78,16 +78,14 @@ export class HorariosPage implements OnInit {
 
     this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
     this.servicio.getData(this.urlapi + 'Clases' + "/esta-en-clase/" + idClase + "/" + this.numeroUsuario + "/" + this.fechaf).subscribe(data => {
+
       let objUsuario = JSON.stringify(data);
       let json = JSON.parse(objUsuario);
-      this.storage.set('userData', data);
       this.mensaje = json.respuesta.mensaje;
       console.log("Mensaje : ", this.mensaje);
       this.estatus = json.respuesta.estatus;
       console.log("Estatus del asistente", this.estatus);
-
       this.presentAlertConfirm(idClase);
-
     });
   }
 
@@ -151,10 +149,11 @@ export class HorariosPage implements OnInit {
       this.mensajeerror = response.descripcion;
       console.log(this.fechaf, "Fecha clase");
       console.log("Id de clase", idClase);
-      if (response.codigo == 200) {
+      if (response.codigo === 200) {
         this.agregadoAlert();
         console.log("Fecha seleccionada", this.fechaf);
         this.obtenerDatos();
+
       } else {
         this.usuarioEnclase();
       }
@@ -167,13 +166,13 @@ export class HorariosPage implements OnInit {
     this.servicio.eliminarAlumno(this.numeroUsuario, idClase, this.fechaf).subscribe((response: any) => {
       console.log(response, "Asistencia eliminada"); this.mensaje = response.respuesta;
       this.mensajeerror = response.descripcion;
-      if (response.codigo == 200) {
+      if (response.codigo === 200) {
         this.eliminarAsistencia();
         console.log("Fecha seleccionada", this.fechaf);
         this.obtenerDatos();
-      } else if (response.codigo == 500) {
-        console.log("Erro 500");
 
+      } else if (response.codigo === 500) {
+        console.log("Erro 500");
         this.errorQuitar();
       }
     });
@@ -231,7 +230,7 @@ export class HorariosPage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
   }
 
-  atras(){
+  atras() {
     this.navCtrl.navigateRoot('/calalumno');
   }
 }
