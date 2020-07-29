@@ -52,13 +52,15 @@ export class LoginPage implements OnInit {
         
         console.log("json",data);        
 
-        this.mensaje = response.mensaje;
-        this.Rol = response.respuesta.idRol;
-        this.usuario = response.respuesta.usuario;
+        
         this.codigo = response.codigo;
         console.log(response, "Login nuevo method");
 
         if (response.codigo == 200) {
+
+          this.mensaje = response.mensaje;
+        this.Rol = response.respuesta.idRol;
+        this.usuario = response.respuesta.usuario;
 
           this.presentLoading();
 
@@ -81,8 +83,8 @@ export class LoginPage implements OnInit {
                 this.clearForm();
               }
 
-        } else if (response.codigo == 500) {
-          this.errorLogin();
+        } else if (response.codigo === 500) {
+          this.errorLogin(response.descripcion);
           console.log("Error 500");
           
         }
@@ -96,10 +98,10 @@ export class LoginPage implements OnInit {
   }
 
   // Alert error 500
-  async errorLogin() {
+  async errorLogin(msj) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: this.mensaje,
+      header: msj,
       buttons: ['OK']
     });
 
