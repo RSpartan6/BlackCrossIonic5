@@ -13,10 +13,15 @@
       <ion-row>
         <ion-col size-md="6" size-lg="5" size-xs="12">
           <div padding>
+
+            <div>
+              <ion-img src="http://3.133.28.198:8080/imgs/llaves.svg"></ion-img>
+            </div>
             <ion-item>
               <ion-label position="floating"> Contraseña Anterior</ion-label>
-              <ion-input [(ngModel)]="cp.contraseniaAnterior" name="contraseniaAnterior" type="password" required></ion-input>
-            </ion-item>            
+              <ion-input [(ngModel)]="cp.contraseniaAnterior" name="contraseniaAnterior" type="password" required>
+              </ion-input>
+            </ion-item>
             <ion-item>
               <ion-label position="floating"> Contraseña Nueva</ion-label>
               <ion-input [(ngModel)]="cp.contraseniaNueva" name="contrasenia" type="password" required></ion-input>
@@ -24,7 +29,7 @@
             <ion-item>
               <ion-label position="floating"> Confirmar Contraseña</ion-label>
               <ion-input [(ngModel)]="cp.confirmarpass" name="contraseniaNueva" type="password" required></ion-input>
-            </ion-item>            
+            </ion-item>
           </div>
           <br>
           <br>
