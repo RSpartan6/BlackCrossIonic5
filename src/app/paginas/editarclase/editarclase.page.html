@@ -20,12 +20,12 @@
             </ion-item>
             <ion-item>
               <ion-label position="floating">Hora inicio</ion-label>
-              <ion-input [(ngModel)]="ec.horaInicio" name="horaInicio" type="tel" placeholder="{{horaInicio}}" required>
+              <ion-input [(ngModel)]="ec.horaInicio" name="horaInicio" type="tel" maxlength="2" placeholder="{{horaInicio}}" required>
               </ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Hora fin</ion-label>
-              <ion-input [(ngModel)]="ec.horaFin" name="horaFin" type="tel" placeholder="{{horaFin}}" required>
+              <ion-input [(ngModel)]="ec.horaFin" name="horaFin" type="tel" maxlength="2" placeholder="{{horaFin}}" required>
               </ion-input>
             </ion-item>
             <ion-item no-lines>
@@ -40,7 +40,7 @@
             </ion-item>
             <ion-item>
               <ion-label position="floating">Personas</ion-label>
-              <ion-input [(ngModel)]="ec.personas" name="personas" type="tel" required></ion-input>
+              <ion-input [(ngModel)]="ec.personas" name="personas" maxlength="2" type="tel" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Profesor</ion-label>

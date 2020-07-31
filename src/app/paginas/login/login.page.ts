@@ -242,4 +242,9 @@ export class LoginPage implements OnInit {
 
   }
 
+  recuperar(){
+    this.navCtrl.navigateRoot('/recuperar');
+
+  }
+
 }

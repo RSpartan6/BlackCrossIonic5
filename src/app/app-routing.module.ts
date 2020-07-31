@@ -75,6 +75,10 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./paginas/admin/admin.module').then( m => m.AdminPageModule)
   },
+  {
+    path: 'recuperar',
+    loadChildren: () => import('./paginas/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+  },
 ];
 
 @NgModule({

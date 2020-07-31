@@ -64,6 +64,15 @@ export class LoginService {
     return this.http.put(this.url + "Usuarios/cambio-contrasenia/", pass, this.httpOptions);
   }
 
+  // Recuperar Pass
+
+  recuperarPass(pass) {
+    pass = JSON.stringify(pass);
+    console.log(pass);
+    return this.http.put(this.url + "Usuarios/", pass, this.httpOptions);
+  }
+
+
   // Servicio crear clase
 
   setNuevaclase(nClase) {

@@ -21,20 +21,22 @@
                 #contrasenia="ngModel" required></ion-input>
             </ion-item>
           </div>
-          <div>
+          <div class="centrado">
             <ion-button ion-button (click)="onLogin(loginForm)" type="submit" size="large" expand="block"
               color="primary">
               Iniciar Sesión
             </ion-button>
+            <ion-button class="forgot-btn" fill="clear" (click)="recuperar()">
+              Recuperar contraseña
+            </ion-button>            
           </div>
         </ion-col>
       </ion-row>
+      <ion-footer>
+        <ion-toolbar>
+          <ion-title>v 2.1</ion-title>
+        </ion-toolbar>
+      </ion-footer>
     </ion-grid>
   </form>
-
-  <ion-footer>
-    <ion-toolbar>
-      <ion-title>v 2.1</ion-title>
-    </ion-toolbar>
-  </ion-footer>
 </ion-content>

@@ -14,7 +14,7 @@ export class CrearclasePage implements OnInit {
   mensajerror
   mensaje
   fechaf
-  
+
   nc = {
     "nombre": "",
     "horaInicio": "",
@@ -34,7 +34,7 @@ export class CrearclasePage implements OnInit {
       private navCtrl: NavController,
       private activatedRoute: ActivatedRoute,
 
-    ) { }
+  ) { }
 
   nuevaClase(form: NgForm) {
     let obj = {
@@ -54,7 +54,7 @@ export class CrearclasePage implements OnInit {
         this.mensaje = response.respuesta;
         if (response.codigo === 200) {
           this.presentLoading();
-          
+
         } else {
           this.errorCrear();
         }
@@ -112,11 +112,8 @@ export class CrearclasePage implements OnInit {
   }
 
   ngOnInit() {
-    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');    
-
-    console.log("Fecha seleccionada al crear clase: " + this.fechaf);   
+    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
+    console.log("Fecha seleccionada al crear clase: " + this.fechaf);
   }
-
-  
 
 }
