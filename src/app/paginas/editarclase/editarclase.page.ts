@@ -6,6 +6,7 @@ import { LoginService } from 'src/app/servicios/login.service';
 import { NgForm } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-editarclase',
   templateUrl: './editarclase.page.html',
@@ -33,7 +34,7 @@ export class EditarclasePage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController,
     // private loadingController: LoadingController,
-    // private router: Router,
+    private router: Router,
     private navCtrl: NavController
 
   ) {
@@ -130,6 +131,8 @@ export class EditarclasePage implements OnInit {
       if (response.codigo == 200) {
         this.deleteClase();
         console.log("ID de clase eliminada", this.idClase);
+        this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
+
       } else {
         this.deleteClase();
       }

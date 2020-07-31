@@ -66,10 +66,10 @@ export class LoginService {
 
   // Servicio crear clase
 
-  setNuevaclase(clase) {
-    clase = JSON.stringify(clase);
-    console.log(clase);
-    return this.http.post(this.url + 'Clases', this.httpOptions)
+  setNuevaclase(nClase) {
+    nClase = JSON.stringify(nClase);
+    console.log(nClase);
+    return this.http.post(this.url + 'Clases',nClase, this.httpOptions)
   }
 
   // Editar Clase

@@ -56,7 +56,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/horarios/horarios.module').then( m => m.HorariosPageModule)
   },
   {
-    path: 'crearclase',
+    path: 'crearclase/:fechaf',
     loadChildren: () => import('./paginas/crearclase/crearclase.module').then( m => m.CrearclasePageModule)
   },
   {

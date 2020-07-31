@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login.service';
-import { AlertController, LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-crearclase',
@@ -11,7 +11,9 @@ import { NgForm } from '@angular/forms';
 })
 export class CrearclasePage implements OnInit {
 
+  mensajerror
   mensaje
+  fechaf
   
   nc = {
     "nombre": "",
@@ -29,7 +31,8 @@ export class CrearclasePage implements OnInit {
       private servicio: LoginService,
       private alertController: AlertController,
       private loadingController: LoadingController,
-      private router: Router
+      private navCtrl: NavController,
+      private activatedRoute: ActivatedRoute,
 
     ) { }
 
@@ -47,14 +50,13 @@ export class CrearclasePage implements OnInit {
     if (form.valid) {
 
       this.servicio.setNuevaclase(obj).subscribe((response: any) => {
-        this.mensaje = response.mensaje;
-        console.log(response, "Crear Nueva clase Method ");
-        if (response.codigo == 500) {
-          this.errorCrear()
-        } if (response.codigo == 400) {
-          this.errorCrear()
-        } else {
+        this.mensajerror = response.mensaje;
+        this.mensaje = response.respuesta;
+        if (response.codigo === 200) {
           this.presentLoading();
+          
+        } else {
+          this.errorCrear();
         }
       });
       console.log(this.nc);
@@ -82,7 +84,7 @@ export class CrearclasePage implements OnInit {
   async errorCrear() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: this.mensaje,
+      header: this.mensajerror,
       buttons: ['OK']
     });
 
@@ -102,7 +104,7 @@ export class CrearclasePage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
 
-    this.router.navigate(['/clases']);
+    this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
   }
 
   segmentChanged(ev: any) {
@@ -110,6 +112,11 @@ export class CrearclasePage implements OnInit {
   }
 
   ngOnInit() {
+    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');    
+
+    console.log("Fecha seleccionada al crear clase: " + this.fechaf);   
   }
+
+  
 
 }
