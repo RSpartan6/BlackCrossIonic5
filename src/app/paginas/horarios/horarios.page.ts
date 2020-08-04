@@ -24,7 +24,6 @@ export class HorariosPage implements OnInit {
 
   urlapi = "http://3.133.28.198:8080/Wod/";
 
-
   constructor
     (
       private servicio: LoginService,
@@ -49,13 +48,16 @@ export class HorariosPage implements OnInit {
       this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
       this.idUsuario
 
+      this.horariosLoading();
+
       this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf + "/" + this.numeroUsuario).subscribe(data => {
         console.log(data, "listado de clases");
+        this.quitLoading();
 
         this.listado = data;
         console.log(this.fechaf, "fecha del constrauctor");
       });
-      this.horariosLoading();
+      // this.horariosLoading();
     });
   }
 
@@ -223,7 +225,7 @@ export class HorariosPage implements OnInit {
       cssClass: 'my-custom-class',
       spinner: "crescent",
       message: "Cargando clases",
-      duration: 800
+      duration: 500000
     });
     await loading.present();
 
@@ -233,4 +235,9 @@ export class HorariosPage implements OnInit {
   atras() {
     this.navCtrl.navigateRoot('/calalumno');
   }
+
+  quitLoading(){
+    this.loadingController.dismiss();
+  }
+
 }

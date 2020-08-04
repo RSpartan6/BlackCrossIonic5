@@ -44,19 +44,14 @@ export class HorariosadminPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.horariosLoading();
     this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
-
     this.servicio.getData(this.urlapi + 'Clases').subscribe(data => {
-
+      this.quitLoading();
       if (this.codigo == 500) {
-
         this.errorClases();
         this.navCtrl.navigateRoot('/caladmin')
-
-
       } else {
-
         console.log(data, "listado de clases");
         this.listado = data;
         console.log(this.fechaf, "fecha del ngoninit");
@@ -67,10 +62,7 @@ export class HorariosadminPage implements OnInit {
         console.log("Codigo del get", this.codigo);
 
       }
-
     });
-
-    this.horariosLoading();
   }
 
   atras() {
@@ -81,8 +73,7 @@ export class HorariosadminPage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       spinner: "crescent",
-      message: "Cargando clases",
-      duration: 800
+      message: "Cargando clases"
     });
     await loading.present();
 
@@ -97,6 +88,10 @@ export class HorariosadminPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  quitLoading(){
+    this.loadingController.dismiss();
   }
 
 }

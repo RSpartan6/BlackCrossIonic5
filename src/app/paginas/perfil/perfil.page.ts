@@ -26,8 +26,9 @@ export class PerfilPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.presentLoading();
     this.servicio.getData(this.urlapi + "Usuarios/").subscribe((data) => {
-      this.presentLoading();
+      this.quitLoading();
       console.log(data);
       this.listado = data;
     });
@@ -37,12 +38,13 @@ export class PerfilPage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: "my-custom-class",
       spinner: "crescent",
-      message: "Por favor espere...",
-      duration: 800,
+      message: "Por favor espere..."
     });
     await loading.present();
+  }
 
-    const { role, data } = await loading.onDidDismiss();
+  quitLoading(){
+    this.loadingController.dismiss();
   }
 
   menuPerfil() {
@@ -57,6 +59,5 @@ export class PerfilPage implements OnInit {
   buscar(event) {
     console.log(event);
     this.textoBuscar = event.detail.value;
-
   }
 }
