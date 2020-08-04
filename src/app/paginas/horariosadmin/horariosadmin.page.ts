@@ -73,10 +73,11 @@ export class HorariosadminPage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       spinner: "crescent",
-      message: "Cargando clases"
+      message: "Cargando clases",
+      duration: 10000
+
     });
     await loading.present();
-
     const { role, data } = await loading.onDidDismiss();
   }
 
