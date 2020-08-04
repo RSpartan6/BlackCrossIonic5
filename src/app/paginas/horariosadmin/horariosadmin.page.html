@@ -12,6 +12,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
+  <div>
+    <ion-badge color="primary" class="centrar">{{fechaf}}</ion-badge>
+  </div>
   <ion-list inset="true" class="animated fast fadeInDown">
     <ion-item *ngFor="let Clases of listado?.respuesta; 
       let indice=index;"
