@@ -20,6 +20,11 @@ span.green {
     font-size: 23px;
     text-align: center;
   }
+  ion-badge {
+
+    font-size: 15px;
+align-items: center;
+  }
 
   span.red {
     background: #F5D033;
@@ -54,6 +59,12 @@ ion-loading {
 
 ion-img {
   width: 85%;
+  display: block;
+  margin: auto;
+}
+
+.centrar{  
+  width: 35%;
   display: block;
   margin: auto;
 }
