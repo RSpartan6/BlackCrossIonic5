@@ -234,8 +234,9 @@ export class LoginPage implements OnInit {
           } else
 
             if (this.usuario.respuesta.idRol=== 2) {
-              console.log("Usuario Cliente",)
-              this.navCtrl.navigateRoot('/calalumno');
+              // Consultar servicio si no esta bloqueado el usuario
+              console.log("Usuario Cliente",);
+              this.bloqueado(this.usuario.respuesta.idUsuario);             
             }          
         }
       });
@@ -244,7 +245,35 @@ export class LoginPage implements OnInit {
 
   recuperar(){
     this.navCtrl.navigateRoot('/recuperar');
+  }
 
+  bloqueado(usuario){
+    this.servicio.getData('http://3.133.28.198:8080/Wod/Usuarios/bloqueo-por-pago/'+ usuario ).subscribe(data => {
+
+      this.usuario = data;
+      console.log(data);
+      
+    if (this.usuario.codigo === 500) {
+      this.storage.clear();
+      this.navCtrl.navigateRoot('/login');
+      this.msjBloqueado(this.usuario.descripcion);
+    }else{
+      this.navCtrl.navigateRoot('/calalumno');
+    }
+    });
+
+    return 
+  }
+
+  async msjBloqueado(descripcion) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Atencion !',
+      message: descripcion,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }

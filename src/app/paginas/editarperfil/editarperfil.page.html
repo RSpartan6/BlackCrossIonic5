@@ -66,10 +66,17 @@
           <div>
             <ion-row>
               <ion-col>
-                <ion-button color="success" expand="block" (click)="activarUser(idUsuario)">Activo</ion-button>
+                <ion-button color="success" expand="block" (click)="activarUser(idUsuario)">Activar</ion-button>
               </ion-col>
               <ion-col>
-                <ion-button color="danger" expand="block" (click)="desactivarUser(idUsuario)">Inactivo</ion-button>
+                <ion-button color="danger" expand="block" (click)="desactivarUser(idUsuario)">Desactivar</ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div>
+            <ion-row>
+              <ion-col>
+                <ion-button color="warning" type="submit" (click)="bPago(idUsuario)" expand="block">Bloqueo por pago</ion-button>
               </ion-col>
             </ion-row>
           </div>

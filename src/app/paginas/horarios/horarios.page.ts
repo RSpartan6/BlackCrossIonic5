@@ -53,7 +53,7 @@ export class HorariosPage implements OnInit {
       this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf + "/" + this.numeroUsuario).subscribe(data => {
         console.log(data, "listado de clases");
         this.quitLoading();
-
+        
         this.listado = data;
         console.log(this.fechaf, "fecha del constrauctor");
       });

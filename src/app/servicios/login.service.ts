@@ -36,6 +36,12 @@ export class LoginService {
     return this.http.put(this.url + "Usuarios/" + idUsuario + "/0", this.httpOptions);
   }
 
+  // Servicio bloqueo por pago
+
+  bloquePorPago(idUsuario){
+    return this.http.put(this.url + "Usuarios/" + "falta-pago/" + idUsuario, this.httpOptions);
+  }
+
   // Servicio de apartar lugar
 
   asistenciaAlumno(idClase, idUsuario, fecha) {

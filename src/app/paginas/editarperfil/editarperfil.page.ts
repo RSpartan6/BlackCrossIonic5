@@ -147,6 +147,21 @@ export class EditarperfilPage implements OnInit {
     // this.navCtrl.navigateRoot('/perfil');    
   }
 
+  bPago(idUsuario){
+
+    this.servicio.bloquePorPago(idUsuario).subscribe((response: any) => {
+      this.mensaje = response.descripcion;
+      this.msjError = response.descripcion;
+      if (response.codigo === 200) {
+        console.log(response, "Usuario desactivado por pago");
+        this.userDesactivado();
+      } else {
+        this.msjError();
+      }
+    });
+
+  }
+
   // Fin Metodos
 
   // Alerta actualizado
@@ -210,4 +225,5 @@ export class EditarperfilPage implements OnInit {
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
   }
+
 }
