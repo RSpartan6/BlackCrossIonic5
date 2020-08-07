@@ -5,7 +5,8 @@
       <ion-back-button defaultHref="" (click)="regresar()" text="Atras"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button href="editarclase/{{idClase}}/{{fechaf}}/{{horaInicio}}/{{horaFin}}/{{horario}}/{{nombreC}}/{{profesor}}">
+      <ion-button
+        href="editarclase/{{idClase}}/{{fechaf}}/{{horaInicio}}/{{horaFin}}/{{horario}}/{{nombreC}}/{{profesor}}">
         <ion-icon slot="icon-only" name="create-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -57,9 +58,13 @@
     <ion-card>
       <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
         let indice=index;" class="animated fast fadeInDown">
-        <!-- <ion-icon name="flash-outline" slot="start"></ion-icon> -->
         <ion-card-content>
-          {{Asistentes.nombre}}
+          <ion-label *ngIf="Asistentes.sexo == 'M'">
+            <h3> <span class="blue">M</span> {{Asistentes.nombre}} </h3>
+          </ion-label>
+          <ion-label *ngIf="Asistentes.sexo == 'F'">
+            <h3> <span class="pink">F</span> {{Asistentes.nombre}} </h3>
+          </ion-label>
         </ion-card-content>
       </ion-item>
     </ion-card>
