@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Nueva Clase</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="caladmin" text="Atras"></ion-back-button>
+      <ion-back-button defaultHref="caladmin" text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -57,8 +57,12 @@
             </ion-item> -->
           </div>
           <br>
-          <div padding>
-            <ion-button (click)="nuevaClase(claseNueva)" size="large" type="submit" expand="block" color="primary">Agregar</ion-button>
+          <div>
+            <ion-row>
+              <ion-col >
+                <ion-button (click)="nuevaClase(claseNueva)" size="large" type="submit" expand="block" color="primary">Agregar</ion-button>  
+              </ion-col>
+            </ion-row>            
           </div>
         </ion-col>
       </ion-row>

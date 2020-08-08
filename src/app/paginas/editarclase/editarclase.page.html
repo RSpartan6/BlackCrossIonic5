@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Editar Clase</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="" (click)="atras()" text="Atras"></ion-back-button>
+      <ion-back-button defaultHref="" (click)="atras()" text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -58,18 +58,18 @@
               </ion-segment>
             </ion-item>
           </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col size="6">
-          <ion-button color="primary" (click)="editarClass(editarClase)" type="submit" expand="block">Editar
-          </ion-button>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button color="danger" expand="block" (click)="eliminarClase()">Eliminar clase</ion-button>
-
+          <br>
+          <div>
+              <ion-row>
+                <ion-col >
+                  <ion-button color="primary" (click)="editarClass(editarClase)" type="submit" expand="block">Editar
+                  </ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button color="danger" expand="block" (click)="eliminarClase()">Eliminar clase</ion-button>
+                </ion-col>
+              </ion-row>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
