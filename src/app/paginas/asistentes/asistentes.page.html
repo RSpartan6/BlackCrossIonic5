@@ -58,7 +58,7 @@
     <ion-card>
       <ion-item *ngFor="let Asistentes of listado?.respuesta.usuarios; 
         let indice=index;" class="animated fast fadeInDown">
-        <ion-card-content>
+        <ion-card-content class="ajuste">
           <ion-label *ngIf="Asistentes.sexo == 'M'">
             <h3> <span class="blue">M</span> {{Asistentes.nombre}} </h3>
           </ion-label>
