@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LoadingController, ActionSheetController } from "@ionic/angular";
+import { LoadingController, ActionSheetController, AlertController } from "@ionic/angular";
 import { LoginService } from "src/app/servicios/login.service";
 import { Router } from "@angular/router";
 import { IfStmt } from '@angular/compiler';
@@ -10,6 +10,8 @@ import { IfStmt } from '@angular/compiler';
   styleUrls: ["./perfil.page.scss"],
 })
 export class PerfilPage implements OnInit {
+
+  mensaje: string;
 
   perfiles: any[] = [];
 
@@ -22,15 +24,32 @@ export class PerfilPage implements OnInit {
     private router: Router,
     private servicio: LoginService,
     public actionSheetController: ActionSheetController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
+    
     this.presentLoading();
+
     this.servicio.getData(this.urlapi + "Usuarios/").subscribe((data) => {
-      this.quitLoading();
       console.log(data);
       this.listado = data;
+
+      // this.quitLoading();
+
+      let objUsuario = JSON.stringify(data);
+      let json = JSON.parse(objUsuario);
+
+      this.mensaje = json.descripcion;
+
+      if (json.codigo === 200) {
+        this.quitLoading();
+        console.log("Entro bien");
+      }else{
+        this.errorCargar();
+        this.router.navigate(["/admin"]);
+      }
     });
   }
 
@@ -38,7 +57,8 @@ export class PerfilPage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: "my-custom-class",
       spinner: "crescent",
-      message: "Por favor espere..."
+      message: "Por favor espere...",
+      duration: 10000
     });
     await loading.present();
   }
@@ -59,5 +79,15 @@ export class PerfilPage implements OnInit {
   buscar(event) {
     console.log(event);
     this.textoBuscar = event.detail.value;
+  }
+
+  async errorCargar() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: this.mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }
