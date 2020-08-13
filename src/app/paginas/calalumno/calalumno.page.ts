@@ -25,6 +25,7 @@ export class CalalumnoPage implements OnInit {
   idUsuario: string;
   idRol
   listado
+  nombre
 
   constructor
     (
@@ -45,7 +46,7 @@ export class CalalumnoPage implements OnInit {
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
       console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);
       console.log("El estatus del usuario es:", this.usuario.respuesta.estatus);
-      
+
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
       this.idRol = this.usuario.respuesta.idRol;
 
@@ -78,10 +79,10 @@ export class CalalumnoPage implements OnInit {
   ngOnInit() {
   }
 
-  onClick(date, fechaf) {       
+  onClick(date, fechaf) {
 
     this.fecha = date._d;
-    console.log("Fecha seleccionada",  this.fecha );
+    console.log("Fecha seleccionada", this.fecha);
 
     function format(d) {
       var mm = d.getMonth() + 1; // getMonth() is zero-based
@@ -94,13 +95,13 @@ export class CalalumnoPage implements OnInit {
     };
 
     fechaf = format(this.fecha);
-    this.navCtrl.navigateRoot('/horarios/' + fechaf ) 
+    this.navCtrl.navigateRoot('/horarios/' + fechaf)
     console.log(fechaf)
   }
 
   options: CalendarComponentOptions = {
     monthPickerFormat: ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-    weekdays:['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+    weekdays: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
     disableWeeks: [0, 6]
   };
 
@@ -130,7 +131,7 @@ export class CalalumnoPage implements OnInit {
   async confirmCerrar() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
-      header: '¿Seguro que desea cerrar sesión?',      
+      header: '¿Seguro que desea cerrar sesión?',
       buttons: [
         {
           text: 'Cancel',

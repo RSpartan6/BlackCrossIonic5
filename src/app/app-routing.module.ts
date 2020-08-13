@@ -16,10 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'clases',
-    loadChildren: () => import('./paginas/clases/clases.module').then( m => m.ClasesPageModule)
-  },
-  {
     path: 'perfil',
     loadChildren: () => import('./paginas/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
@@ -78,6 +74,10 @@ const routes: Routes = [
   {
     path: 'recuperar',
     loadChildren: () => import('./paginas/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./paginas/user/user.module').then( m => m.UserPageModule)
   },
 ];
 

@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+    <ion-title>Mi Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button href="cambiarpass">
+        <ion-icon slot="icon-only" name="lock-open-outline"></ion-icon>
+      </ion-button>       
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="atras()" text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row>
+
+      <ion-col size-md="6" size-lg="5" size-xs="12"size="12">
+
+        <ion-col >
+          <div padding *ngIf="sexo === 'M'">
+            <ion-img [src]="'/assets/img/hombre.jpg'"></ion-img>
+          </div>
+          <div *ngIf="sexo === 'F'">
+            <ion-img [src]="'/assets/img/mujer.jpg'"></ion-img>
+          </div>
+        </ion-col>
+  
+        <ion-col class="user-info-wrapper" size="8">
+          <h3 class="user-name"> {{nombre}} </h3>
+        </ion-col>
+        
+      </ion-col>     
+
+    </ion-row>
+
+    <ion-row >
+      <ion-col size-md="6" size-lg="5" size-xs="12">
+
+        <ion-col size="12">
+          <h4 class="preference-name">Usuario</h4>
+          <p class="preference-value">
+            {{user}}
+          </p>
+        </ion-col>
+        <ion-col size="12">
+          <h4 class="preference-name">Telefono</h4>
+          <p class="preference-value">
+            {{telefono}}
+          </p>
+        </ion-col>
+        <ion-col size="12">
+          <h4 class="preference-name">Correo electronico</h4>
+          <p class="preference-value">
+            {{email}}
+          </p>
+        </ion-col>
+        <ion-col size="12">
+          <h4 class="preference-name">Sexo</h4>
+          <p class="preference-value" *ngIf="sexo === 'M'">
+            Masculino
+          </p>
+          <p class="preference-value" *ngIf="sexo === 'F'">
+            Femenino
+          </p>
+        </ion-col>
+        
+      </ion-col>      
+    </ion-row>
+
+  </ion-grid>   
+</ion-content>

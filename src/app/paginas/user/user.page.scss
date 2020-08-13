@@ -1,0 +1,38 @@
+ion-title {
+    font-size: 23px;
+    text-align: center;
+  }
+
+  ion-col {
+    display: block;
+    margin: auto;
+  }
+
+  ion-img {
+    width: 35%;
+    display: block;
+    margin: auto;
+  }
+
+  .preference-name {
+    margin: 0px 0px 5px;
+    font-size: 16px;
+  }
+
+  .preference-value {
+    margin: 0px 0px calc(var(--page-margin) / 2);
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ion-color-dark-tint);
+  }
+
+  .user-info-wrapper {
+    // padding-left: calc(var(--page-margin) / 2);
+
+    .user-name {
+      margin: 0px 0px 5px;
+      display: block;
+      margin: auto;
+      text-align: center;
+    }
+  }
