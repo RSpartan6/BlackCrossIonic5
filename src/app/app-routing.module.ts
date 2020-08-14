@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
-    path: 'editarclase/:idClase/:fechaf/:horaInicio/:horaFin/:horario/:nombreC/:profesor',
+    path: 'editarclase/:idClase/:fechaf/:horaInicio/:horaFin/:horario/:nombreC/:profesor/:personas/:estatus',
     loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
   },
   {
