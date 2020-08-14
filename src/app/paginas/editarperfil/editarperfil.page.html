@@ -21,27 +21,27 @@
             </ion-chip> -->
             <ion-item>
               <ion-label position="stacked">Nombre</ion-label>
-              <ion-input name="nombre" type="text" placeholder="{{nombre}}" [(ngModel)]="ep.nombre" required>
+              <ion-input name="nombre" type="text" value="{{nombre}}" [(ngModel)]="ep.nombre" required>
               </ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Usuario</ion-label>
-              <ion-input name="usuario" type="text" placeholder="{{usuario}}" [(ngModel)]="ep.usuario" required>
+              <ion-input name="usuario" type="text"  value="{{usuario}}" [(ngModel)]="ep.usuario" required>
               </ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Contraseña</ion-label>
-              <ion-input name="contrasenia" type="text" placeholder="{{contrasenia}}" [(ngModel)]="ep.contrasenia"
+              <ion-input name="contrasenia" type="password" value="{{contrasenia}}" [(ngModel)]="ep.contrasenia"
                 required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Correo Electronico</ion-label>
-              <ion-input name="correoElectronico" type="text" placeholder="{{correoElectronico}}"
+              <ion-input name="correoElectronico" type="text" value="{{correoElectronico}}"
                 [(ngModel)]="ep.correoElectronico" required>
               </ion-input>
             </ion-item>
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" name="sexo" type="text" [(ngModel)]="ep.sexo">
+              <ion-segment (ionChange)="segmentChanged($event)" name="sexo" value="{{sexo}}" type="text" [(ngModel)]="ep.sexo">
                 <ion-segment-button value="F">
                   <ion-label>Femenino</ion-label>
                 </ion-segment-button>
@@ -52,7 +52,7 @@
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Telefono</ion-label>
-              <ion-input name="telefono" type="tel" placeholder="{{telefono}}" [(ngModel)]="ep.telefono" required>
+              <ion-input name="telefono" type="tel" value="{{telefono}}" [(ngModel)]="ep.telefono" required>
               </ion-input>
             </ion-item>
           </div>

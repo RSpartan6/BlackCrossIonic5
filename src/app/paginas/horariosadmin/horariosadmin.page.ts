@@ -34,33 +34,33 @@ export class HorariosadminPage implements OnInit {
     ) {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
-      this.usuario = user;     
+      this.usuario = user;
     });
   }
 
-  ionViewWillEnter() {
-    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
-    console.log(this.fechaf, "fecha del calendario");
-  }
+  // ionViewWillEnter() {
+  //   this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
+  //   console.log(this.fechaf, "fecha del calendario");
+  // }
 
   ngOnInit() {
     this.horariosLoading();
     this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
-    this.servicio.getData(this.urlapi + 'Clases').subscribe(data => {
-      this.quitLoading();
-      if (this.codigo == 500) {
-        this.errorClases();
-        this.navCtrl.navigateRoot('/caladmin')
-      } else {
+    this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf).subscribe(data => {
+
+      let objUsuario = JSON.stringify(data);
+      let json = JSON.parse(objUsuario);
+      this.codigo = json.codigo;
+      console.log("Codigo del get", this.codigo);
+
+      if (this.codigo === 200) {
         console.log(data, "listado de clases");
+        this.quitLoading();
         this.listado = data;
         console.log(this.fechaf, "fecha del ngoninit");
-
-        let objUsuario = JSON.stringify(data);
-        let json = JSON.parse(objUsuario);
-        this.codigo = json.codigo;
-        console.log("Codigo del get", this.codigo);
-
+      } else {
+        this.errorClases();
+        this.navCtrl.navigateRoot('/caladmin')
       }
     });
   }
@@ -74,7 +74,7 @@ export class HorariosadminPage implements OnInit {
       cssClass: 'my-custom-class',
       spinner: "crescent",
       message: "Cargando clases",
-      duration: 10000
+      duration: 3000
 
     });
     await loading.present();
@@ -91,7 +91,7 @@ export class HorariosadminPage implements OnInit {
     await alert.present();
   }
 
-  quitLoading(){
+  quitLoading() {
     this.loadingController.dismiss();
   }
 

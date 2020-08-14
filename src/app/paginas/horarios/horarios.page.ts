@@ -21,6 +21,7 @@ export class HorariosPage implements OnInit {
   estatus: string;
   nombre
   mensajeerror: string;
+  codigo
 
   urlapi = "http://3.133.28.198:8080/Wod/";
 
@@ -52,7 +53,19 @@ export class HorariosPage implements OnInit {
 
       this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf + "/" + this.numeroUsuario).subscribe(data => {
         console.log(data, "listado de clases");
-        this.quitLoading();
+
+
+        let objUsuario = JSON.stringify(data);
+        let json = JSON.parse(objUsuario);
+        this.codigo = json.codigo;
+        console.log("Codigo del get", this.codigo);
+
+        if (this.codigo === 200) {
+          this.quitLoading();
+        } else {
+          this.errorQuitar();
+          this.navCtrl.navigateRoot('/calalumno');
+        }
         
         this.listado = data;
         console.log(this.fechaf, "fecha del constrauctor");
@@ -84,6 +97,7 @@ export class HorariosPage implements OnInit {
       let objUsuario = JSON.stringify(data);
       let json = JSON.parse(objUsuario);
       this.mensaje = json.respuesta.mensaje;
+      this.mensajeerror = json.respuesta.descripcion;
       console.log("Mensaje : ", this.mensaje);
       this.estatus = json.respuesta.estatus;
       console.log("Estatus del asistente", this.estatus);
@@ -225,7 +239,7 @@ export class HorariosPage implements OnInit {
       cssClass: 'my-custom-class',
       spinner: "crescent",
       message: "Cargando clases",
-      duration: 500000
+      duration: 10000
     });
     await loading.present();
 
@@ -236,7 +250,7 @@ export class HorariosPage implements OnInit {
     this.navCtrl.navigateRoot('/calalumno');
   }
 
-  quitLoading(){
+  quitLoading() {
     this.loadingController.dismiss();
   }
 

@@ -13,21 +13,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+<br>
   <ion-grid>
     <ion-row>
-
       <ion-col size-md="6" size-lg="5" size-xs="12"size="12">
-
         <ion-col >
           <div padding *ngIf="sexo === 'M'">
-            <ion-img [src]="'/assets/img/hombre.jpg'"></ion-img>
+            <ion-img src="http://3.133.28.198:8080/imgs/hombre.svg"></ion-img>
           </div>
           <div *ngIf="sexo === 'F'">
-            <ion-img [src]="'/assets/img/mujer.jpg'"></ion-img>
+            <ion-img src="http://3.133.28.198:8080/imgs/mujer.svg"></ion-img>
           </div>
         </ion-col>
-  
+        <br>
         <ion-col class="user-info-wrapper" size="8">
           <h3 class="user-name"> {{nombre}} </h3>
         </ion-col>
@@ -37,7 +35,7 @@
     </ion-row>
 
     <ion-row >
-      <ion-col size-md="6" size-lg="5" size-xs="12">
+      <ion-col size-md="6" size-lg="5" size-xs="12" class="acomodar">
 
         <ion-col size="12">
           <h4 class="preference-name">Usuario</h4>

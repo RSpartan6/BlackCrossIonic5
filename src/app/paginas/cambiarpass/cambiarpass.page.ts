@@ -76,7 +76,8 @@ export class CambiarpassPage implements OnInit {
         if (response.codigo == 200) {
 
           this.cambiopassLoading();
-          this.navCtrl.navigateRoot('/calalumno');
+          this.storage.clear();
+          this.navCtrl.navigateRoot('/login');
 
         } else {
           this.erroPass();
