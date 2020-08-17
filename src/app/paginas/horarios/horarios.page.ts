@@ -95,10 +95,17 @@ export class HorariosPage implements OnInit {
       let json = JSON.parse(objUsuario);
       this.mensaje = json.respuesta.mensaje;
       this.mensajeerror = json.respuesta.descripcion;
-      console.log("Mensaje : ", this.mensaje);
-      this.estatus = json.respuesta.estatus;
-      console.log("Estatus del asistente", this.estatus);
-      this.presentAlertConfirm(idClase);
+
+      if (json.codigo === 200) {
+        console.log("Mensaje : ", this.mensaje);
+        this.estatus = json.respuesta.estatus;
+        console.log("Estatus del asistente", this.estatus);
+        this.presentAlertConfirm(idClase);
+      }else{
+        this.validacion();
+      }
+
+      
     });
   }
 
@@ -241,6 +248,16 @@ export class HorariosPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
+  }
+
+  async validacion() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      message: this.mensajeerror,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   atras() {
