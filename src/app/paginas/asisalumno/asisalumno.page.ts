@@ -29,7 +29,7 @@ export class AsisalumnoPage implements OnInit {
   fecha: string;
   mensajeerror: string;
 
-  urlapi = "http://192.168.1.74:8080/Wod/"
+  urlapi = "http://3.133.28.198:8080/Wod/"
 
   constructor(
     private servicio: LoginService,
@@ -198,7 +198,7 @@ export class AsisalumnoPage implements OnInit {
 
     console.log("El ID de la clase es :", this.idClase);
 
-    this.servicio.getData('http://192.168.1.74:8080/Wod/AsistenciaClases/' + this.idClase + '/').subscribe(data => {
+    this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '/').subscribe(data => {
       console.log(data, "ngOnInit");
       this.listado = data;
 
@@ -214,7 +214,7 @@ export class AsisalumnoPage implements OnInit {
 
     this.fecha = this.fa.fecha.substring(0, 10);
 
-    this.servicio.getData('http://192.168.1.74:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fecha).subscribe(data => {
+    this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fecha).subscribe(data => {
       console.log(data, "cambioFecha");
       this.listado = data;
     });

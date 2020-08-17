@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EditarperfilPage implements OnInit {
 
-  urlapi = "http://192.168.1.74:8080/Wod/";
+  urlapi = "http://3.133.28.198:8080/Wod/";
 
   usuario: string;
   sexo: string;

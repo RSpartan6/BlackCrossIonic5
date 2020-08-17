@@ -7,10 +7,10 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class LoginService {
-  url = "http://192.168.1.74:8080/Wod/";
+  url = "http://3.133.28.198:8080/Wod/";
   httpOptions;
 
-  // url = 'http://192.168.1.74:8080/'
+  // url = 'http://3.133.28.198:8080/'
 
   constructor(private http: HttpClient) {
     console.log("Servicio de login");
@@ -114,7 +114,7 @@ export class LoginService {
     console.log(user, "Bienvenido");
     return this.http
       .post(
-        "http://192.168.1.74:8080/Wod/IniciarSesion?usuario=" +
+        "http://3.133.28.198:8080/Wod/IniciarSesion?usuario=" +
         user.usuario +
         "&contrasenia=" +
         user.contrasenia,

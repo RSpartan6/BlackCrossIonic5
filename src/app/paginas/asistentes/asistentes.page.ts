@@ -67,7 +67,7 @@ export class AsistentesPage implements OnInit {
     // }
     // console.log('fecha f:' + this.fecha);
 
-    this.servicio.getData('http://192.168.1.74:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fechaf).subscribe(data => {
+    this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fechaf).subscribe(data => {
 
       console.log(data, "ngOnInit");
       this.listado = data;
