@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, NavController, AlertController } from '@ionic/angular';
+import { NavParams, NavController, AlertController, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { LoginService } from 'src/app/servicios/login.service';
 
@@ -26,7 +26,8 @@ export class UserPage implements OnInit {
       private navParams: NavParams,
       private navCtrl: NavController,
       private servicio: LoginService,
-      private alertController: AlertController
+      private alertController: AlertController,
+      private loadingController: LoadingController
     ) {
     this.usuario = this.navParams.get(this.usuario);
     
@@ -94,6 +95,8 @@ export class UserPage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.userLoading();
   }
 
   atras() {
@@ -104,6 +107,18 @@ export class UserPage implements OnInit {
     } else {
       this.navCtrl.navigateRoot('/calalumno');
     }
+  }
+
+  async userLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      spinner: "crescent",
+      message: "Cargando",
+      duration: 1000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
   }
 
 }
