@@ -44,8 +44,6 @@ export class HorariosPage implements OnInit {
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
       this.numeroUsuario = this.usuario.respuesta.idUsuario;
 
-      console.log("sdsdfsdf", this.numeroUsuario);
-
       this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
       this.idUsuario
 
@@ -58,6 +56,7 @@ export class HorariosPage implements OnInit {
         let json = JSON.parse(objUsuario);
         this.codigo = json.codigo;
         console.log("Codigo del get", this.codigo);
+        
 
         if (this.codigo === 200) {
           this.quitLoading();
