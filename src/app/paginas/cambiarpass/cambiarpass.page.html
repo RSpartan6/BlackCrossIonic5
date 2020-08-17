@@ -24,11 +24,13 @@
             </ion-item>
             <ion-item>
               <ion-label position="floating"> Contraseña Nueva</ion-label>
-              <ion-input [(ngModel)]="cp.contraseniaNueva" name="contrasenia" type="password" required></ion-input>
+              <ion-input [(ngModel)]="cp.contraseniaNueva" name="contrasenia" type="password" maxlength="11" required>
+              </ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating"> Confirmar Contraseña</ion-label>
-              <ion-input [(ngModel)]="cp.confirmarpass" name="contraseniaNueva" type="password" required></ion-input>
+              <ion-input [(ngModel)]="cp.confirmarpass" name="contraseniaNueva" type="password" maxlength="11" required>
+              </ion-input>
             </ion-item>
           </div>
           <br>

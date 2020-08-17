@@ -29,6 +29,8 @@ export class AsistentesPage implements OnInit {
   horario
   nombreC:string
   usuario:any;
+  personas: string;
+  estatus
 
 
   constructor(
@@ -50,7 +52,7 @@ export class AsistentesPage implements OnInit {
     this.idClase = this.activatedRoute.snapshot.paramMap.get('idClase');
     this.nombre = this.activatedRoute.snapshot.paramMap.get('nombre');
     this.profesor = this.activatedRoute.snapshot.paramMap.get('profesor');
-    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');    
+    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');   
 
     console.log("El ID de la clase es :", this.idClase);
 
@@ -65,7 +67,7 @@ export class AsistentesPage implements OnInit {
     // }
     // console.log('fecha f:' + this.fecha);
 
-    this.servicio.getData('http://3.133.28.198:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fechaf).subscribe(data => {
+    this.servicio.getData('http://192.168.1.74:8080/Wod/AsistenciaClases/' + this.idClase + '?fecha=' + this.fechaf).subscribe(data => {
 
       console.log(data, "ngOnInit");
       this.listado = data;
@@ -77,6 +79,8 @@ export class AsistentesPage implements OnInit {
       this.horaFin = json.respuesta.clase.horaFin;
       this.horario = json.respuesta.clase.horario;
       this.nombreC = json.respuesta.clase.nombre;
+      this.personas = json.respuesta.clase.personas;
+      this.estatus = json.respuesta.clase.estatus;
 
       console.log("Hora inicio", this.horaInicio);
       console.log("Hora fin", this.horaFin);     

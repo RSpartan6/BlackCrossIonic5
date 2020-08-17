@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EditarperfilPage implements OnInit {
 
-  urlapi = "http://3.133.28.198:8080/Wod/";
+  urlapi = "http://192.168.1.74:8080/Wod/";
 
   usuario: string;
   sexo: string;
@@ -113,7 +113,7 @@ export class EditarperfilPage implements OnInit {
       this.todoslosCampos();
     }
 
-    console.log(obj, "ediar perfil");
+    console.log(obj, "editar perfil");
   }
 
   activarUser(idUsuario) {
@@ -159,7 +159,6 @@ export class EditarperfilPage implements OnInit {
         this.msjError();
       }
     });
-
   }
 
   // Fin Metodos

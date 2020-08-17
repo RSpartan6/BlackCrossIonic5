@@ -23,7 +23,7 @@ export class HorariosPage implements OnInit {
   mensajeerror: string;
   codigo
 
-  urlapi = "http://3.133.28.198:8080/Wod/";
+  urlapi = "http://192.168.1.74:8080/Wod/";
 
   constructor
     (
@@ -54,7 +54,6 @@ export class HorariosPage implements OnInit {
       this.servicio.getData(this.urlapi + 'Clases' + "/por-fecha/" + this.fechaf + "/" + this.numeroUsuario).subscribe(data => {
         console.log(data, "listado de clases");
 
-
         let objUsuario = JSON.stringify(data);
         let json = JSON.parse(objUsuario);
         this.codigo = json.codigo;
@@ -70,7 +69,6 @@ export class HorariosPage implements OnInit {
         this.listado = data;
         console.log(this.fechaf, "fecha del constrauctor");
       });
-      // this.horariosLoading();
     });
   }
 

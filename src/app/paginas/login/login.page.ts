@@ -248,7 +248,7 @@ export class LoginPage implements OnInit {
   }
 
   bloqueado(usuario){
-    this.servicio.getData('http://3.133.28.198:8080/Wod/Usuarios/bloqueo-por-pago/'+ usuario ).subscribe(data => {
+    this.servicio.getData('http://192.168.1.74:8080/Wod/Usuarios/bloqueo-por-pago/'+ usuario ).subscribe(data => {
 
       this.usuario = data;
       console.log(data);

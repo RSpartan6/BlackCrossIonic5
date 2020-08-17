@@ -40,7 +40,7 @@
             </ion-item>
             <ion-item>
               <ion-label position="floating">Personas</ion-label>
-              <ion-input [(ngModel)]="ec.personas" name="personas"  maxlength="2" type="tel" required></ion-input>
+              <ion-input [(ngModel)]="ec.personas" name="personas"  maxlength="2" type="tel" value="{{personas}}" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Profesor</ion-label>
@@ -48,7 +48,7 @@
               </ion-input>
             </ion-item>
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" name="estatus" type="text" [(ngModel)]="ec.estatus">
+              <ion-segment (ionChange)="segmentChanged($event)" name="estatus" type="text" value="{{estatus}}" [(ngModel)]="ec.estatus">
                 <ion-segment-button value="1">
                   <ion-label>Activado</ion-label>
                 </ion-segment-button>

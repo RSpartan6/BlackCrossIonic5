@@ -44,18 +44,6 @@
           </p>
         </ion-col>
         <ion-col size="12">
-          <h4 class="preference-name">Telefono</h4>
-          <p class="preference-value">
-            {{telefono}}
-          </p>
-        </ion-col>
-        <ion-col size="12">
-          <h4 class="preference-name">Correo electronico</h4>
-          <p class="preference-value">
-            {{email}}
-          </p>
-        </ion-col>
-        <ion-col size="12">
           <h4 class="preference-name">Sexo</h4>
           <p class="preference-value" *ngIf="sexo === 'M'">
             Masculino
@@ -63,10 +51,20 @@
           <p class="preference-value" *ngIf="sexo === 'F'">
             Femenino
           </p>
-        </ion-col>
-        
+        </ion-col>        
+          <ion-col size="12">
+            <h4 class="preference-name">Telefono</h4>
+                <ion-input name="telefono" type="tel" value="{{telefono}}" [(ngModel)]="eu.telefono" required></ion-input>
+          </ion-col>
+          <ion-col size="12">
+            <h4 class="preference-name">Correo electronico</h4>
+            <ion-input name="correoElectronico" type="text" value="{{email}}" [(ngModel)]="eu.correoElectronico" required></ion-input>
+          </ion-col>                    
+          <ion-col size-md="6" size-lg="5" size-xs="12">
+            <ion-button color="primary" (click)="editarUser()" type="submit" expand="block">Editar
+            </ion-button>
+          </ion-col>
       </ion-col>      
     </ion-row>
-
   </ion-grid>   
 </ion-content>

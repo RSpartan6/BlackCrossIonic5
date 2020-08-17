@@ -25,6 +25,8 @@ export class EditarclasePage implements OnInit {
   horario
   nombreC:string
   profesor
+  personas
+  estatus
 
 
   constructor(
@@ -55,6 +57,8 @@ export class EditarclasePage implements OnInit {
     this.horaFin = this.activatedRoute.snapshot.paramMap.get('horaFin');
     this.horario = this.activatedRoute.snapshot.paramMap.get('horario');
     this.profesor = this.activatedRoute.snapshot.paramMap.get('profesor');
+    this.personas =  this.activatedRoute.snapshot.paramMap.get('personas');
+    this.estatus = this.activatedRoute.snapshot.paramMap.get('estatus');
 
   }
 

@@ -7,10 +7,10 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class LoginService {
-  url = "http://3.133.28.198:8080/Wod/";
+  url = "http://192.168.1.74:8080/Wod/";
   httpOptions;
 
-  // url = 'http://3.133.28.198:8080/'
+  // url = 'http://192.168.1.74:8080/'
 
   constructor(private http: HttpClient) {
     console.log("Servicio de login");
@@ -20,10 +20,18 @@ export class LoginService {
     return this.http.get(`${url}`);
   }
 
+  // Servicio de editar usuario
   editarUsuario(editar) {
     editar = JSON.stringify(editar);
     console.log(editar,"Editar service");
     return this.http.put(this.url + "Usuarios", editar, this.httpOptions);
+  }
+
+  // Servicio de editar user (telefono y correo electronico)
+  editarUser(editar) {
+    editar = JSON.stringify(editar);
+    console.log(editar,"Editar service");
+    return this.http.put(this.url + "Usuarios/actualizar-datos-perfil", editar, this.httpOptions);
   }
 
   // Servicio cambiar status
@@ -106,7 +114,7 @@ export class LoginService {
     console.log(user, "Bienvenido");
     return this.http
       .post(
-        "http://3.133.28.198:8080/Wod/IniciarSesion?usuario=" +
+        "http://192.168.1.74:8080/Wod/IniciarSesion?usuario=" +
         user.usuario +
         "&contrasenia=" +
         user.contrasenia,

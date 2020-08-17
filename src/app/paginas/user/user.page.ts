@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, NavController } from '@ionic/angular';
+import { NavParams, NavController, AlertController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
-
+import { LoginService } from 'src/app/servicios/login.service';
 
 @Component({
   selector: 'app-user',
@@ -10,23 +10,26 @@ import { Storage } from "@ionic/storage";
 })
 export class UserPage implements OnInit {
 
-  usuario
-  idUsuario
+  usuario  
   idRol
   numeroUsuario
   nombre
   telefono
   email
   sexo
+  mensaje
   user
 
   constructor
     (
       private storage: Storage,
       private navParams: NavParams,
-      private navCtrl: NavController
-  ) {
+      private navCtrl: NavController,
+      private servicio: LoginService,
+      private alertController: AlertController
+    ) {
     this.usuario = this.navParams.get(this.usuario);
+    
     this.storage.get("userData").then((data) => {
       this.usuario = data;
       console.log("user :", data);
@@ -45,6 +48,49 @@ export class UserPage implements OnInit {
       this.user = this.usuario.respuesta.usuario;
 
     });
+  }
+
+  eu = {
+    "idUsuario": this.numeroUsuario,
+    "telefono": "",
+    "correoElectronico": ""
+  }
+
+  editarUser() {
+    let obj = {
+      "idUsuario": this.numeroUsuario,
+      "telefono": this.eu.telefono,
+      "correoElectronico": this.eu.correoElectronico
+    }
+
+      this.servicio.editarUser(obj).subscribe((response: any) => {
+        this.mensaje = response.respuesta;
+        if (response.codigo === 200) {
+          this.actualizado();
+          this.navCtrl.navigateRoot('/calalumno');
+        } else {
+          this.actualizado();
+        }
+      });
+  }
+
+  async actualizado() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: this.mensaje,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  async todoslosCampos() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Todos los campos son necesarios',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   ngOnInit() {

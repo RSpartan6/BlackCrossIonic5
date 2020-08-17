@@ -14,7 +14,7 @@ import { LoginService } from 'src/app/servicios/login.service';
 export class CalalumnoPage implements OnInit {
 
 
-  urlapi = "http://3.133.28.198:8080/Wod/";
+  urlapi = "http://192.168.1.74:8080/Wod/";
 
   fecha
   fechaf

@@ -1,16 +1,16 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>Clases</ion-title>    
+    <ion-title>Clases</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="" (click)="atras()" text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">  
+<ion-content [fullscreen]="true">
   <div>
     <ion-badge color="primary" class="centrar">{{fechaf}}</ion-badge>
   </div>
-  <ion-list inset="true" class="animated fast fadeInDown">    
+  <ion-list inset="true" class="animated fast fadeInDown">
     <ion-item *ngFor="let Clases of listado?.respuesta; 
       let indice=index;" class="animated fast fadeInDown" (click)="marcarAsistencia(Clases.idClase)">
       <ion-label>
