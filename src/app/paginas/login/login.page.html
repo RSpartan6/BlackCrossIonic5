@@ -5,7 +5,6 @@
 <ion-content [fullscreen]="true" padding class="background">
   <form #loginForm="ngForm" novalidate>
     <ion-img src="http://3.133.28.198:8080/imgs/BCF.png"></ion-img>
-
     <ion-grid>
       <ion-row color="primary">
         <ion-col size-md="6" size-lg="5" size-xs="12" no-lines>
@@ -22,13 +21,12 @@
             </ion-item>
           </div>
           <div class="centrado">
-            <ion-button (click)="onLogin(loginForm)" type="submit" size="large" expand="block"
-              color="primary">
+            <ion-button (click)="onLogin(loginForm)" type="submit" size="large" expand="block" color="primary">
               Iniciar Sesión
             </ion-button>
             <ion-button class="forgot-btn" fill="clear" (click)="recuperar()">
               Recuperar contraseña
-            </ion-button>            
+            </ion-button>
           </div>
         </ion-col>
       </ion-row>
