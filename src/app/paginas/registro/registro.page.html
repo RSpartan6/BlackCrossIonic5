@@ -25,9 +25,9 @@
               <ion-label position="floating"> Nombre</ion-label>
               <ion-input [(ngModel)]="nu.nombre" name="nombre" type="text" required></ion-input>
             </ion-item>
-            <br>
+            <br>            
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" name="sexo" type="text" [(ngModel)]="nu.sexo"> 
+              <ion-segment (ionChange)="segmentChanged($event)" name="sexo" type="text" [(ngModel)]="nu.sexo" required> 
                 <ion-segment-button value="F" >
                   <ion-label>Femenino</ion-label>
                 </ion-segment-button>
