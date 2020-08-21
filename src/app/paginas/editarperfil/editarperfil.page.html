@@ -26,7 +26,7 @@
             </ion-item>
             <ion-item>
               <ion-label position="stacked">Usuario</ion-label>
-              <ion-input name="usuario" type="text"  value="{{usuario}}" [(ngModel)]="ep.usuario" required>
+              <ion-input name="usuario" type="text" value="{{usuario}}" [(ngModel)]="ep.usuario" required>
               </ion-input>
             </ion-item>
             <ion-item>
@@ -44,7 +44,8 @@
               <ion-label class="sexo">Sexo</ion-label>
             </ion-list-header>
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" name="sexo" value="{{sexo}}" type="text" [(ngModel)]="ep.sexo">
+              <ion-segment (ionChange)="segmentChanged($event)" name="sexo" value="{{sexo}}" type="text"
+                [(ngModel)]="ep.sexo">
                 <ion-segment-button value="F">
                   <ion-label>Femenino</ion-label>
                 </ion-segment-button>
@@ -63,7 +64,8 @@
           <div>
             <ion-row>
               <ion-col>
-                <ion-button color="primary" type="submit" (click)="editarUsuario(editarPerfil)" expand="block">Editar</ion-button>
+                <ion-button color="primary" type="submit" (click)="editarUsuario(editarPerfil)" expand="block">Editar
+                </ion-button>
               </ion-col>
             </ion-row>
           </div>
@@ -80,7 +82,8 @@
           <div>
             <ion-row>
               <ion-col>
-                <ion-button color="warning" type="submit" (click)="bPago(idUsuario)" class="botonPago" expand="block">Bloqueo por pago</ion-button>
+                <ion-button color="warning" type="submit" (click)="bPago(idUsuario)" class="botonPago" expand="block">
+                  Bloqueo por pago</ion-button>
               </ion-col>
             </ion-row>
           </div>
