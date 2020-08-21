@@ -1,10 +1,10 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar >
+  <ion-toolbar>
     <ion-title>Mi Perfil</ion-title>
     <ion-buttons slot="end">
       <ion-button href="cambiarpass">
         <ion-icon slot="icon-only" name="lock-open-outline"></ion-icon>
-      </ion-button>       
+      </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="" (click)="atras()" text=""></ion-back-button>
@@ -13,11 +13,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<br>
+  <br>
   <ion-grid>
     <ion-row>
-      <ion-col size-md="6" size-lg="5" size-xs="12"size="12">
-        <ion-col >
+      <ion-col size-md="6" size-lg="5" size-xs="12" size="12">
+        <ion-col>
           <div padding *ngIf="sexo === 'M'">
             <ion-img src="http://3.133.28.198:8080/imgs/hombre.svg"></ion-img>
           </div>
@@ -29,41 +29,49 @@
         <ion-col class="user-info-wrapper" size="8">
           <h3 class="user-name"> {{nombre}} </h3>
         </ion-col>        
-      </ion-col>   
+      </ion-col>
 
     </ion-row>
 
-    <ion-row >
+    <ion-row>
       <ion-col size-md="6" size-lg="5" size-xs="12" class="acomodar">
 
-        <ion-col size="12">
-          <h4 class="preference-name">Usuario</h4>
-          <p class="preference-value">
-            {{user}}
-          </p>
-        </ion-col>
-        <ion-col size="12">
-          <h4 class="preference-name">Sexo</h4>
-          <p class="preference-value" *ngIf="sexo === 'M'">
-            Masculino
-          </p>
-          <p class="preference-value" *ngIf="sexo === 'F'">
-            Femenino
-          </p>
-        </ion-col>        
-          <ion-col size="12">
-            <h4 class="preference-name">Telefono</h4>
-                <ion-input name="telefono" type="tel" value="{{telefono}}" [(ngModel)]="eu.telefono" required></ion-input>
-          </ion-col>
-          <ion-col size="12">
-            <h4 class="preference-name">Correo electronico</h4>
-            <ion-input name="correoElectronico" type="text" value="{{email}}" [(ngModel)]="eu.correoElectronico" required></ion-input>
-          </ion-col>                    
-          <ion-col size-md="6" size-lg="5" size-xs="12">
-            <ion-button color="primary" (click)="editarUser()" type="submit" expand="block">Editar
-            </ion-button>
-          </ion-col>
-      </ion-col>      
+        <div padding>
+          <ion-item>
+              <ion-label position="stacked">Usuario</ion-label>
+              <ion-input type="text" disabled placeholder="{{user}}"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+              <ion-label position="stacked">Sexo</ion-label>
+              <ion-input *ngIf="sexo === 'M'" type="text" disabled placeholder="Masculino"></ion-input>
+              <ion-input *ngIf="sexo === 'F'" type="text" disabled placeholder="Femenino"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+              <ion-label position="stacked">Telefono</ion-label>
+              <!-- <h4 class="preference-name">Telefono</h4> -->
+              <ion-input name="telefono" type="tel" value="{{telefono}}" [(ngModel)]="eu.telefono" required></ion-input>
+          </ion-item>
+  
+          <ion-item>
+              <ion-label position="stacked">Correo electronico</ion-label>
+  
+              <ion-input name="correoElectronico" type="text" value="{{email}}" [(ngModel)]="eu.correoElectronico"
+                required></ion-input>
+          </ion-item>
+        </div>
+        <br>
+        <div padding>
+          <ion-row>
+            <ion-col>
+              <ion-button color="primary" (click)="editarUser()" type="submit" expand="block">Editar
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+          
+      </ion-col>
     </ion-row>
-  </ion-grid>   
+  </ion-grid>
 </ion-content>

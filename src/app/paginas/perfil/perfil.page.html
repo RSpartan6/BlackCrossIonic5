@@ -44,6 +44,9 @@
             <ion-chip *ngIf="Usuarios.estatus == 0" color="danger">
               <ion-label>Inactivo</ion-label>
             </ion-chip>
+            <ion-chip *ngIf="Usuarios.estatus == 3" color="warning">
+              <ion-label>Falta de pago</ion-label>
+            </ion-chip>
             <ion-chip *ngIf="Usuarios.idRol == 1" color="secondary">
               <ion-label>Entrenador</ion-label>
             </ion-chip>

@@ -13,30 +13,21 @@ ion-title {
     display: block;
     margin: auto;
   }
-
-  .preference-name {
-    margin: 0px 0px 5px;
-    font-size: 16px;
-  }
-
-  .preference-value {
-    margin: 0px 0px calc(var(--page-margin) / 2);
-    font-size: 14px;
-    line-height: 1.4;
-    color: var(--ion-color-dark-tint);
-  }
-
   .user-info-wrapper {
     // padding-left: calc(var(--page-margin) / 2);
 
     .user-name {
-      margin: 0px 0px 5px;
+      margin: 0px 0px 0px;
       display: block;
       margin: auto;
       text-align: center;
     }
   }
 
-  ion-col.acomodar{
-        padding: 25px;
+  // ion-col.acomodar{
+  //       padding: 20px;
+  // }
+
+  .texto{
+    font-size: 16px;
   }
