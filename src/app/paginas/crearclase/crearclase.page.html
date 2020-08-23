@@ -28,7 +28,7 @@
             </ion-item>
             <br>
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" name="horario" type="text" [(ngModel)]="nc.horario"> 
+              <ion-segment (ionChange)="segmentChanged($event)" name="horario" type="text" [(ngModel)]="nc.horario" required> 
                 <ion-segment-button value="M" >
                   <ion-label>Matutino</ion-label>
                 </ion-segment-button>

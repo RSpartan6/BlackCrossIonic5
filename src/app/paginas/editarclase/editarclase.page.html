@@ -29,7 +29,7 @@
               </ion-input>
             </ion-item>
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" value="{{horario}}" name="horario" type="text" [(ngModel)]="ec.horario">
+              <ion-segment (ionChange)="segmentChanged($event)" value="{{horario}}" name="horario" type="text" [(ngModel)]="ec.horario" required>
                 <ion-segment-button value="M">
                   <ion-label>Matutino</ion-label>
                 </ion-segment-button>
@@ -48,7 +48,7 @@
               </ion-input>
             </ion-item>
             <ion-item no-lines>
-              <ion-segment (ionChange)="segmentChanged($event)" name="estatus" type="text" value="{{estatus}}" [(ngModel)]="ec.estatus">
+              <ion-segment (ionChange)="segmentChanged($event)" name="estatus" type="text" value="{{estatus}}" [(ngModel)]="ec.estatus" required>
                 <ion-segment-button value="1">
                   <ion-label>Activado</ion-label>
                 </ion-segment-button>

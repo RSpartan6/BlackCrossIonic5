@@ -45,7 +45,7 @@
             </ion-list-header>
             <ion-item no-lines>
               <ion-segment (ionChange)="segmentChanged($event)" name="sexo" value="{{sexo}}" type="text"
-                [(ngModel)]="ep.sexo">
+                [(ngModel)]="ep.sexo" required>
                 <ion-segment-button value="F">
                   <ion-label>Femenino</ion-label>
                 </ion-segment-button>
