@@ -23,7 +23,7 @@ export class EditarclasePage implements OnInit {
   horaFin
   horaInicio
   horario
-  nombreC:string
+  nombre:string
   profesor
   personas
   estatus
@@ -47,12 +47,14 @@ export class EditarclasePage implements OnInit {
       this.idClase = this.activatedRoute.snapshot.paramMap.get('idClase');
 
       console.log("Id de la clase a editar",this.idClase);
+      console.log("Nombre de la clase",this.nombre);
+      
     });
   }
 
   ionViewWillEnter(){
 
-    this.nombreC = this.activatedRoute.snapshot.paramMap.get('nombreC');
+    this.nombre = this.activatedRoute.snapshot.paramMap.get('nombre');
     this.horaInicio = this.activatedRoute.snapshot.paramMap.get('horaInicio');
     this.horaFin = this.activatedRoute.snapshot.paramMap.get('horaFin');
     this.horario = this.activatedRoute.snapshot.paramMap.get('horario');
@@ -105,8 +107,9 @@ export class EditarclasePage implements OnInit {
 
         if (response.codigo === 200) {
           this.editadaCorrect();
-          this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
-          console.log("Fecha de clase editada", this.fechaf);
+          this.navCtrl.navigateRoot('/clases')
+          // this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
+          // console.log("Fecha de clase editada", this.fechaf);
         } else {
           this.errorEditar()
         }
@@ -135,7 +138,7 @@ export class EditarclasePage implements OnInit {
       if (response.codigo == 200) {
         this.deleteClase();
         console.log("ID de clase eliminada", this.idClase);
-        this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
+        this.navCtrl.navigateRoot('/clases')
 
       } else {
         this.deleteClase();
@@ -212,7 +215,7 @@ export class EditarclasePage implements OnInit {
 
   atras() {
     // this.navCtrl.navigateRoot('/horariosadmin/'+ this.fechaf)
-    this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
+    this.navCtrl.navigateRoot('/clases')
   }
 }
 

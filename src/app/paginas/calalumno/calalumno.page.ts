@@ -154,4 +154,8 @@ export class CalalumnoPage implements OnInit {
   }
   // Fin cerrar sesión
 
+  atras() {
+    this.navCtrl.navigateRoot('/admin');
+  }
+
 }

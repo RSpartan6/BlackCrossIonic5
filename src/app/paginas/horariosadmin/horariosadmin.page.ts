@@ -17,6 +17,7 @@ export class HorariosadminPage implements OnInit {
   idClase: string;
   fechaf: string;
   codigo
+  idrol
 
   urlapi = "http://3.133.28.198:8080/Wod/";
 
@@ -35,6 +36,9 @@ export class HorariosadminPage implements OnInit {
     this.usuario = this.navParams.get(this.usuario);
     this.storage.get("userData").then((user) => {
       this.usuario = user;
+      this.idrol = this.usuario.respuesta.idRol;
+
+      console.log(this.idrol, "Rolde usuario en Horarios");
     });
   }
 

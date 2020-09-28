@@ -28,7 +28,7 @@
         <br>
         <ion-col class="user-info-wrapper" size="8">
           <h3 class="user-name"> {{nombre}} </h3>
-        </ion-col>        
+        </ion-col>
       </ion-col>
 
     </ion-row>
@@ -38,27 +38,27 @@
 
         <div padding>
           <ion-item>
-              <ion-label position="stacked">Usuario</ion-label>
-              <ion-input type="text" disabled placeholder="{{user}}"></ion-input>
+            <ion-label position="stacked">Usuario</ion-label>
+            <ion-input type="text" disabled placeholder="{{user}}"></ion-input>
           </ion-item>
-  
+
           <ion-item>
-              <ion-label position="stacked">Sexo</ion-label>
-              <ion-input *ngIf="sexo === 'M'" type="text" disabled placeholder="Masculino"></ion-input>
-              <ion-input *ngIf="sexo === 'F'" type="text" disabled placeholder="Femenino"></ion-input>
+            <ion-label position="stacked">Sexo</ion-label>
+            <ion-input *ngIf="sexo === 'M'" type="text" disabled placeholder="Masculino"></ion-input>
+            <ion-input *ngIf="sexo === 'F'" type="text" disabled placeholder="Femenino"></ion-input>
           </ion-item>
-  
+
           <ion-item>
-              <ion-label position="stacked">Telefono</ion-label>
-              <!-- <h4 class="preference-name">Telefono</h4> -->
-              <ion-input name="telefono" type="tel" value="{{telefono}}" [(ngModel)]="eu.telefono" required></ion-input>
+            <ion-label position="stacked">Telefono</ion-label>
+            <!-- <h4 class="preference-name">Telefono</h4> -->
+            <ion-input name="telefono" type="tel" value="{{telefono}}" [(ngModel)]="eu.telefono" required></ion-input>
           </ion-item>
-  
+
           <ion-item>
-              <ion-label position="stacked">Correo electronico</ion-label>
-  
-              <ion-input name="correoElectronico" type="text" value="{{email}}" [(ngModel)]="eu.correoElectronico"
-                required></ion-input>
+            <ion-label position="stacked">Correo electronico</ion-label>
+
+            <ion-input name="correoElectronico" type="text" value="{{email}}" [(ngModel)]="eu.correoElectronico"
+              required></ion-input>
           </ion-item>
         </div>
         <br>
@@ -70,7 +70,7 @@
             </ion-col>
           </ion-row>
         </div>
-          
+
       </ion-col>
     </ion-row>
   </ion-grid>

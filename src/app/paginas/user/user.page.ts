@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/servicios/login.service';
 })
 export class UserPage implements OnInit {
 
-  usuario  
+  usuario
   idRol
   numeroUsuario
   nombre
@@ -30,7 +30,7 @@ export class UserPage implements OnInit {
       private loadingController: LoadingController
     ) {
     this.usuario = this.navParams.get(this.usuario);
-    
+
     this.storage.get("userData").then((data) => {
       this.usuario = data;
       console.log("user :", data);
@@ -64,15 +64,15 @@ export class UserPage implements OnInit {
       "correoElectronico": this.eu.correoElectronico
     }
 
-      this.servicio.editarUser(obj).subscribe((response: any) => {
-        this.mensaje = response.respuesta;
-        if (response.codigo === 200) {
-          this.actualizado();
-          this.navCtrl.navigateRoot('/calalumno');
-        } else {
-          this.actualizado();
-        }
-      });
+    this.servicio.editarUser(obj).subscribe((response: any) => {
+      this.mensaje = response.respuesta;
+      if (response.codigo === 200) {
+        this.actualizado();
+        this.navCtrl.navigateRoot('/calalumno');
+      } else {
+        this.actualizado();
+      }
+    });
   }
 
   async actualizado() {
@@ -102,10 +102,12 @@ export class UserPage implements OnInit {
   atras() {
     if (this.usuario.respuesta.idRol === 1) {
 
-      this.navCtrl.navigateRoot('/caladmin');
+      // this.navCtrl.navigateRoot('/caladmin');
+      this.navCtrl.navigateRoot('/admin');
 
     } else {
-      this.navCtrl.navigateRoot('/calalumno');
+      // this.navCtrl.navigateRoot('/calalumno');
+      this.navCtrl.navigateRoot('/admin');
     }
   }
 

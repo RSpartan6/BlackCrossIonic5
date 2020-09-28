@@ -13,7 +13,7 @@ export class CrearclasePage implements OnInit {
 
   mensajerror
   mensaje
-  fechaf
+  // fechaf
 
   nc = {
     "nombre": "",
@@ -104,7 +104,9 @@ export class CrearclasePage implements OnInit {
 
     const { role, data } = await loading.onDidDismiss();
 
-    this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
+    // this.navCtrl.navigateRoot('/horariosadmin/' + this.fechaf)
+    this.navCtrl.navigateRoot('/clases');
+
   }
 
   segmentChanged(ev: any) {
@@ -112,8 +114,12 @@ export class CrearclasePage implements OnInit {
   }
 
   ngOnInit() {
-    this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
-    console.log("Fecha seleccionada al crear clase: " + this.fechaf);
+    // this.fechaf = this.activatedRoute.snapshot.paramMap.get('fechaf');
+    // console.log("Fecha seleccionada al crear clase: " + this.fechaf);
+  }
+
+  atras(){
+    this.navCtrl.navigateRoot('/clases');
   }
 
 }

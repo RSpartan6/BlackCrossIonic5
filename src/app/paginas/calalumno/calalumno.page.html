@@ -1,7 +1,10 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>Calendario</ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="atras()" text=""></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
       <ion-button href="user">
         <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
       </ion-button>       
@@ -10,17 +13,13 @@
       <ion-button (click)="confirmCerrar()">
         <ion-icon slot="icon-only" name="power-outline"></ion-icon>
       </ion-button>
-    </ion-buttons> 
+    </ion-buttons>  -->
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
   <div>
-    <ion-calendar 
-    [(ngModel)]="date" 
-    [type]="type" 
-    [options]="options"
-    format="YYYY-MM-DD" 
-    (click)="onClick(date,fechaf)">
+    <ion-calendar [(ngModel)]="date" [type]="type" [options]="options" format="YYYY-MM-DD"
+      (click)="onClick(date,fechaf)">
     </ion-calendar>
   </div>
 

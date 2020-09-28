@@ -1,28 +1,27 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>Clases</ion-title>
-    <!-- <ion-buttons slot="end" *ngIf="idrol === 1">
-      <ion-button href="crearclase/{{fechaf}}">
-        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons> -->
     <ion-buttons slot="start">
       <ion-back-button defaultHref="" (click)="atras()" text=""></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="crearclass()">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true">
-  <div>
-    <ion-badge color="primary" class="centrar">{{fechaf}}</ion-badge>
-  </div>
+
   <ion-list inset="true" class="animated fast fadeInDown">
     <ion-item *ngFor="let Clases of listado?.respuesta; 
-      let indice=index;" href="asistentes/{{Clases.idClase}}/{{Clases.nombre}}/{{Clases.profesor}}/{{fechaf}}"
+      let indice=index;"
+      href="editarclase/{{Clases.idClase}}/{{Clases.horaInicio}}/{{Clases.horaFin}}/{{Clases.horario}}/{{Clases.nombre}}/{{Clases.profesor}}/{{Clases.personas}}/{{Clases.estatus}}"
       class="animated fast fadeInDown">
       <ion-label>
         <h2>Clase: {{Clases.nombre}} </h2>
         <p>Profesor: {{Clases.profesor}}</p>
-        <p> {{Clases.lugaresDisponibles}} Lugares disponibles de {{Clases.personas}}</p>
       </ion-label>
       <p>
         <ion-label *ngIf="Clases.horario == 'M'">
@@ -35,4 +34,5 @@
       </p>
     </ion-item>
   </ion-list>
+
 </ion-content>

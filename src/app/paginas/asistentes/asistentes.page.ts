@@ -31,6 +31,7 @@ export class AsistentesPage implements OnInit {
   usuario:any;
   personas: string;
   estatus
+  idrol
 
 
   constructor(
@@ -44,6 +45,8 @@ export class AsistentesPage implements OnInit {
     this.usuario = this.navParams.get(this.usuario);
       this.storage.get("userData").then((user) => {
       this.usuario = user;  
+      this.idrol = this.usuario.respuesta.idRol;
+      console.log(this.idrol, "Rolde usuario en Asistentes");
    });
   }
 

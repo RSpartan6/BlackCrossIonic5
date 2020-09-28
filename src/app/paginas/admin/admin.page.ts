@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, AlertController } from '@ionic/angular';
+import { NavController, LoadingController, AlertController, NavParams } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -9,13 +9,31 @@ import { Storage } from '@ionic/storage';
 })
 export class AdminPage implements OnInit {
 
+  usuario:any;
+  idrol
+
+
   constructor
     (
       private navCtrl: NavController,
       private storage: Storage,
       private loadingCtrl: LoadingController,
-      private alertCtrl: AlertController
-    ) { }
+      private alertCtrl: AlertController,
+      private navParams: NavParams
+    ) {
+
+      this.usuario = this.navParams.get(this.usuario);
+      this.storage.get("userData").then((user) => {
+      this.usuario = user;  
+      console.log("Datos del usuario:" ,this.usuario);
+
+      this.idrol = this.usuario.respuesta.idRol;
+
+      console.log(this.idrol, "Rolde usuario en Menu");
+      
+      
+   });
+     }
 
   ngOnInit() {
   }
@@ -26,6 +44,18 @@ export class AdminPage implements OnInit {
 
   perfil() {
     this.navCtrl.navigateRoot('/perfil');
+  }
+
+  user(){
+    this.navCtrl.navigateRoot('/user');
+  }
+
+  calalumno(){
+    this.navCtrl.navigateRoot('/calalumno')
+  }
+  
+  clases(){
+    this.navCtrl.navigateRoot('/clases')
   }
 
   cerrarSesion() {

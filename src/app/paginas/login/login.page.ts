@@ -66,7 +66,7 @@ export class LoginPage implements OnInit {
 
           if (this.Rol === 1) {
             console.log(this.login.usuario);
-            console.log("Usuario Entrenador");
+            console.log("Usuario Administrador");
             this.navCtrl.navigateRoot('/admin');
 
           } else
@@ -74,9 +74,18 @@ export class LoginPage implements OnInit {
             if (this.Rol === 2) {
               console.log(this.login.usuario);
               console.log("Usuario Cliente",)
-              this.navCtrl.navigateRoot('/calalumno');
+              this.navCtrl.navigateRoot('/admin');
+              // this.navCtrl.navigateRoot('/calalumno');
               this.clearForm();
             } else
+
+            if (this.Rol === 3) {
+              console.log(this.login.usuario);
+              console.log("Usuario Entrenador",)
+              this.navCtrl.navigateRoot('/admin');
+              // this.navCtrl.navigateRoot('/calalumno');
+              this.clearForm();
+            }
 
               if (this.Rol === null) {
                 console.log("Usuario no registrado");
@@ -240,7 +249,6 @@ export class LoginPage implements OnInit {
             }          
         }
       });
-
   }
 
   recuperar(){

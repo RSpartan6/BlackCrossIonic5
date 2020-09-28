@@ -27,8 +27,12 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./paginas/registro/registro.module').then( m => m.RegistroPageModule)
   },
+  // {
+  //   path: 'editarclase/:idClase/:fechaf/:horaInicio/:horaFin/:horario/:nombreC/:profesor/:personas/:estatus',
+  //   loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
+  // },
   {
-    path: 'editarclase/:idClase/:fechaf/:horaInicio/:horaFin/:horario/:nombreC/:profesor/:personas/:estatus',
+    path: 'editarclase/:idClase/:horaInicio/:horaFin/:horario/:nombre/:profesor/:personas/:estatus',
     loadChildren: () => import('./paginas/editarclase/editarclase.module').then( m => m.EditarclasePageModule)
   },
   {
@@ -51,8 +55,12 @@ const routes: Routes = [
     path: 'horarios/:fechaf',
     loadChildren: () => import('./paginas/horarios/horarios.module').then( m => m.HorariosPageModule)
   },
+  // {
+  //   path: 'crearclase/:fechaf',
+  //   loadChildren: () => import('./paginas/crearclase/crearclase.module').then( m => m.CrearclasePageModule)
+  // },
   {
-    path: 'crearclase/:fechaf',
+    path: 'crearclase',
     loadChildren: () => import('./paginas/crearclase/crearclase.module').then( m => m.CrearclasePageModule)
   },
   {
@@ -78,6 +86,10 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./paginas/user/user.module').then( m => m.UserPageModule)
+  },
+  {
+    path: 'clases',
+    loadChildren: () => import('./paginas/clases/clases.module').then( m => m.ClasesPageModule)
   },
 ];
 
