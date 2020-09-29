@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LoadingController, ActionSheetController, AlertController } from "@ionic/angular";
+import { LoadingController, ActionSheetController, AlertController, NavController } from "@ionic/angular";
 import { LoginService } from "src/app/servicios/login.service";
 import { Router } from "@angular/router";
 import { IfStmt } from '@angular/compiler';
@@ -21,7 +21,7 @@ export class PerfilPage implements OnInit {
   urlapi = "http://3.133.28.198:8080/Wod/";
 
   constructor(
-    private router: Router,
+    private navCtrl: NavController,
     private servicio: LoginService,
     public actionSheetController: ActionSheetController,
     public loadingController: LoadingController,
@@ -48,7 +48,7 @@ export class PerfilPage implements OnInit {
         console.log("Entro bien");
       }else{
         this.errorCargar();
-        this.router.navigate(["/admin"]);
+        this.navCtrl.navigateRoot('/admin');
       }
     });
   }
@@ -68,12 +68,11 @@ export class PerfilPage implements OnInit {
   }
 
   menuPerfil() {
-    this.router.navigate(["/admin"]);
+    this.navCtrl.navigateRoot('/admin');
   }
 
   registro(){
-    this.router.navigate(["/registro"]);
-
+    this.navCtrl.navigateRoot('/registro');
   }
 
   buscar(event) {

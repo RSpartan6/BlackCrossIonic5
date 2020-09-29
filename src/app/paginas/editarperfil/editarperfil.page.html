@@ -20,6 +20,14 @@
               <ion-label>Inactivo</ion-label>
             </ion-chip> -->
             <ion-item>
+              <ion-label>Tipo</ion-label>
+              <ion-select multiple="false" cancelText="Cancelar" okText="Aceptar" value="{{idRol}}" [(ngModel)]="ep.rol" name="rol" type="text" required>
+                <ion-select-option value="1">Administrador</ion-select-option>
+                <ion-select-option value="2">Usuario</ion-select-option>
+                <ion-select-option value="3">Entrenador</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
               <ion-label position="stacked">Nombre</ion-label>
               <ion-input name="nombre" type="text" value="{{nombre}}" [(ngModel)]="ep.nombre" required>
               </ion-input>

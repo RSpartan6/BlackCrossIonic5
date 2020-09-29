@@ -57,7 +57,6 @@ export class HorariosPage implements OnInit {
         this.codigo = json.codigo;
         console.log("Codigo del get", this.codigo);
         
-
         if (this.codigo === 200) {
           this.quitLoading();
         } else {
@@ -66,7 +65,7 @@ export class HorariosPage implements OnInit {
         }
         
         this.listado = data;
-        console.log(this.fechaf, "fecha del constrauctor");
+        console.log(this.fechaf, "fecha del constructor");
       });
     });
   }

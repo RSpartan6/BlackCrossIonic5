@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LoginService } from "src/app/servicios/login.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { NavController, NavParams } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 

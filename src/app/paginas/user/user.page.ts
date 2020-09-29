@@ -52,7 +52,7 @@ export class UserPage implements OnInit {
   }
 
   eu = {
-    "idUsuario": this.numeroUsuario,
+    "idUsuario": "",
     "telefono": "",
     "correoElectronico": ""
   }
@@ -109,6 +109,10 @@ export class UserPage implements OnInit {
       // this.navCtrl.navigateRoot('/calalumno');
       this.navCtrl.navigateRoot('/admin');
     }
+  }
+
+  cambiarpass(){
+    this.navCtrl.navigateRoot('/cambiarpass')
   }
 
   async userLoading() {

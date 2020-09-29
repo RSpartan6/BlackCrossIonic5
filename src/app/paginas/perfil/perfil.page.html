@@ -7,7 +7,7 @@
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
-      <ion-back-button (click)="menuPerfil()" defaultHref="admin" text=""></ion-back-button>
+      <ion-back-button (click)="menuPerfil()" defaultHref="" text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 
@@ -23,7 +23,7 @@
       <ion-col *ngFor="let Usuarios of listado?.respuesta | filtro: textoBuscar " size="12" size-lg="3" size-md="4"
         size-sm="6">
         <ion-card
-          href="editarperfil/{{Usuarios.idUsuario}}/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}/{{Usuarios.estatus}}"
+          href="editarperfil/{{Usuarios.idUsuario}}/{{Usuarios.idRol}}/{{Usuarios.usuario}}/{{Usuarios.sexo}}/{{Usuarios.correoElectronico}}/{{Usuarios.nombre}}/{{Usuarios.telefono}}/{{Usuarios.contrasenia}}/{{Usuarios.estatus}}"
           class="animated fast fadeInDown">
           <ion-card-header>
             <!-- <ion-avatar class="image-center">

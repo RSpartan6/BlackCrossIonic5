@@ -266,7 +266,7 @@ export class LoginPage implements OnInit {
       this.navCtrl.navigateRoot('/login');
       this.msjBloqueado(this.usuario.descripcion);
     }else{
-      this.navCtrl.navigateRoot('/calalumno');
+      this.navCtrl.navigateRoot('/admin');
     }
     });
 

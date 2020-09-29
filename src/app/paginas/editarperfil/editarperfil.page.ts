@@ -22,6 +22,7 @@ export class EditarperfilPage implements OnInit {
   estatus: string;
   listado: any;
   idUsuario: string;
+  idRol
   mensaje
   msjError
 
@@ -37,6 +38,7 @@ export class EditarperfilPage implements OnInit {
   ionViewWillEnter() {
 
     this.idUsuario = this.activatedRoute.snapshot.paramMap.get('idUsuario');
+    this.idRol = this.activatedRoute.snapshot.paramMap.get('idRol');
     this.usuario = this.activatedRoute.snapshot.paramMap.get('usuario');
     this.sexo = this.activatedRoute.snapshot.paramMap.get('sexo');
     this.correoElectronico = this.activatedRoute.snapshot.paramMap.get('correoElectronico');
@@ -46,16 +48,18 @@ export class EditarperfilPage implements OnInit {
     this.estatus = this.activatedRoute.snapshot.paramMap.get('estatus');
 
     console.log(this.usuario, "Usuario");
+    
 
     this.servicio.getData(this.urlapi + 'Usuarios/usuario/' + this.usuario + '/').subscribe(data => {
       console.log(data, "informacion del perfil seleccionado");
       this.listado = data;
+      
     });
   }
 
   ep = {
-    "idUsuario": this.idUsuario,
-    "idRol": "",
+    "idUsuario": "",
+    "rol": "",
     "usuario": "",
     "contrasenia": "",
     "nombre": "",
@@ -78,7 +82,7 @@ export class EditarperfilPage implements OnInit {
 
     let obj = {
       "idUsuario": this.idUsuario,
-      "idRol": 2,
+      "idRol": this.ep.rol,
       "usuario": this.ep.usuario,
       "contrasenia": this.ep.contrasenia,
       "nombre": this.ep.nombre,

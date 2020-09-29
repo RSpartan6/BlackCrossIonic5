@@ -13,7 +13,7 @@ import { NgForm } from '@angular/forms';
 export class RegistroPage implements OnInit {
 
   nu = {
-    "idRol": 2,
+    "rol": "",
     "usuario": "",
     "contrasenia": "",
     "nombre": "",
@@ -44,7 +44,7 @@ export class RegistroPage implements OnInit {
   nuevoUsuario(form: NgForm) {
     let obj = {
       // "idUsuario":null,
-      "idRol": 2,
+      "idRol": this.nu.rol,
       "usuario": this.nu.usuario,
       "contrasenia": this.nu.contrasenia,
       "nombre": this.nu.nombre,

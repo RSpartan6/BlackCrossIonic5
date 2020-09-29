@@ -14,6 +14,14 @@
         <ion-col size-md="6" size-lg="5" size-xs="12">
           <div padding>
             <ion-item>
+              <ion-label>Tipo</ion-label>
+              <ion-select multiple="false" cancelText="Cancelar" okText="Aceptar" [(ngModel)]="nu.rol" name="rol" type="text" required>
+                <ion-select-option value="1">Administrador</ion-select-option>
+                <ion-select-option value="2">Usuario</ion-select-option>
+                <ion-select-option value="3">Entrenador</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
               <ion-label position="floating"> Usuario</ion-label>
               <ion-input [(ngModel)]="nu.usuario" name="usuario" type="text" required></ion-input>
             </ion-item>

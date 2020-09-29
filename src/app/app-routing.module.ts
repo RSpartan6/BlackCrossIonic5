@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
-    path: 'editarperfil/:idUsuario/:usuario/:sexo/:correoElectronico/:nombre/:telefono/:contrasenia/:estatus',
+    path: 'editarperfil/:idUsuario/:idRol/:usuario/:sexo/:correoElectronico/:nombre/:telefono/:contrasenia/:estatus',
     loadChildren: () => import('./paginas/editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
   },
   {

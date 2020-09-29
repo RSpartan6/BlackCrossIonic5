@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ToastController, AlertController, NavController, LoadingController } from '@ionic/angular';
+import { ToastController, AlertController, NavController, LoadingController } from '@ionic/angular';
 import { Storage } from "@ionic/storage";
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login.service';
@@ -25,7 +25,7 @@ export class CambiarpassPage implements OnInit {
   mensajerr: string;
   submitted = false;
   numeroUsuario: string;
-  usuario: any;
+  usuario
   idUsuario: string;
   idRol
 
@@ -33,20 +33,25 @@ export class CambiarpassPage implements OnInit {
     (
       private servicio: LoginService,
       private storage: Storage,
-      private navParams: NavParams,
       public toastController: ToastController,
       public alertController: AlertController,
       private navCtrl: NavController,
       private loadingController: LoadingController
     ) {
-    this.usuario = this.navParams.get(this.usuario);
-    this.storage.get("userData").then((user) => {
-      this.usuario = user;
-      console.log("El usuario en ASISTENCIA ALUMNO es :", this.usuario.respuesta.nombre);
+
+      console.log("entro al constructor");
+
+    this.storage.get("userData").then((data) => {
+      this.usuario = data;
+      console.log("user :", data);
+
+      console.log("El usuario en USER es :", this.usuario.respuesta.nombre);
       console.log("El ID del usuario es  :", this.usuario.respuesta.idUsuario);
-      this.numeroUsuario = this.usuario.respuesta.idUsuario;
-      this.idRol = this.usuario.respuesta.idRol;
+      console.log("El Rol del usuario es : ", this.usuario.respuesta.idRol);
+      console.log("El estatus del usuario es:", this.usuario.respuesta.estatus);
+
     });
+    
   }
 
   ngOnInit() {
