@@ -14,7 +14,7 @@ export class CaladminPage implements OnInit {
   fecha
   date: string;
   type: 'string';
-
+  // _disableWeeks: number[] = [0, 6];
   usuario:any;
 
   constructor
@@ -33,10 +33,20 @@ export class CaladminPage implements OnInit {
   ngOnInit() {
   }
 
+  // Metodos para habilitar y deshabilitar dias en calendario
+
+  // _changeDisableWeeks(disableWeeks: string[]) {
+  //   this.options = {
+  //     ...this.options,
+  //     disableWeeks: disableWeeks.map(e => parseInt(e))
+  //   }
+  // }
+
   options: CalendarComponentOptions = {
     monthPickerFormat: ['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-    weekdays:['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-    disableWeeks: [0, 6]
+    weekdays:['D', 'L', 'M', 'M', 'J', 'V', 'S']
+    // Fines de semana habilitados
+    // ,disableWeeks: [0, 6]
   };
 
   onClick(date,fechaf) {

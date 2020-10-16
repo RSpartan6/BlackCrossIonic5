@@ -12,6 +12,25 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
+
+  <!-- Fines de semana deshabilitados -->
+  
+  <!-- <ion-list>
+    <ion-item>
+      <ion-label>Dias desactivados</ion-label>
+      <ion-select [(ngModel)]="_disableWeeks" 
+      (ngModelChange)="_changeDisableWeeks($event)"
+      multiple="true">
+        <ion-select-option value="0">Domingo</ion-select-option>
+        <ion-select-option value="1">Lunes</ion-select-option>
+        <ion-select-option value="2">Martes</ion-select-option>
+        <ion-select-option value="3">Miercoles</ion-select-option>
+        <ion-select-option value="4">Jueves</ion-select-option>
+        <ion-select-option value="5">Viernes</ion-select-option>
+        <ion-select-option value="6">Sabado</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
   <div>
     <ion-calendar 
     [(ngModel)]="date" 
